@@ -3,7 +3,7 @@ const config = require('config');
 
 module.exports = (req, res, next) => {
   // Get token from header
-  const token = req.headers('x-auth-token');
+  const token = req.header('x-auth-token');
 
   // Check if token exists
   if (!token) {
@@ -18,6 +18,7 @@ module.exports = (req, res, next) => {
     // payload = { user: { id: user.id } }
     // req.user can now access that id with req.user.id
     req.user = decoded.user;
+    next();
   } catch (err) {
     res.status(401).json({ msg: 'Token is not valid' });
   }

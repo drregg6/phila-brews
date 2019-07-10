@@ -3,6 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 
 const Brewery = require('../../models/Brewery');
+const auth = require('../../middleware/auth');
 
 // @route  /api/breweries/:id
 // @desc   Get all breweries
@@ -21,11 +22,11 @@ router.get('/', async (req, res) => {
 // @route  /api/breweries
 // @desc   Create or Update a brewery
 // @access PRIVATE
-router.post('/', [
+router.post('/', [ auth, [
   check('name', 'Name is required')
   .not()
   .isEmpty()
-],
+]],
  async (req, res) => {
    // Validate the body
    // If there are errors in the array, throw an error
@@ -163,7 +164,7 @@ router.get('/:id', async (req, res) => {
 // @route  /api/breweries/:id
 // @desc   Delete a Brewery
 // @access PRIVATE
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   try {
     let brewery = await Brewery.findById( req.params.id );
     if (!brewery) {
