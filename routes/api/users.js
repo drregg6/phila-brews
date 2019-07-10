@@ -77,4 +77,22 @@ async (req, res) => {
   }
 });
 
+// @route  /api/users
+// @desc   Delete a User
+// @access PRIVATE
+router.delete('/', async (req, res) => {
+  try {
+    let user = await User.findById({ id: req.user.id });
+    if (!user) {
+      return res.json({ msg: 'Invalid credentials' });
+    }
+
+    await User.findOneAndRemove({ _id: req.user.id });
+    res.json({ msg: 'User deleted' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
 module.exports = router;
