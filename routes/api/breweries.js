@@ -9,7 +9,7 @@ const Brewery = require('../../models/Brewery');
 // @access PUBLIC
 router.get('/', async (req, res) => {
   try {
-    let breweries = await Brewery.find();
+    let breweries = await Brewery.find().sort({name:1});
 
     res.json(breweries);
   } catch (err) {
@@ -156,6 +156,24 @@ router.get('/:id', async (req, res) => {
     if (err.kind === 'ObjectId') {
       return res.status(400).json({ msg: 'Brewery cannot be found' });
     }
+    res.status(500).send('Server error');
+  }
+});
+
+// @route  /api/breweries/:id
+// @desc   Delete a Brewery
+// @access PRIVATE
+router.delete('/:id', async (req, res) => {
+  try {
+    let brewery = await Brewery.findById( req.params.id );
+    if (!brewery) {
+      return res.status(400).json({ msg: 'Brewery not found' });
+    }
+
+    await brewery.remove();
+    res.json({ msg: 'Brewery deleted' });
+  } catch (err) {
+    console.error(err.message);
     res.status(500).send('Server error');
   }
 });
