@@ -5,9 +5,11 @@ const connectDB = require('./config/db');
 // Connect to db
 connectDB();
 
-app.get('/', (req, res) => {
-  res.send('Hello world! :)');
-});
+// Express Bodyparser
+app.use(express.json({ extended: false }));
+
+// Routes
+app.use('/api/breweries', require('./routes/api/breweries'));
 
 const PORT = process.env.PORT || 5000;
 

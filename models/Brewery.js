@@ -41,127 +41,87 @@ const BrewerySchema = new mongoose.Schema({
   img: {
     type: String
   },
-  mon: {
-    day: {
-      type: String,
-      default: 'Monday'
-    },
-    isOpen: {
-      type: Boolean,
-      default: true
-    },
-    open: {
-      type: String
-    },
-    close: {
-      type: String
-    }
-  },
-  tues: {
-    day: {
-      type: String,
-      default: 'Tuesday'
-    },
-    isOpen: {
-      type: Boolean,
-      default: true
-    },
-    open: {
-      type: String
-    },
-    close: {
-      type: String
-    }
-  },
-  wed: {
-    day: {
-      type: String,
-      default: 'Wednesday'
-    },
-    isOpen: {
-      type: Boolean,
-      default: true
-    },
-    open: {
-      type: String
-    },
-    close: {
-      type: String
-    }
-  },
-  thurs: {
-    day: {
-      type: String,
-      default: 'Thursday'
-    },
-    isOpen: {
-      type: Boolean,
-      default: true
-    },
-    open: {
-      type: String
-    },
-    close: {
-      type: String
-    }
-  },
-  fri: {
-    day: {
-      type: String,
-      default: 'Friday'
-    },
-    isOpen: {
-      type: Boolean,
-      default: true
-    },
-    open: {
-      type: String
-    },
-    close: {
-      type: String
-    }
-  },
-  sat: {
-    day: {
-      type: String,
-      default: 'Saturday'
-    },
-    isOpen: {
-      type: Boolean,
-      default: true
-    },
-    open: {
-      type: String
-    },
-    close: {
-      type: String
-    }
-  },
-  sun: {
-    day: {
-      type: String,
-      default: 'Sunday'
-    },
-    isOpen: {
-      type: Boolean,
-      default: true
-    },
-    open: {
-      type: String
-    },
-    close: {
-      type: String
-    }
-  },
   happyHour: {
     available: {
       type: Boolean,
       default: false
     },
-    open: {
+    happyOpen: {
       type: String
     },
-    close: {
+    happyClose: {
+      type: String
+    }
+  },
+  hours: {
+    monIsOpen: {
+      type: Boolean,
+      default: true
+    },
+    monOpen: {
+      type: String
+    },
+    monClose: {
+      type: String
+    },
+    tuesIsOpen: {
+      type: Boolean,
+      default: true
+    },
+    tuesOpen: {
+      type: String
+    },
+    tuesClose: {
+      type: String
+    },
+    wedIsOpen: {
+      type: Boolean,
+      default: true
+    },
+    wedOpen: {
+      type: String
+    },
+    wedClose: {
+      type: String
+    },
+    thursIsOpen: {
+      type: Boolean,
+      default: true
+    },
+    thursOpen: {
+      type: String
+    },
+    thursClose: {
+      type: String
+    },
+    friIsOpen: {
+      type: Boolean,
+      default: true
+    },
+    friOpen: {
+      type: String
+    },
+    friClose: {
+      type: String
+    },
+    satIsOpen: {
+      type: Boolean,
+      default: true
+    },
+    satOpen: {
+      type: String
+    },
+    satClose: {
+      type: String
+    },
+    sunIsOpen: {
+      type: Boolean,
+      default: true
+    },
+    sunOpen: {
+      type: String
+    },
+    sunClose: {
       type: String
     }
   }
@@ -169,4 +129,4 @@ const BrewerySchema = new mongoose.Schema({
 
 const Brewery = mongoose.model('brewery', BrewerySchema);
 
-export default Brewery;
+module.exports = Brewery;
