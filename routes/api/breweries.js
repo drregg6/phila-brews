@@ -93,13 +93,13 @@ router.post('/', [
   if (happyClose) breweryFields.happyHour.happyClose = happyClose;
 
   breweryFields.hours = {};
-  if (monIsOpen) breweryFields.hours.monIsOpen = monIsOpen;
-  if (tuesIsOpen) breweryFields.hours.tuesIsOpen = tuesIsOpen;
-  if (wedIsOpen) breweryFields.hours.wedIsOpen = wedIsOpen;
-  if (thursIsOpen) breweryFields.hours.thursIsOpen = thursIsOpen;
-  if (friIsOpen) breweryFields.hours.friIsOpen = friIsOpen;
-  if (satIsOpen) breweryFields.hours.satIsOpen = satIsOpen;
-  if (sunIsOpen) breweryFields.hours.sunIsOpen = sunIsOpen;
+  breweryFields.hours.monIsOpen = monIsOpen;
+  breweryFields.hours.tuesIsOpen = tuesIsOpen;
+  breweryFields.hours.wedIsOpen = wedIsOpen;
+  breweryFields.hours.thursIsOpen = thursIsOpen;
+  breweryFields.hours.friIsOpen = friIsOpen;
+  breweryFields.hours.satIsOpen = satIsOpen;
+  breweryFields.hours.sunIsOpen = sunIsOpen;
   if (monOpen) breweryFields.hours.monOpen = monOpen;
   if (monClose) breweryFields.hours.monClose = monClose;
   if (tuesOpen) breweryFields.hours.tuesOpen = tuesOpen;
