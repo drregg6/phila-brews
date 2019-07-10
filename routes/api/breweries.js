@@ -4,7 +4,7 @@ const { check, validationResult } = require('express-validator');
 
 const Brewery = require('../../models/Brewery');
 
-// @route  /api/breweries
+// @route  /api/breweries/:id
 // @desc   Get all breweries
 // @access PUBLIC
 router.get('/', async (req, res) => {
