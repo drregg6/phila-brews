@@ -51,25 +51,25 @@ router.post('/', [
     happyOpen,
     happyClose,
     monIsOpen,
-    monOpen,
-    monClose,
     tuesIsOpen,
-    tuesOpen,
-    tuesClose,
     wedIsOpen,
-    wedOpen,
-    wedClose,
     thursIsOpen,
-    thursOpen,
-    thursClose,
     friIsOpen,
-    friOpen,
-    friClose,
     satIsOpen,
-    satOpen,
-    satClose,
     sunIsOpen,
+    monOpen,
+    tuesOpen,
+    wedOpen,
+    thursOpen,
+    friOpen,
+    satOpen,
     sunOpen,
+    monClose,
+    tuesClose,
+    wedClose,
+    thursClose,
+    friClose,
+    satClose,
     sunClose
   } = req.body;
 
@@ -94,24 +94,24 @@ router.post('/', [
 
   breweryFields.hours = {};
   if (monIsOpen) breweryFields.hours.monIsOpen = monIsOpen;
+  if (tuesIsOpen) breweryFields.hours.tuesIsOpen = tuesIsOpen;
+  if (wedIsOpen) breweryFields.hours.wedIsOpen = wedIsOpen;
+  if (thursIsOpen) breweryFields.hours.thursIsOpen = thursIsOpen;
+  if (friIsOpen) breweryFields.hours.friIsOpen = friIsOpen;
+  if (satIsOpen) breweryFields.hours.satIsOpen = satIsOpen;
+  if (sunIsOpen) breweryFields.hours.sunIsOpen = sunIsOpen;
   if (monOpen) breweryFields.hours.monOpen = monOpen;
   if (monClose) breweryFields.hours.monClose = monClose;
-  if (tuesIsOpen) breweryFields.hours.tuesIsOpen = tuesIsOpen;
   if (tuesOpen) breweryFields.hours.tuesOpen = tuesOpen;
   if (tuesClose) breweryFields.hours.tuesClose = tuesClose;
-  if (wedIsOpen) breweryFields.hours.wedIsOpen = wedIsOpen;
   if (wedOpen) breweryFields.hours.wedOpen = wedOpen;
   if (wedClose) breweryFields.hours.wedClose = wedClose;
-  if (thursIsOpen) breweryFields.hours.thursIsOpen = thursIsOpen;
   if (thursOpen) breweryFields.hours.thursOpen = thursOpen;
   if (thursClose) breweryFields.hours.thursClose = thursClose;
-  if (friIsOpen) breweryFields.hours.friIsOpen = friIsOpen;
   if (friOpen) breweryFields.hours.friOpen = friOpen;
   if (friClose) breweryFields.hours.friClose = friClose;
-  if (satIsOpen) breweryFields.hours.satIsOpen = satIsOpen;
   if (satOpen) breweryFields.hours.satOpen = satOpen;
   if (satClose) breweryFields.hours.satClose = satClose;
-  if (sunIsOpen) breweryFields.hours.sunIsOpen = sunIsOpen;
   if (sunOpen) breweryFields.hours.sunOpen = sunOpen;
   if (sunClose) breweryFields.hours.sunClose = sunClose;
 
@@ -143,8 +143,21 @@ router.post('/', [
 // @route  /api/breweries/:id
 // @desc   Get a brewery
 // @access PUBLIC
-router.get('/:id', (req, res) => {
-  // do stuff
+router.get('/:id', async (req, res) => {
+  try {
+    let brewery = await Brewery.findById(req.params.id);
+
+    if (!brewery) {
+      return res.status(400).json({ msg: 'Brewery cannot be found' });
+    }
+
+    res.json(brewery);
+  } catch (err) {
+    if (err.kind === 'ObjectId') {
+      return res.status(400).json({ msg: 'Brewery cannot be found' });
+    }
+    res.status(500).send('Server error');
+  }
 });
 
 module.exports = router;
