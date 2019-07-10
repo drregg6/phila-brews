@@ -179,4 +179,69 @@ router.delete('/:id', auth, async (req, res) => {
   }
 });
 
+// @route  /api/breweries/:id/beers
+// @desc   Update brewery with a new beer
+// @access PRIVATE
+router.put('/:id/beers', [ auth, [
+  check('name', 'Name is required')
+  .not()
+  .isEmpty()
+]],
+async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
+  const {
+    name,
+    abv,
+    description,
+    type,
+    img
+  } = req.body;
+
+  const beerFields = {};
+  if (name) beerFields.name = name;
+  if (abv) beerFields.abv = abv;
+  if (description) beerFields.description = description;
+  if (type) beerFields.type = type;
+  if (img) beerFields.img = img;
+
+  try {
+    let brewery = await Brewery.findOne({ _id: req.params.id });
+    if (!brewery) {
+      return res.status(400).json({ msg: 'Brewery cannot be found' });
+    }
+
+    brewery.beers.push(beerFields);
+    await brewery.save();
+    res.json(brewery);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// @route  /api/breweries/:brewery_id/beers/:beer_id
+// @desc   Delete a beer
+// @access PRIVATE
+router.delete('/:brewery_id/beers/:beer_id', auth, async (req, res) => {
+  try {
+    let brewery = await Brewery.findOne({ _id: req.params.brewery_id });
+    if (!brewery) {
+      return res.status(400).json({ msg: 'Brewery cannot be found' });
+    }
+
+    const removeIndex = brewery.beers.map(beer => beer.id).indexOf(req.params.beer_id);
+    brewery.beers.splice(removeIndex, 1);
+
+    await brewery.save();
+    res.json(brewery);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).json({ msg: 'Server error' });
+  }
+});
+
 module.exports = router;

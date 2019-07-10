@@ -13,16 +13,17 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
+const auth = require('../../middleware/auth');
 
 // @route  /api/users
 // @desc   Register
 // @access PRIVATE
-router.post('/', [
+router.post('/', [ auth, [
   check('email', 'Please enter a valid email')
   .isEmail(),
   check('password', 'Please enter a password of at least 6 characters')
   .isLength({ min: 6 })
-],
+]],
 async (req, res) => {
   // Check validations
   const errors = validationResult(req);
@@ -80,9 +81,9 @@ async (req, res) => {
 // @route  /api/users
 // @desc   Delete a User
 // @access PRIVATE
-router.delete('/', async (req, res) => {
+router.delete('/', auth, async (req, res) => {
   try {
-    let user = await User.findById({ id: req.user.id });
+    let user = await User.findById({ _id: req.user.id });
     if (!user) {
       return res.json({ msg: 'Invalid credentials' });
     }

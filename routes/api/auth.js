@@ -14,6 +14,9 @@ const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
 
+// @route  /api/auth/
+// @desc   Sign in / authenticate user
+// @access PUBLIC
 router.post('/', [
   check('email', 'Email is required')
   .not()

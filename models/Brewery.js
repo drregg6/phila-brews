@@ -124,7 +124,31 @@ const BrewerySchema = new mongoose.Schema({
     sunClose: {
       type: String
     }
-  }
+  },
+  beers: [
+    {
+      name: {
+        type: String,
+        required: true
+      },
+      abv: {
+        type: String
+      },
+      description: {
+        type: String
+      },
+      img: {
+        type: String
+      },
+      type: {
+        type: String
+      },
+      date: {
+        type: Date,
+        default: Date.now
+      }
+    }
+  ]
 });
 
 const Brewery = mongoose.model('brewery', BrewerySchema);
