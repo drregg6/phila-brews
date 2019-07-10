@@ -209,11 +209,18 @@ async (req, res) => {
   if (img) beerFields.img = img;
 
   try {
+    // Find the brewery - throw an error if the brewery cannot be found
     let brewery = await Brewery.findOne({ _id: req.params.id });
     if (!brewery) {
       return res.status(400).json({ msg: 'Brewery cannot be found' });
     }
+    let beer = await brewery.beers.map(beer => beer.name).indexOf(beerFields.name);
+    // Update beer
+    // if (beer) {
 
+    // }
+    
+    // Push new beer into beers
     brewery.beers.push(beerFields);
     await brewery.save();
     res.json(brewery);

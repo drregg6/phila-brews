@@ -5,7 +5,7 @@ const connectDB = require('./config/db');
 // Connect to db
 connectDB();
 
-// Express Bodyparser
+// Express bodyparser
 app.use(express.json({ extended: false }));
 
 // Routes
