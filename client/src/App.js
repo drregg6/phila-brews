@@ -1,9 +1,12 @@
 import React from 'react';
 
+// Components
+import Breweries from './components/Breweries';
+
 function App() {
   return (
     <div className="App">
-      <h1>Hello World!</h1>
+      <Breweries />
     </div>
   );
 }
