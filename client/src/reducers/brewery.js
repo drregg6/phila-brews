@@ -5,6 +5,8 @@ import {
 
 const initialState = {
   breweries: [],
+  brewery: {},
+  beers: [],
   loading: true
 };
 

@@ -1,7 +1,10 @@
 // Import types
 
 const initialState = {
-
+  token: localStorage.getItem('token'),
+  user: null,
+  isAuthenticated: null,
+  loading: true
 };
 
 export default function(state = initialState, action) {
