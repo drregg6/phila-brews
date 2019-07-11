@@ -214,11 +214,20 @@ async (req, res) => {
     if (!brewery) {
       return res.status(400).json({ msg: 'Brewery cannot be found' });
     }
-    let beer = await brewery.beers.map(beer => beer.name).indexOf(beerFields.name);
-    // Update beer
-    // if (beer) {
 
-    // }
+    // See if the beer exists
+    let beer = brewery.beers.filter(beer => beer.name === beerFields.name)[0];
+    // Update beer
+    if (beer) {
+      console.log('Beer found, let\'s update!');
+      brewery = await Brewery.findOneAndUpdate(
+        { _id: req.params.id, 'beers.name': beerFields.name},
+        { $set: { 'beers.$': beerFields } },
+        { new: true }
+      );
+      
+      return res.json({ brewery });
+    }
     
     // Push new beer into beers
     brewery.beers.push(beerFields);
