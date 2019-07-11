@@ -1,3 +1,14 @@
+/*
+
+= GET_BREWERY
+= GET_BEERS
+= GET_BEER(?)
+= ADD_BREWERY / UPDATE_BREWERY
+= ADD BEER / UPDATE_BEER
+= DELETE BREWERY
+= DELETE BEER
+
+*/
 import axios from 'axios';
 
 import {
