@@ -2,6 +2,10 @@ import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import Spinner from '../layout/Spinner';
+import BreweryAddress from './BreweryAddress';
+import BreweryHours from './BreweryHours';
+import BreweryInfo from './BreweryInfo';
+import BreweryMap from './BreweryMap';
 
 import { connect } from 'react-redux';
 import { getBrewery } from '../../actions/brewery';
@@ -22,7 +26,26 @@ const Brewery = ({
         <Fragment>
           <h1>{brewery.name}</h1>
           <div>
-            {brewery.phone}
+            <BreweryInfo
+              phone={brewery.phone}
+              website={brewery.website}
+              mailingList={brewery.mailingList}
+              happyHour={brewery.happyHour}
+            />
+            <BreweryAddress
+              building={brewery.building}
+              street={brewery.street}
+              city={brewery.city}
+              state={brewery.state}
+              zip={brewery.zip}
+            />
+            <BreweryHours
+              hours={brewery.hours}
+            />
+            <BreweryMap
+              lat={brewery.lat}
+              lng={brewery.lng}
+            />
           </div>
         </Fragment>
       ) }
