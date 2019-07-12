@@ -155,3 +155,10 @@ nav ul li {
   75%  { transform: translate( 0, -100% ); }
   100% { transform: translate( 0 ); }
 }
+
+/* === BreweryMap === */
+.brewery-map {
+	height: 50vh;
+	width: 75%;
+	margin: 0 auto;
+}

@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   breweries: [],
-  brewery: {},
+  brewery: null,
   beers: [],
   loading: true
 };

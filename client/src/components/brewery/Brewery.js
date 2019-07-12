@@ -17,10 +17,10 @@ const Brewery = ({
 }) => {
   useEffect(() => {
     getBrewery(match.params.id)
-  }, [getBrewery])
+  }, [getBrewery, match.params.id])
   return (
     <Fragment>
-      { loading ? (
+      { loading || brewery === null ? (
         <Spinner />
       ) : (
         <Fragment>
