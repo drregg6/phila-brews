@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Spinner from './layout/Spinner';
 
@@ -20,8 +21,10 @@ const Breweries = ({
       ) : (
         breweries.map(brewery => {
           return (
-            <div>
-              {brewery.name}
+            <div key={brewery._id}>
+              <Link to={`/breweries/${brewery._id}`}>
+                {brewery.name}
+              </Link>
             </div>
           )
         })

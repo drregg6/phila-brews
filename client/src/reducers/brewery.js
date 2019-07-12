@@ -1,6 +1,7 @@
 // Import action types
 import {
-  GET_BREWERIES
+  GET_BREWERIES,
+  GET_BREWERY
 } from '../actions/types';
 
 const initialState = {
@@ -18,6 +19,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         breweries: payload,
+        loading: false
+      }
+    case GET_BREWERY:
+      return {
+        ...state,
+        brewery: payload,
         loading: false
       }
     default:

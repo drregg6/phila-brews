@@ -1,6 +1,5 @@
 /*
 
-= GET_BREWERY
 = GET_BEERS
 = GET_BEER(?)
 = ADD_BREWERY / UPDATE_BREWERY
@@ -12,7 +11,8 @@
 import axios from 'axios';
 
 import {
-  GET_BREWERIES
+  GET_BREWERIES,
+  GET_BREWERY
 } from './types';
 
 export const getBreweries = () => async dispatch => {
@@ -27,3 +27,15 @@ export const getBreweries = () => async dispatch => {
     console.error(err.message);
   }
 };
+
+export const getBrewery = id => async dispatch => {
+  try {
+    let res = await axios.get(`/api/breweries/${id}`);
+    dispatch({
+      type: GET_BREWERY,
+      payload: res.data
+    })
+  } catch (err) {
+    console.log(err.message)
+  }
+}

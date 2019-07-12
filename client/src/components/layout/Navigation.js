@@ -6,12 +6,12 @@
 
 */
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-const Navigation = props => {
+const Navigation = () => {
   return (
     <React.Fragment>
       <nav>
@@ -31,9 +31,9 @@ const Navigation = props => {
   )
 }
 
-Navigation.propTypes = {
+// Navigation.propTypes = {
 
-}
+// }
 
 export default connect(
   null,
