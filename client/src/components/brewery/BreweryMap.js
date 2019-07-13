@@ -10,7 +10,6 @@ const BreweryMap = ({ lat, lng }) => {
   const zoom = 13;
   const access_token = process.env.REACT_APP_MAPBOX;
   const endpoint=`https://api.tiles.mapbox.com/v4/mapbox.streets/{z}/{x}/{y}.png?access_token=${access_token}`;
-  console.log(position)
 
   return (
     <Map className='brewery-map' center={position} zoom={zoom}>

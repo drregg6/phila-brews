@@ -2,7 +2,7 @@
 
 = BREWERIES (home)
 = ABOUT
-= ADD BREWERY
+= ADD BREWERY (if logged in)
 
 */
 import React from 'react';
@@ -24,6 +24,12 @@ const Navigation = () => {
           </li>
           <li>
             <Link to="/contact">Contact</Link>
+          </li>
+          <li>
+            <Link to="/breweries/new">Add Brewery</Link>
+          </li>
+          <li>
+            <Link to="/login">Login</Link>
           </li>
         </ul>
       </nav>
