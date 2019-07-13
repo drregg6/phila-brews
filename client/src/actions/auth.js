@@ -30,21 +30,19 @@ export const loadUser = () => async dispatch => {
     });
   } catch (err) {
     console.log(err.message);
-    // dispatch({
-    //   type: AUTH_ERROR
-    // })
   }
 }
 
 export const login = (email, password) => async dispatch => {
+  
   const config = {
     headers: {
-      'Content-type': 'application/json'
+      'Content-Type': 'application/json'
     }
   };
 
-  const body = JSON.stringify({ email, password })
-
+  const body = JSON.stringify({ email, password });
+  console.log('Trying to send to database: ' + body);
   // Should return a token
   try {
     const res = await axios.post('/api/auth', body, config);
@@ -53,6 +51,7 @@ export const login = (email, password) => async dispatch => {
       type: LOGIN_SUCCESS,
       payload: res.data
     });
+
     dispatch(loadUser());
   } catch (err) {
     console.error(err.message);

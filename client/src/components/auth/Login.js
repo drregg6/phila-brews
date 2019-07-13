@@ -34,9 +34,24 @@ const Login = ({ login, isAuthenticated }) => {
   return (
     <div>
       <form onSubmit={ev => handleSubmit(ev)}>
-        <input type='text' placeholder='email' onChange={handleChange} />
-        <input type='password' placeholder='password' onChange={handleChange} />
-        <input type='submit' value='Login' />
+        <input
+          type='email'
+          placeholder='email'
+          name='email'
+          value={email}
+          onChange={ev => handleChange(ev)}
+        />
+        <input
+          type='password'
+          placeholder='password'
+          name='password'
+          value={password}
+          onChange={ev => handleChange(ev)}
+        />
+        <input
+          type='submit'
+          value='Login'
+        />
       </form>
     </div>
   )
