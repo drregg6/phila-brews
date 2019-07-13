@@ -9,6 +9,7 @@ IF NOT
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
@@ -22,12 +23,17 @@ const Login = ({ login, isAuthenticated }) => {
   const handleChange = ev => {
     setFormData({ ...formData, [ev.target.name]: ev.target.value });
   }
+  const handleSubmit = ev => {
+    ev.preventDefault();
+    login(email, password);
+  }
+
+  if (isAuthenticated) {
+    return <Redirect to='/' />
+  }
   return (
     <div>
-      <form onSubmit={(ev) => {
-        ev.preventDefault();
-        login(email, password);
-      }}>
+      <form onSubmit={ev => handleSubmit(ev)}>
         <input type='text' placeholder='email' onChange={handleChange} />
         <input type='password' placeholder='password' onChange={handleChange} />
         <input type='submit' value='Login' />
@@ -37,12 +43,12 @@ const Login = ({ login, isAuthenticated }) => {
 }
 
 Login.propTypes = {
-  state: PropTypes.object.isRequired,
+  isAuthenticated: PropTypes.bool,
   login: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: PropTypes.func.isRequired
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(

@@ -38,21 +38,22 @@ export const loadUser = () => async dispatch => {
 
 export const login = (email, password) => async dispatch => {
   const config = {
-    header: {
+    headers: {
       'Content-type': 'application/json'
     }
   };
 
-  const body = JSON.stringify({email, password})
+  const body = JSON.stringify({ email, password })
 
   // Should return a token
   try {
-    const res = axios.post('/api/auth', body, config);
+    const res = await axios.post('/api/auth', body, config);
     
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data
     });
+    dispatch(loadUser());
   } catch (err) {
     console.error(err.message);
   }

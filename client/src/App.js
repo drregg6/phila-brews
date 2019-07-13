@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -9,7 +9,18 @@ import Brewery from './components/brewery/Brewery';
 import CreateBrewery from './components/brewery-forms/CreateBrewery';
 import Login from './components/auth/Login';
 
+import store from './store';
+import { loadUser } from './actions/auth';
+import setAuthToken from './utils/setAuthToken';
+
 function App() {
+  useEffect(() => {
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
+    store.dispatch(loadUser());
+  }, []);
+  
   return (
     <Router>
       <div className="App">

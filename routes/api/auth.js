@@ -13,17 +13,29 @@ const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
+const auth = require('../../middleware/auth');
+
+// @route  /api/auth/
+// @desc   Load user
+// @access PRIVATE
+router.get('/', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
 
 // @route  /api/auth/
 // @desc   Sign in / authenticate user
 // @access PUBLIC
 router.post('/', [
-  check('email', 'Email is required')
-  .not()
-  .isEmpty(),
+  check('email', 'Please use a valid email')
+  .isEmail(),
   check('password', 'Password is required')
-  .not()
-  .isEmpty()
+  .exists()
 ],
 async (req, res) => {
   const errors = validationResult(req);
@@ -49,7 +61,7 @@ async (req, res) => {
     // Return token
     const payload = {
       user: {
-        id: user._id
+        id: user.id
       }
     };
 
