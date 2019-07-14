@@ -1,12 +1,3 @@
-/*
-
-IF logged in
-  go back to breweries
-IF NOT
-  login screen
-
-*/
-
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';

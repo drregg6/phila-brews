@@ -6,12 +6,12 @@
 
 */
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-const Navigation = () => {
+const Navigation = ({ isAuthenticated }) => {
   return (
     <React.Fragment>
       <nav>
@@ -25,23 +25,28 @@ const Navigation = () => {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
-            <Link to="/breweries/new">Add Brewery</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          {
+            isAuthenticated && (
+              <li>
+                <Link to="/breweries/new">Add Brewery</Link>
+              </li>
+            )
+          }
         </ul>
       </nav>
     </React.Fragment>
   )
 }
 
-// Navigation.propTypes = {
+Navigation.propTypes = {
+  isAuthenticated: PropTypes.bool
+}
 
-// }
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
 
 export default connect(
-  null,
+  mapStateToProps,
   {}
 )(Navigation);

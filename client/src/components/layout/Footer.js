@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer style={{display: 'flex', justifyContent: 'space-around'}}>
       <span>
-        &copy;{year} <a href='https://www.github.com/drregg6' target='_blank'>Dave Regg</a>
+        &copy;{year} <a rel='noopener noreferrer' href='https://www.github.com/drregg6' target='_blank'>Dave Regg</a>
       </span>
       <span>
         <Link to='/login'>Login</Link>
