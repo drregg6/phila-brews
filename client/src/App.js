@@ -8,6 +8,7 @@ import Footer from './components/layout/Footer';
 import Breweries from './components/Breweries';
 import Brewery from './components/brewery/Brewery';
 import CreateBrewery from './components/brewery-forms/CreateBrewery';
+import EditBrewery from './components/brewery-forms/EditBrewery';
 import Login from './components/auth/Login';
 
 import store from './store';
@@ -31,6 +32,7 @@ function App() {
           <Route exact path='/login' component={Login} />
           <Route exact path='/breweries/new' component={CreateBrewery} />
           <Route exact path='/breweries/:id' component={Brewery} />
+          <Route exact path='/breweries/:id/edit' component={EditBrewery} />
         </Switch>
         <Footer />
       </div>

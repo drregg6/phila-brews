@@ -1,5 +1,6 @@
 import React, { useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Spinner from '../layout/Spinner';
 import BreweryAddress from './BreweryAddress';
@@ -47,6 +48,7 @@ const Brewery = ({
               lng={brewery.lng}
             />
           </div>
+          <Link to={`/breweries/${match.params.id}/edit`}>Edit this brewery</Link>
         </Fragment>
       ) }
   </Fragment>
