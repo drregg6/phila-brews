@@ -56,6 +56,7 @@ export const login = (email, password) => async dispatch => {
     });
 
     dispatch(loadUser());
+    dispatch(setAlert('Admin login. Welcome!'))
   } catch (err) {
     // Custom response generated from the server side
     // I created this :)
@@ -70,5 +71,6 @@ export const login = (email, password) => async dispatch => {
 }
 
 export const logout = () => dispatch => {
+  dispatch(setAlert('Successfully logged out, bye!'))
   dispatch({ type: LOGOUT_USER });
 }
