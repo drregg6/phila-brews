@@ -6,10 +6,13 @@ import Spinner from './layout/Spinner';
 
 import { connect } from 'react-redux';
 import { getBreweries } from '../actions/brewery';
+import { deleteBrewery } from '../actions/brewery';
 
 const Breweries = ({
   brewery: { breweries, loading },
-  getBreweries
+  getBreweries,
+  deleteBrewery,
+  auth: { isAuthenticated }
 }) => {
   useEffect(() => {
     getBreweries();
@@ -25,6 +28,11 @@ const Breweries = ({
               <Link to={`/breweries/${brewery._id}`}>
                 {brewery.name}
               </Link>
+              { isAuthenticated && (
+                <button onClick={ev => deleteBrewery(brewery._id)}>
+                  X
+                </button>
+              ) }
             </div>
           )
         })
@@ -35,14 +43,17 @@ const Breweries = ({
 
 Breweries.propTypes = {
   brewery: PropTypes.object.isRequired,
-  getBreweries: PropTypes.func.isRequired
+  auth: PropTypes.object,
+  getBreweries: PropTypes.func.isRequired,
+  deleteBrewery: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-  brewery: state.brewery
+  brewery: state.brewery,
+  auth: state.auth
 });
 
 export default connect(
   mapStateToProps,
-  { getBreweries }
+  { getBreweries, deleteBrewery }
 )(Breweries);

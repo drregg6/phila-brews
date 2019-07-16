@@ -2,7 +2,8 @@
 import {
   GET_BREWERIES,
   GET_BREWERY,
-  UPDATE_BREWERY
+  UPDATE_BREWERY,
+  DELETE_BREWERY
 } from '../actions/types';
 
 const initialState = {
@@ -32,6 +33,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         breweries: [ ...state.breweries, payload ],
+        loading: false
+      }
+    case DELETE_BREWERY:
+      return {
+        ...state,
+        breweries: state.breweries.filter(brewery => brewery._id !== payload),
         loading: false
       }
     default:

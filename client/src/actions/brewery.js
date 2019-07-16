@@ -13,7 +13,8 @@ import axios from 'axios';
 import {
   GET_BREWERIES,
   GET_BREWERY,
-  UPDATE_BREWERY
+  UPDATE_BREWERY,
+  DELETE_BREWERY
 } from './types';
 
 // Get all breweries
@@ -60,5 +61,20 @@ export const createBrewery = formData => async dispatch => {
     })
   } catch (err) {
     console.log(err.message);
+  }
+}
+
+// Delete a brewery
+export const deleteBrewery = (id) => async dispatch => {
+  if (window.confirm('Are you sure? This can NOT be undone!')) {
+    try {
+      await axios.delete(`/api/breweries/${id}`);
+      dispatch({
+        type: DELETE_BREWERY,
+        payload: id
+      });
+    } catch (err) {
+      console.error(err.message);
+    }
   }
 }

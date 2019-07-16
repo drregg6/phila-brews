@@ -2,6 +2,7 @@
 export const GET_BREWERIES = 'GET_BREWERIES';
 export const GET_BREWERY = 'GET_BREWERY';
 export const UPDATE_BREWERY = 'UPDATE_BREWERY';
+export const DELETE_BREWERY = 'DELETE_BREWERY';
 
 // Auth
 export const USER_LOADED = 'USER_LOADED';
