@@ -10,6 +10,7 @@ import BreweryMap from './BreweryMap';
 
 import { connect } from 'react-redux';
 import { getBrewery } from '../../actions/brewery';
+import Beer from './Beer';
 
 const Brewery = ({
   brewery: { brewery, loading },
@@ -47,6 +48,22 @@ const Brewery = ({
               lat={brewery.lat}
               lng={brewery.lng}
             />
+            { brewery.beers.length > 0 ? (
+              <React.Fragment>
+                {brewery.beers.map(beer => {
+                  return (
+                    <Beer
+                      key={beer._id}
+                      beer={beer}
+                    />
+                  )
+                })}
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                Nothing yet.
+              </React.Fragment>
+            ) }
           </div>
           <Link to={`/breweries/${match.params.id}/edit`}>Edit this brewery</Link>
         </Fragment>

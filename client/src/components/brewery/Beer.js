@@ -3,19 +3,21 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-const Beers = props => {
+const Beer = ({
+  beer: { name, abv, description, type, img }
+}) => {
   return (
     <div>
-      
+      {name}
     </div>
   )
 }
 
-Beers.propTypes = {
-
+Beer.propTypes = {
+  beer: PropTypes.object.isRequired
 }
 
 export default connect(
   null,
   {}
-)(Beers);
+)(Beer);

@@ -1,10 +1,8 @@
 /*
 
-= GET_BEERS
-= GET_BEER(?)
-= UPDATE_BREWERY
-= ADD BEER / UPDATE_BEER
-= DELETE BREWERY
+= GET_BEERS(?) --> want a separate page to display all beers(?)
+= GET_BEER(?) --> want a separate page for each beer(?)
+= UPDATE_BEER
 = DELETE BEER
 
 */
@@ -16,7 +14,9 @@ import {
   GET_BREWERY,
   BREWERY_ERROR,
   UPDATE_BREWERY,
-  DELETE_BREWERY
+  DELETE_BREWERY,
+  ADD_BEER,
+  DELETE_BEER
 } from './types';
 
 // Get all breweries
@@ -99,5 +99,45 @@ export const deleteBrewery = (id) => async dispatch => {
         payload: { msg: err.response.statusText, status: err.response.status }
       });
     }
+  }
+}
+
+// Add a beer
+export const addBeer = (formData, id, history) => async dispatch => {
+  try {
+    const config = {
+      headers: {
+        'Content-type': 'application/json'
+      }
+    };
+    const res = await axios.put(`/api/breweries/${id}/beers`, formData, config);
+    dispatch({
+      type: ADD_BEER,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Beer added!'));
+    history.push('/');
+  } catch (err) {
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.message)))
+    }
+    dispatch({
+      type: BREWERY_ERROR,
+      payload: { msg: err.respons.statusText, status: err.response.status }
+    });
+  }
+}
+
+// Delete a beer
+export const deleteBeer = (brewery_id, beer_id) => async dispatch => {
+  try {
+    
+  } catch (err) {
+    dispatch({
+      type: BREWERY_ERROR,
+      payload: { msg: err.respons.statusText, status: err.response.status }
+    });
   }
 }
