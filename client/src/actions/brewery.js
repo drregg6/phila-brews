@@ -9,10 +9,12 @@
 
 */
 import axios from 'axios';
+import { setAlert } from '../actions/alert';
 
 import {
   GET_BREWERIES,
   GET_BREWERY,
+  BREWERY_ERROR,
   UPDATE_BREWERY,
   DELETE_BREWERY
 } from './types';
@@ -26,8 +28,10 @@ export const getBreweries = () => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    // dispatch an error
-    console.error(err.message);
+    dispatch({
+      type: BREWERY_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
   }
 };
 
@@ -38,14 +42,17 @@ export const getBrewery = id => async dispatch => {
     dispatch({
       type: GET_BREWERY,
       payload: res.data
-    })
+    });
   } catch (err) {
-    console.log(err.message)
+    dispatch({
+      type: BREWERY_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
   }
 }
 
 // Add or Update a Brewery
-export const createBrewery = formData => async dispatch => {
+export const createBrewery = (formData, history) => async dispatch => {
   try {
     const config = {
       headers: {
@@ -59,8 +66,20 @@ export const createBrewery = formData => async dispatch => {
       type: UPDATE_BREWERY,
       payload: res.data
     })
+    dispatch(setAlert('Brewery Created'));
+    
+    history.push('/');
   } catch (err) {
-    console.log(err.message);
+    // used with express-validation error returns
+    const errors = err.response.data.errors;
+    if (errors) {
+      // set status-type
+      errors.forEach(error => dispatch(setAlert(error.msg)));
+    }
+    dispatch({
+      type: BREWERY_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
   }
 }
 
@@ -73,8 +92,12 @@ export const deleteBrewery = (id) => async dispatch => {
         type: DELETE_BREWERY,
         payload: id
       });
+      dispatch(setAlert('Brewery Removed'));
     } catch (err) {
-      console.error(err.message);
+      dispatch({
+        type: BREWERY_ERROR,
+        payload: { msg: err.response.statusText, status: err.response.status }
+      });
     }
   }
 }

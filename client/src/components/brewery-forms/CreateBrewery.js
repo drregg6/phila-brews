@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createBrewery } from '../../actions/brewery';
 
-const CreateBrewery = ({ createBrewery }) => {
+const CreateBrewery = ({ createBrewery, history }) => {
   const [ formData, setFormData ] = useState({
     name: '',
     building: '',
@@ -36,7 +36,7 @@ const CreateBrewery = ({ createBrewery }) => {
   }
   const handleSubmit = ev => {
     ev.preventDefault();
-    createBrewery(formData);
+    createBrewery(formData, history);
   }
 
   return (

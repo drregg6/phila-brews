@@ -3,6 +3,7 @@ import {
   GET_BREWERIES,
   GET_BREWERY,
   UPDATE_BREWERY,
+  BREWERY_ERROR,
   DELETE_BREWERY
 } from '../actions/types';
 
@@ -10,6 +11,7 @@ const initialState = {
   breweries: [],
   brewery: null,
   beers: [],
+  errors: {},
   loading: true
 };
 
@@ -34,6 +36,11 @@ export default function(state = initialState, action) {
         ...state,
         breweries: [ ...state.breweries, payload ],
         loading: false
+      }
+    case BREWERY_ERROR:
+      return {
+        ...state,
+        errors: payload
       }
     case DELETE_BREWERY:
       return {

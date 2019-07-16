@@ -8,6 +8,7 @@ const CreateBrewery = ({
   createBrewery,
   getBrewery,
   match,
+  history,
   brewery: {
     brewery,
     loading
@@ -62,7 +63,7 @@ const CreateBrewery = ({
   }
   const handleSubmit = ev => {
     ev.preventDefault();
-    createBrewery(formData);
+    createBrewery(formData, history);
   }
 
   return (
