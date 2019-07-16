@@ -63,7 +63,7 @@ const CreateBrewery = ({
   }
   const handleSubmit = ev => {
     ev.preventDefault();
-    createBrewery(formData, history);
+    createBrewery(formData, history, true);
   }
 
   return (

@@ -52,7 +52,7 @@ export const getBrewery = id => async dispatch => {
 }
 
 // Add or Update a Brewery
-export const createBrewery = (formData, history) => async dispatch => {
+export const createBrewery = (formData, history, isUpdating = false) => async dispatch => {
   try {
     const config = {
       headers: {
@@ -66,7 +66,7 @@ export const createBrewery = (formData, history) => async dispatch => {
       type: UPDATE_BREWERY,
       payload: res.data
     })
-    dispatch(setAlert('Brewery Created'));
+    dispatch(setAlert(isUpdating ? 'Brewery Updated!' : 'Brewery Created!'));
     
     history.push('/');
   } catch (err) {
