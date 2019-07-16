@@ -49,13 +49,13 @@ async (req, res) => {
     let user = await User.findOne({ email });
     // Check for user
     if (!user) {
-      return res.status(400).json([{ msg: 'Invalid credentials' }]);
+      return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }] });
     }
 
     // If user does exist, check password vs decrypted password
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json([{ msg: 'Invalid credentials' }]);
+      return res.status(400).json({ errors: [{ msg: 'Invalid credentials' }] });
     }
 
     // Return token

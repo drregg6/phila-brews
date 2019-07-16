@@ -11,9 +11,12 @@ import axios from 'axios';
 import {
   USER_LOADED,
   LOGIN_SUCCESS,
-  LOGOUT_USER
+  LOGOUT_USER,
+  AUTH_ERROR,
+  LOGIN_FAIL
 } from './types';
 import setAuthToken from '../utils/setAuthToken';
+import { setAlert } from './alert';
 
 // Load user
 export const loadUser = () => async dispatch => {
@@ -29,7 +32,7 @@ export const loadUser = () => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    console.log(err.message);
+    dispatch({ type: AUTH_ERROR });
   }
 }
 
@@ -54,7 +57,15 @@ export const login = (email, password) => async dispatch => {
 
     dispatch(loadUser());
   } catch (err) {
-    console.error(err.message);
+    // Custom response generated from the server side
+    // I created this :)
+    const errors = err.response.data.errors;
+
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')))
+    }
+
+    dispatch({ type: LOGIN_FAIL });
   }
 }
 

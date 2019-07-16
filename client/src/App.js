@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Components
 import Navigation from './components/layout/Navigation';
+import Alert from './components/layout/Alert';
 import Footer from './components/layout/Footer';
 import Breweries from './components/Breweries';
 import Brewery from './components/brewery/Brewery';
@@ -27,6 +28,7 @@ function App() {
     <Router>
       <div className="App">
         <Navigation />
+        <Alert />
         <Switch>
           <Route exact path='/' component={Breweries} />
           <Route exact path='/login' component={Login} />
