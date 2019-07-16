@@ -2,10 +2,17 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { createBrewery } from '../../actions/brewery';
+import { getBrewery, createBrewery } from '../../actions/brewery';
 
-const CreateBrewery = ({ createBrewery }) => {
-  // useEffect to get the current profile and then setFormData
+const CreateBrewery = ({
+  createBrewery,
+  getBrewery,
+  match,
+  brewery: {
+    brewery,
+    loading
+  }
+}) => {
   const [ formData, setFormData ] = useState({
     name: '',
     building: '',
@@ -19,6 +26,24 @@ const CreateBrewery = ({ createBrewery }) => {
     website: '',
     img: ''
   });
+  useEffect(() => {
+    getBrewery(match.params.id);
+
+    setFormData({
+      name: loading || !brewery.name ? '' : brewery.name,
+      building: loading || !brewery.building ? '' : brewery.building,
+      street: loading || !brewery.street ? '' : brewery.street,
+      city: loading || !brewery.city ? '' : brewery.city,
+      state: loading || !brewery.state ? '' : brewery.state,
+      zip: loading || !brewery.zip ? '' : brewery.zip,
+      lat: loading || !brewery.lat ? '' : brewery.lat,
+      lng: loading || !brewery.lng ? '' : brewery.lng,
+      phone: loading || !brewery.phone ? '' : brewery.phone,
+      website: loading || !brewery.website ? '' : brewery.website,
+      img: loading || !brewery.img ? '' : brewery.img
+    });
+  }, [setFormData, getBrewery, match.params.id]);
+
   const {
     name,
     building,
@@ -130,10 +155,16 @@ const CreateBrewery = ({ createBrewery }) => {
 }
 
 CreateBrewery.propTypes = {
-  createBrewery: PropTypes.func.isRequired
+  createBrewery: PropTypes.func.isRequired,
+  getBrewery: PropTypes.func.isRequired,
+  brewery: PropTypes.object
 }
 
+const mapStateToProps = state => ({
+  brewery: state.brewery
+})
+
 export default connect(
-  null,
-  { createBrewery }
+  mapStateToProps,
+  { createBrewery, getBrewery }
 )(CreateBrewery);
