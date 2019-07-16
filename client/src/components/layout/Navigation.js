@@ -1,17 +1,11 @@
-/*
-
-= BREWERIES (home)
-= ABOUT
-= ADD BREWERY (if logged in)
-
-*/
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
+import { logout } from '../../actions/auth';
 
-const Navigation = () => {
+const Navigation = ({ auth: { isAuthenticated }, logout }) => {
   return (
     <React.Fragment>
       <nav>
@@ -25,23 +19,36 @@ const Navigation = () => {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
-            <Link to="/breweries/new">Add Brewery</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          { isAuthenticated ? (
+            <React.Fragment>
+              <li>
+                <Link to="/breweries/new">Add Brewery</Link>
+              </li>
+              <li>
+                <button onClick={logout}>Logout</button>
+              </li>
+            </React.Fragment>
+          ) : (
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+          ) }
         </ul>
       </nav>
     </React.Fragment>
   )
 }
 
-// Navigation.propTypes = {
+Navigation.propTypes = {
+  auth: PropTypes.object,
+  logout: PropTypes.func.isRequired
+}
 
-// }
+const mapStateToProps = state => ({
+  auth: state.auth
+});
 
 export default connect(
-  null,
-  {}
+  mapStateToProps,
+  { logout }
 )(Navigation);
