@@ -15,7 +15,8 @@ import Beer from './Beer';
 const Brewery = ({
   brewery: { brewery, loading },
   getBrewery,
-  match
+  match,
+  isAuthenticated
 }) => {
   useEffect(() => {
     getBrewery(match.params.id)
@@ -49,7 +50,7 @@ const Brewery = ({
               lng={brewery.lng}
             />
             { brewery.beers.length > 0 ? (
-              <React.Fragment>
+              <Fragment>
                 {brewery.beers.map(beer => {
                   return (
                     <Beer
@@ -58,14 +59,23 @@ const Brewery = ({
                     />
                   )
                 })}
-              </React.Fragment>
+              </Fragment>
             ) : (
-              <React.Fragment>
+              <Fragment>
                 Nothing yet.
-              </React.Fragment>
+              </Fragment>
             ) }
           </div>
-          <Link to={`/breweries/${match.params.id}/edit`}>Edit this brewery</Link>
+          { isAuthenticated && (
+            <Fragment>
+              <div>
+                <Link to={`/breweries/${match.params.id}/beers`}>Add a beer</Link>
+              </div>
+              <div>
+                <Link to={`/breweries/${match.params.id}/edit`}>Edit this brewery</Link>
+              </div>
+            </Fragment>
+          ) }
         </Fragment>
       ) }
   </Fragment>
@@ -77,8 +87,9 @@ Brewery.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  brewery: state.brewery
-})
+  brewery: state.brewery,
+  isAuthenticated: state.auth.isAuthenticated
+});
 
 export default connect(
   mapStateToProps,

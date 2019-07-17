@@ -41,8 +41,9 @@ export default function(state = initialState, action) {
     case ADD_BEER:
       return {
         ...state,
+        breweries: state.breweries.map(brewery => brewery._id === payload.id ? (brewery.beer.push) : (brewery)),
         loading: false
-      },
+      }
     case DELETE_BEER:
       return {
         ...state,

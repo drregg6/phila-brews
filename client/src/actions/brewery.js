@@ -113,7 +113,10 @@ export const addBeer = (formData, id, history) => async dispatch => {
     const res = await axios.put(`/api/breweries/${id}/beers`, formData, config);
     dispatch({
       type: ADD_BEER,
-      payload: res.data
+      payload: {
+        beer: res.data,
+        id
+      }
     });
 
     dispatch(setAlert('Beer added!'));
@@ -125,7 +128,7 @@ export const addBeer = (formData, id, history) => async dispatch => {
     }
     dispatch({
       type: BREWERY_ERROR,
-      payload: { msg: err.respons.statusText, status: err.response.status }
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 }

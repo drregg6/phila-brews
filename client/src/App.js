@@ -10,6 +10,7 @@ import Breweries from './components/Breweries';
 import Brewery from './components/brewery/Brewery';
 import CreateBrewery from './components/brewery-forms/CreateBrewery';
 import EditBrewery from './components/brewery-forms/EditBrewery';
+import AddBeer from './components/brewery-forms/AddBeer';
 import Login from './components/auth/Login';
 
 import store from './store';
@@ -35,6 +36,7 @@ function App() {
           <Route exact path='/breweries/new' component={CreateBrewery} />
           <Route exact path='/breweries/:id' component={Brewery} />
           <Route exact path='/breweries/:id/edit' component={EditBrewery} />
+          <Route exact path='/breweries/:id/beers' component={AddBeer} />
         </Switch>
         <Footer />
       </div>
