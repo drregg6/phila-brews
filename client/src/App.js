@@ -1,6 +1,12 @@
 /*
 
-EditBeer removed for now
+TODO:
+= EditBeer
+= AddBrewery and EditBrewery need to add times
+= Add time formatter
+= Add phone formatter
+= Add OPEN / CLOSED functionality from previous app
+= Styles -> MOBILE FIRST
 
 */
 
