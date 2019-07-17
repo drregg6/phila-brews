@@ -29,7 +29,7 @@ const Beer = ({
 Beer.propTypes = {
   beer: PropTypes.object.isRequired,
   deleteBeer: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool,
   breweryId: PropTypes.string.isRequired
 }
 
