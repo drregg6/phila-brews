@@ -1,3 +1,16 @@
+/*
+
+Might need a GET_BEER route
+Go through brewery.beers and extract the beer
+Then display the information
+
+Would need to add to ROUTES, ACTIONS, and REDUCER
+
+EditBeer should work similarly to AddBeer
+Uses the same route
+Will update by using exact NAME
+
+*/
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 

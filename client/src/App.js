@@ -1,3 +1,9 @@
+/*
+
+EditBeer removed for now
+
+*/
+
 import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -11,7 +17,6 @@ import Brewery from './components/brewery/Brewery';
 import CreateBrewery from './components/brewery-forms/CreateBrewery';
 import EditBrewery from './components/brewery-forms/EditBrewery';
 import AddBeer from './components/brewery-forms/AddBeer';
-import EditBeer from './components/brewery-forms/EditBeer';
 import Login from './components/auth/Login';
 
 import store from './store';
@@ -38,7 +43,6 @@ function App() {
           <Route exact path='/breweries/:id' component={Brewery} />
           <Route exact path='/breweries/:id/edit' component={EditBrewery} />
           <Route exact path='/breweries/:id/beers' component={AddBeer} />
-          <Route exact path='/breweries/:id/beers/edit' component={EditBeer} />
         </Switch>
         <Footer />
       </div>
