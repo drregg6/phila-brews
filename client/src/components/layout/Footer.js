@@ -12,7 +12,7 @@ const Footer = ({ auth: { isAuthenticated }, logout }) => {
   return (
     <footer style={{display: 'flex', justifyContent: 'space-around'}}>
       <span>
-        &copy;{year} <a href='https://www.github.com/drregg6' target='_blank'>Dave Regg</a>
+        &copy;{year} <a rel='noopener noreferrer' href='https://www.github.com/drregg6' target='_blank'>Dave Regg</a>
       </span>
       { isAuthenticated ? (
         <button onClick={logout}>Logout</button>
