@@ -103,7 +103,6 @@ export const deleteBrewery = (id) => async dispatch => {
 }
 
 // Add a beer
-/* this is not working */
 export const addBeer = (formData, id, history) => async dispatch => {
   try {
     const config = {
@@ -114,14 +113,11 @@ export const addBeer = (formData, id, history) => async dispatch => {
     const res = await axios.put(`/api/breweries/${id}/beers`, formData, config);
     dispatch({
       type: ADD_BEER,
-      payload: {
-        beer: res.data,
-        id
-      }
+      payload: res.data
     });
 
     dispatch(setAlert('Beer added!'));
-    history.push('/');
+    history.push(`/breweries/${id}`);
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -137,13 +133,10 @@ export const addBeer = (formData, id, history) => async dispatch => {
 // Delete a beer
 export const deleteBeer = (breweryId, beerId) => async dispatch => {
   try {
-    await axios.delete(`/api/breweries/${breweryId}/beers/${beerId}`);
+    const res = await axios.delete(`/api/breweries/${breweryId}/beers/${beerId}`);
     dispatch({
       type: DELETE_BEER,
-      payload: {
-        breweryId,
-        beerId
-      }
+      payload: res.data
     });
 
     dispatch(setAlert('Beer removed!'));
