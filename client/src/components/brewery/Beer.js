@@ -2,22 +2,40 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+import { deleteBeer } from '../../actions/brewery';
 
 const Beer = ({
-  beer: { name, abv, description, type, img }
+  deleteBeer,
+  isAuthenticated,
+  breweryId,
+  beer: { _id, name, abv, description, type, img }
 }) => {
   return (
     <div>
       {name}
+      { isAuthenticated && (
+      <button
+        onClick={() => {deleteBeer(breweryId, _id)}}
+      >
+        X
+      </button>
+      ) }
     </div>
   )
 }
 
 Beer.propTypes = {
-  beer: PropTypes.object.isRequired
+  beer: PropTypes.object.isRequired,
+  deleteBeer: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  breweryId: PropTypes.string.isRequired
 }
 
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+})
+
 export default connect(
-  null,
-  {}
+  mapStateToProps,
+  { deleteBeer }
 )(Beer);

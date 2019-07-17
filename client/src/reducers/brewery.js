@@ -45,8 +45,14 @@ export default function(state = initialState, action) {
         loading: false
       }
     case DELETE_BEER:
+      // this does not work
       return {
         ...state,
+        breweries: state.breweries.forEach(brewery => {
+          if (brewery._id === payload.breweryId) {
+            brewery.beers.filter(beer => beer._id !== payload.beerId);
+          }
+        }),
         loading: false
       }
     case BREWERY_ERROR:

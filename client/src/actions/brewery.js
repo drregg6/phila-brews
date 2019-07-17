@@ -103,6 +103,7 @@ export const deleteBrewery = (id) => async dispatch => {
 }
 
 // Add a beer
+/* this is not working */
 export const addBeer = (formData, id, history) => async dispatch => {
   try {
     const config = {
@@ -134,13 +135,22 @@ export const addBeer = (formData, id, history) => async dispatch => {
 }
 
 // Delete a beer
-export const deleteBeer = (brewery_id, beer_id) => async dispatch => {
+export const deleteBeer = (breweryId, beerId) => async dispatch => {
   try {
-    
+    await axios.delete(`/api/breweries/${breweryId}/beers/${beerId}`);
+    dispatch({
+      type: DELETE_BEER,
+      payload: {
+        breweryId,
+        beerId
+      }
+    });
+
+    dispatch(setAlert('Beer removed!'));
   } catch (err) {
     dispatch({
       type: BREWERY_ERROR,
-      payload: { msg: err.respons.statusText, status: err.response.status }
+      payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
 }

@@ -56,6 +56,7 @@ const Brewery = ({
                     <Beer
                       key={beer._id}
                       beer={beer}
+                      breweryId={match.params.id}
                     />
                   )
                 })}
