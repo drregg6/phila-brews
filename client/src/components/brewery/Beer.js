@@ -12,8 +12,8 @@ const Beer = ({
 }) => {
   return (
     <div>
-      <img src={img} /><br />
-      {name} // {type} // {abv}
+      <img alt={name} src={img} /><br />
+      {name} | {type} | {abv}
       { isAuthenticated && (
       <button
         onClick={() => {deleteBeer(breweryId, _id)}}
