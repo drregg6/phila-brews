@@ -12,14 +12,16 @@ const Beer = ({
 }) => {
   return (
     <div>
-      {name}
+      <img src={img} /><br />
+      {name} // {type} // {abv}
       { isAuthenticated && (
       <button
         onClick={() => {deleteBeer(breweryId, _id)}}
       >
         X
       </button>
-      ) }
+      ) }<br/>
+      {description}
     </div>
   )
 }
