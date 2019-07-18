@@ -5,13 +5,6 @@ import { connect } from 'react-redux';
 import { createBrewery } from '../../actions/brewery';
 
 const CreateBrewery = ({ createBrewery, history }) => {
-  const [ monCheckbox, toggleMonCheckbox ] = useState(true);
-  const [ tuesCheckbox, toggleTuesCheckbox ] = useState(true);
-  const [ wedCheckbox, toggleWedCheckbox ] = useState(true);
-  const [ thursCheckbox, toggleThursCheckbox ] = useState(true);
-  const [ friCheckbox, toggleFriCheckbox ] = useState(true);
-  const [ satCheckbox, toggleSatCheckbox ] = useState(true);
-  const [ sunCheckbox, toggleSunCheckbox ] = useState(true);
 
   const [ formData, setFormData ] = useState({
     name: '',
@@ -59,56 +52,55 @@ const CreateBrewery = ({ createBrewery, history }) => {
     phone,
     website,
     img,
+    monIsOpen,
+    tuesIsOpen,
+    wedIsOpen,
+    thursIsOpen,
+    friIsOpen,
+    satIsOpen,
+    sunIsOpen,
     monOpen,
-    monClose,
     tuesOpen,
-    tuesClose,
     wedOpen,
-    wedClose,
     thursOpen,
-    thursClose,
     friOpen,
-    friClose,
     satOpen,
-    satClose,
     sunOpen,
+    monClose,
+    tuesClose,
+    wedClose,
+    thursClose,
+    friClose,
+    satClose,
     sunClose
   } = formData;
   const handleChange = ev => {
     setFormData({ ...formData, [ev.target.name]: ev.target.value });
   }
-  const handleMonChange = () => {
-    toggleMonCheckbox(!monCheckbox);
-    setFormData({ ...formData, monIsOpen: !monCheckbox });
+  const toggleMon = () => {
+    setFormData({ ...formData, monIsOpen: !monIsOpen })
   }
-  const handleTuesChange = () => {
-    toggleTuesCheckbox(!tuesCheckbox);
-    setFormData({ ...formData, tuesIsOpen: !tuesCheckbox });
+  const toggleTues = () => {
+    setFormData({ ...formData, tuesIsOpen: !tuesIsOpen })
   }
-  const handleWedChange = () => {
-    toggleWedCheckbox(!wedCheckbox);
-    setFormData({ ...formData, wedIsOpen: !wedCheckbox });
+  const toggleWed = () => {
+    setFormData({ ...formData, wedIsOpen: !wedIsOpen })
   }
-  const handleThursChange = () => {
-    toggleThursCheckbox(!thursCheckbox);
-    setFormData({ ...formData, thursIsOpen: !thursCheckbox });
+  const toggleThurs = () => {
+    setFormData({ ...formData, thursIsOpen: !thursIsOpen })
   }
-  const handleFriChange = () => {
-    toggleFriCheckbox(!friCheckbox);
-    setFormData({ ...formData, friIsOpen: !friCheckbox });
+  const toggleFri = () => {
+    setFormData({ ...formData, friIsOpen: !friIsOpen })
   }
-  const handleSatChange = () => {
-    toggleSatCheckbox(!satCheckbox);
-    setFormData({ ...formData, satIsOpen: !satCheckbox });
+  const toggleSat = () => {
+    setFormData({ ...formData, satIsOpen: !satIsOpen })
   }
-  const handleSunChange = () => {
-    toggleSunCheckbox(!sunCheckbox);
-    setFormData({ ...formData, sunIsOpen: !sunCheckbox });
+  const toggleSun = () => {
+    setFormData({ ...formData, sunIsOpen: !sunIsOpen })
   }
   const handleSubmit = ev => {
     ev.preventDefault();
     console.log(formData)
-    // createBrewery(formData, history);
   }
 
   return (
@@ -120,7 +112,7 @@ const CreateBrewery = ({ createBrewery, history }) => {
           name='name'
           value={name}
           onChange={ev => handleChange(ev)}
-        /> *
+        />  *
         <input
           type='text'
           placeholder='building number'
@@ -193,16 +185,21 @@ const CreateBrewery = ({ createBrewery, history }) => {
         />
         <div>
           <div>
-            <input
-              type='checkbox'
-              id='monIsOpen'
-              name='monIsOpen'
-              checked={monCheckbox}
-              onChange={(ev) => {handleMonChange(ev)}}
-            />
-            <label htmlFor='monIsOpen'>Open Monday</label>
+          <label>Open Monday</label>
+          <input
+            type='radio'
+            label='Yes'
+            checked={monIsOpen}
+            onChange={() => {setFormData({ ...formData, monIsOpen: !monIsOpen })}}
+          />
+          <input
+            type='radio'
+            label='No'
+            checked={!monIsOpen}
+            onChange={() => {setFormData({ ...formData, monIsOpen: !monIsOpen })}}
+          />
           </div>
-          { monCheckbox && (
+          { monIsOpen && (
             <div>
               <input
                 type='text'
@@ -227,12 +224,12 @@ const CreateBrewery = ({ createBrewery, history }) => {
               type='checkbox'
               id='tuesIsOpen'
               name='tuesIsOpen'
-              checked={tuesCheckbox}
-              onChange={() => {handleTuesChange()}}
+              checked={tuesIsOpen}
+              onChange={() => {toggleTues()}}
             />
             <label htmlFor='tuesIsOpen'>Open Tuesday</label>
           </div>
-          { tuesCheckbox && (
+          { tuesIsOpen && (
             <div>
               <input
                 type='text'
@@ -257,12 +254,12 @@ const CreateBrewery = ({ createBrewery, history }) => {
               type='checkbox'
               id='wedIsOpen'
               name='wedIsOpen'
-              checked={wedCheckbox}
-              onChange={() => {handleWedChange()}}
+              checked={wedIsOpen}
+              onChange={() => {toggleWed()}}
             />
             <label htmlFor='wedIsOpen'>Open Wednesday</label>
           </div>
-          { wedCheckbox && (
+          { wedIsOpen && (
             <div>
               <input
                 type='text'
@@ -287,12 +284,12 @@ const CreateBrewery = ({ createBrewery, history }) => {
               type='checkbox'
               id='thursIsOpen'
               name='thursIsOpen'
-              checked={thursCheckbox}
-              onChange={() => {handleThursChange()}}
+              checked={thursIsOpen}
+              onChange={() => {toggleThurs()}}
             />
             <label htmlFor='thursIsOpen'>Open Thursday</label>
           </div>
-          { thursCheckbox && (
+          { thursIsOpen && (
             <div>
               <input
                 type='text'
@@ -317,12 +314,12 @@ const CreateBrewery = ({ createBrewery, history }) => {
               type='checkbox'
               id='friIsOpen'
               name='friIsOpen'
-              checked={friCheckbox}
-              onChange={() => {handleFriChange()}}
+              checked={friIsOpen}
+              onChange={() => {toggleFri()}}
             />
             <label htmlFor='friIsOpen'>Open Friday</label>
           </div>
-          { friCheckbox && (
+          { friIsOpen && (
             <div>
               <input
                 type='text'
@@ -347,12 +344,12 @@ const CreateBrewery = ({ createBrewery, history }) => {
               type='checkbox'
               id='satIsOpen'
               name='satIsOpen'
-              checked={satCheckbox}
-              onChange={() => {handleSatChange()}}
+              checked={satIsOpen}
+              onChange={() => {toggleSat()}}
             />
             <label htmlFor='satIsOpen'>Open Saturday</label>
           </div>
-          { satCheckbox && (
+          { satIsOpen && (
             <div>
               <input
                 type='text'
@@ -377,12 +374,12 @@ const CreateBrewery = ({ createBrewery, history }) => {
               type='checkbox'
               id='sunIsOpen'
               name='sunIsOpen'
-              checked={sunCheckbox}
-              onChange={() => {handleSunChange()}}
+              checked={sunIsOpen}
+              onChange={() => {toggleSun()}}
             />
             <label htmlFor='sunIsOpen'>Open Sunday</label>
           </div>
-          { sunCheckbox && (
+          { sunIsOpen && (
             <div>
               <input
                 type='text'
@@ -418,3 +415,16 @@ export default connect(
   null,
   { createBrewery }
 )(CreateBrewery);
+
+
+{/* <input
+type='checkbox'
+id='monIsOpen'
+name='monIsOpen'
+checked={monIsOpen}
+onChange={() => {toggleMon()}}
+/>
+<label htmlFor='monIsOpen'>Open Monday</label> */}
+
+
+// createBrewery(formData, history);
