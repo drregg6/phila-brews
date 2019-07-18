@@ -43,85 +43,88 @@ const CreateBrewery = ({ createBrewery, history }) => {
     <div>
       <form onSubmit={ev => handleSubmit(ev)}>
         <input
-          type="text"
-          placeholder="name"
-          name="name"
+          type='text'
+          placeholder='name'
+          name='name'
           value={name}
           onChange={ev => handleChange(ev)}
         /> *
         <input
-          type="text"
-          placeholder="building number"
-          name="building"
+          type='text'
+          placeholder='building number'
+          name='building'
           value={building}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="street"
-          name="street"
+          type='text'
+          placeholder='street'
+          name='street'
           value={street}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="city"
-          name="city"
+          type='text'
+          placeholder='city'
+          name='city'
           value={city}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="state"
-          name="state"
+          type='text'
+          placeholder='state'
+          name='state'
           value={state}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="zip"
-          name="zip"
+          type='text'
+          placeholder='zip'
+          name='zip'
           value={zip}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="lat"
-          name="lat"
+          type='text'
+          placeholder='lat'
+          name='lat'
           value={lat}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="lng"
-          name="lng"
+          type='text'
+          placeholder='lng'
+          name='lng'
           value={lng}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="phone"
-          name="phone"
+          type='text'
+          placeholder='phone'
+          name='phone'
           value={phone}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="website"
-          name="website"
+          type='text'
+          placeholder='website'
+          name='website'
           value={website}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="image"
-          name="img"
+          type='text'
+          placeholder='image'
+          name='img'
           value={img}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="submit"
-          value="Add Brewery"
+          type='checkbox'
+        />
+        <input
+          type='submit'
+          value='Add Brewery'
         />
       </form>
     </div>
