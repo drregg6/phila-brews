@@ -11,6 +11,7 @@ import BreweryMap from './BreweryMap';
 import { connect } from 'react-redux';
 import { getBrewery } from '../../actions/brewery';
 import Beer from './Beer';
+import isCurrentlyOpen from '../../utils/isCurrentlyOpen';
 
 const Brewery = ({
   brewery: { brewery, loading },
@@ -19,8 +20,10 @@ const Brewery = ({
   isAuthenticated
 }) => {
   useEffect(() => {
-    getBrewery(match.params.id)
-  }, [getBrewery, match.params.id])
+    getBrewery(match.params.id);
+  }, [getBrewery, match.params.id]);
+  const currentlyOpen = loading ? '' : isCurrentlyOpen(brewery.hours);
+
   return (
     <Fragment>
       { loading || brewery === null ? (
@@ -28,6 +31,7 @@ const Brewery = ({
       ) : (
         <Fragment>
           <h1>{brewery.name}</h1>
+          { currentlyOpen ? <h4>We are Open!</h4> : <h4>Sadly, we're closed...</h4> }
           <div>
             <BreweryInfo
               phone={brewery.phone}
