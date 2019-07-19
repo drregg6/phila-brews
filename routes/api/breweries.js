@@ -5,6 +5,7 @@ const { check, validationResult } = require('express-validator');
 const Brewery = require('../../models/Brewery');
 const auth = require('../../middleware/auth');
 const formatTime = require('../../utils/formatTime');
+const formatPhone = require('../../utils/formatPhone');
 
 // @route  /api/breweries/:id
 // @desc   Get all breweries
@@ -84,7 +85,7 @@ router.post('/', [ auth, [
   if (zip) breweryFields.zip = zip;
   if (lat) breweryFields.lat = lat;
   if (lng) breweryFields.lng = lng;
-  if (phone) breweryFields.phone = phone;
+  if (phone) breweryFields.phone = formatPhone(phone);
   if (website) breweryFields.website = website;
   if (mailingList) breweryFields.mailingList = mailingList;
   if (img) breweryFields.img = img;
