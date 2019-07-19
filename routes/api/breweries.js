@@ -4,6 +4,7 @@ const { check, validationResult } = require('express-validator');
 
 const Brewery = require('../../models/Brewery');
 const auth = require('../../middleware/auth');
+const formatTime = require('../../utils/formatTime');
 
 // @route  /api/breweries/:id
 // @desc   Get all breweries
@@ -101,20 +102,20 @@ router.post('/', [ auth, [
   breweryFields.hours.friIsOpen = friIsOpen;
   breweryFields.hours.satIsOpen = satIsOpen;
   breweryFields.hours.sunIsOpen = sunIsOpen;
-  if (monOpen) breweryFields.hours.monOpen = monOpen;
-  if (monClose) breweryFields.hours.monClose = monClose;
-  if (tuesOpen) breweryFields.hours.tuesOpen = tuesOpen;
-  if (tuesClose) breweryFields.hours.tuesClose = tuesClose;
-  if (wedOpen) breweryFields.hours.wedOpen = wedOpen;
-  if (wedClose) breweryFields.hours.wedClose = wedClose;
-  if (thursOpen) breweryFields.hours.thursOpen = thursOpen;
-  if (thursClose) breweryFields.hours.thursClose = thursClose;
-  if (friOpen) breweryFields.hours.friOpen = friOpen;
-  if (friClose) breweryFields.hours.friClose = friClose;
-  if (satOpen) breweryFields.hours.satOpen = satOpen;
-  if (satClose) breweryFields.hours.satClose = satClose;
-  if (sunOpen) breweryFields.hours.sunOpen = sunOpen;
-  if (sunClose) breweryFields.hours.sunClose = sunClose;
+  if (monOpen) breweryFields.hours.monOpen = formatTime(monOpen);
+  if (monClose) breweryFields.hours.monClose = formatTime(monClose);
+  if (tuesOpen) breweryFields.hours.tuesOpen = formatTime(tuesOpen);
+  if (tuesClose) breweryFields.hours.tuesClose = formatTime(tuesClose);
+  if (wedOpen) breweryFields.hours.wedOpen = formatTime(wedOpen);
+  if (wedClose) breweryFields.hours.wedClose = formatTime(wedClose);
+  if (thursOpen) breweryFields.hours.thursOpen = formatTime(thursOpen);
+  if (thursClose) breweryFields.hours.thursClose = formatTime(thursClose);
+  if (friOpen) breweryFields.hours.friOpen = formatTime(friOpen);
+  if (friClose) breweryFields.hours.friClose = formatTime(friClose);
+  if (satOpen) breweryFields.hours.satOpen = formatTime(satOpen);
+  if (satClose) breweryFields.hours.satClose = formatTime(satClose);
+  if (sunOpen) breweryFields.hours.sunOpen = formatTime(sunOpen);
+  if (sunClose) breweryFields.hours.sunClose = formatTime(sunClose);
 
   try {
     // Try to find a brewery
