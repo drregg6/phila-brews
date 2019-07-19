@@ -2,7 +2,6 @@
 
 TODO:
 = EditBeer
-= Add phone formatter
 = Add OPEN / CLOSED functionality from previous app
 = Styles -> MOBILE FIRST
 

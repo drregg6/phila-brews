@@ -92,8 +92,8 @@ router.post('/', [ auth, [
 
   breweryFields.happyHour = {};
   if (available) breweryFields.happyHour.available = available;
-  if (happyOpen) breweryFields.happyHour.happyOpen = happyOpen;
-  if (happyClose) breweryFields.happyHour.happyClose = happyClose;
+  if (happyOpen) breweryFields.happyHour.happyOpen = formatTime(happyOpen);
+  if (happyClose) breweryFields.happyHour.happyClose = formatTime(happyClose);
 
   breweryFields.hours = {};
   breweryFields.hours.monIsOpen = monIsOpen;
