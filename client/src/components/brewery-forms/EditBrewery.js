@@ -15,15 +15,6 @@ const CreateBrewery = ({
   }
 }) => {
 
-  const [ monCheckbox, toggleMonCheckbox ] = useState(true);
-  const [ tuesCheckbox, toggleTuesCheckbox ] = useState(true);
-  const [ wedCheckbox, toggleWedCheckbox ] = useState(true);
-  const [ thursCheckbox, toggleThursCheckbox ] = useState(true);
-  const [ friCheckbox, toggleFriCheckbox ] = useState(true);
-  const [ satCheckbox, toggleSatCheckbox ] = useState(true);
-  const [ sunCheckbox, toggleSunCheckbox ] = useState(true);
-
-
   const [ formData, setFormData ] = useState({
     name: '',
     building: '',
@@ -93,7 +84,7 @@ const CreateBrewery = ({
       thursIsOpen: loading || !brewery.hours ? '' : brewery.hours.thursIsOpen,
       friIsOpen: loading || !brewery.hours ? '' : brewery.hours.friIsOpen,
       satIsOpen: loading || !brewery.hours ? '' : brewery.hours.satIsOpen,
-      sunIsOpen: loading || !brewery.hours ? '' : brewery.hours.sunIsOpn
+      sunIsOpen: loading || !brewery.hours ? '' : brewery.hours.sunIsOpen
     });
   }, [setFormData, getBrewery, match.params.id]);
 
@@ -109,354 +100,337 @@ const CreateBrewery = ({
     phone,
     website,
     img,
+    monIsOpen,
+    tuesIsOpen,
+    wedIsOpen,
+    thursIsOpen,
+    friIsOpen,
+    satIsOpen,
+    sunIsOpen,
     monOpen,
-    monClose,
     tuesOpen,
-    tuesClose,
     wedOpen,
-    wedClose,
     thursOpen,
-    thursClose,
     friOpen,
-    friClose,
     satOpen,
-    satClose,
     sunOpen,
-    sunClose,
-    monIsOpen
+    monClose,
+    tuesClose,
+    wedClose,
+    thursClose,
+    friClose,
+    satClose,
+    sunClose
   } = formData;
 
   const handleChange = ev => {
     setFormData({ ...formData, [ev.target.name]: ev.target.value });
-  }
-  const handleMonChange = () => {
-    toggleMonCheckbox(!monCheckbox);
-    setFormData({ ...formData, monIsOpen: !monCheckbox });
-  }
-  const handleTuesChange = () => {
-    toggleTuesCheckbox(!tuesCheckbox);
-    setFormData({ ...formData, tuesIsOpen: !tuesCheckbox });
-  }
-  const handleWedChange = () => {
-    toggleWedCheckbox(!wedCheckbox);
-    setFormData({ ...formData, wedIsOpen: !wedCheckbox });
-  }
-  const handleThursChange = () => {
-    toggleThursCheckbox(!thursCheckbox);
-    setFormData({ ...formData, thursIsOpen: !thursCheckbox });
-  }
-  const handleFriChange = () => {
-    toggleFriCheckbox(!friCheckbox);
-    setFormData({ ...formData, friIsOpen: !friCheckbox });
-  }
-  const handleSatChange = () => {
-    toggleSatCheckbox(!satCheckbox);
-    setFormData({ ...formData, satIsOpen: !satCheckbox });
-  }
-  const handleSunChange = () => {
-    toggleSunCheckbox(!sunCheckbox);
-    setFormData({ ...formData, sunIsOpen: !sunCheckbox });
   }
   const handleSubmit = ev => {
     ev.preventDefault();
     createBrewery(formData, history, true);
   }
 
-  const handleCheckbox = () => {
-    setFormData({ ...formData, monIsOpen: !monIsOpen });
-  }
-
   return (
     <div>
       <form onSubmit={ev => handleSubmit(ev)}>
         <input
-          type="text"
-          placeholder="name"
-          name="name"
+          type='text'
+          placeholder='name'
+          name='name'
           value={name}
           onChange={ev => handleChange(ev)}
-        /> *
+        />  *
         <input
-          type="text"
-          placeholder="building number"
-          name="building"
+          type='text'
+          placeholder='building number'
+          name='building'
           value={building}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="street"
-          name="street"
+          type='text'
+          placeholder='street'
+          name='street'
           value={street}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="city"
-          name="city"
+          type='text'
+          placeholder='city'
+          name='city'
           value={city}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="state"
-          name="state"
+          type='text'
+          placeholder='state'
+          name='state'
           value={state}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="zip"
-          name="zip"
+          type='text'
+          placeholder='zip'
+          name='zip'
           value={zip}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="lat"
-          name="lat"
+          type='text'
+          placeholder='lat'
+          name='lat'
           value={lat}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="lng"
-          name="lng"
+          type='text'
+          placeholder='lng'
+          name='lng'
           value={lng}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="phone"
-          name="phone"
+          type='text'
+          placeholder='phone'
+          name='phone'
           value={phone}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="website"
-          name="website"
+          type='text'
+          placeholder='website'
+          name='website'
           value={website}
           onChange={ev => handleChange(ev)}
         />
         <input
-          type="text"
-          placeholder="image"
-          name="img"
+          type='text'
+          placeholder='image'
+          name='img'
           value={img}
           onChange={ev => handleChange(ev)}
         />
         <div>
-          <div>
-            <input
-              type='checkbox'
-              id='monIsOpen'
-              name='monIsOpen'
-              checked={monIsOpen}
-              onChange={() => {handleCheckbox()}}
-            />
-            <label htmlFor='monIsOpen'>Open Monday</label>
-          </div>
-          { monCheckbox && (
-            <div>
-              <input
-                type='text'
-                placeholder='Monday Open'
-                name='monOpen'
-                value={monOpen}
-                onChange={ev => handleChange(ev)}
-              />
-              <input
-                type='text'
-                placeholder='Monday Close'
-                name='monClose'
-                value={monClose}
-                onChange={ev => handleChange(ev)}
-              />
-            </div>
-          ) }
-        </div>
-        <div>
+          <label>Open Monday</label>
           <input
-            type='checkbox'
-            id='tuesIsOpen'
-            name='tuesIsOpen'
-            checked={tuesCheckbox}
-            onChange={() => {handleTuesChange()}}
+            type='radio'
+            label='Yes'
+            checked={monIsOpen}
+            onChange={() => {setFormData({ ...formData, monIsOpen: !monIsOpen })}}
           />
-          <label htmlFor='tuesIsOpen'>Open Tuesday</label>
-          { tuesCheckbox && (
-            <React.Fragment>
-              <input
-                type='text'
-                placeholder='Tuesday Open'
-                name='tuesOpen'
-                value={tuesOpen}
-                onChange={ev => handleChange(ev)}
-              />
-              <input
-                type='text'
-                placeholder='Tuesday Close'
-                name='tuesClose'
-                value={tuesClose}
-                onChange={ev => handleChange(ev)}
-              />
-            </React.Fragment>
-          ) }
+          <input
+            type='radio'
+            label='No'
+            checked={!monIsOpen}
+            onChange={() => {setFormData({ ...formData, monIsOpen: !monIsOpen })}}
+          />
+          <input
+            type='text'
+            placeholder='Monday Open'
+            name='monOpen'
+            value={monOpen}
+            onChange={ev => handleChange(ev)}
+            disabled={!monIsOpen}
+          />
+          <input
+            type='text'
+            placeholder='Monday Close'
+            name='monClose'
+            value={monClose}
+            onChange={ev => handleChange(ev)}
+            disabled={!monIsOpen}
+          />
         </div>
         <div>
-          <div>
-            <input
-              type='checkbox'
-              id='wedIsOpen'
-              name='wedIsOpen'
-              checked={wedCheckbox}
-              onChange={() => {handleWedChange()}}
-            />
-            <label htmlFor='wedIsOpen'>Open Wednesday</label>
-          </div>
-          { wedCheckbox && (
-            <div>
-              <input
-                type='text'
-                placeholder='Wednesday Open'
-                name='wedOpen'
-                value={wedOpen}
-                onChange={ev => handleChange(ev)}
-              />
-              <input
-                type='text'
-                placeholder='Wednesday Close'
-                name='wedClose'
-                value={wedClose}
-                onChange={ev => handleChange(ev)}
-              />
-            </div>
-          ) }
+          <label>Open Tuesday</label>
+          <input
+            type='radio'
+            label='Yes'
+            checked={tuesIsOpen}
+            onChange={() => {setFormData({ ...formData, tuesIsOpen: !tuesIsOpen })}}
+          />
+          <input
+            type='radio'
+            label='No'
+            checked={!tuesIsOpen}
+            onChange={() => {setFormData({ ...formData, tuesIsOpen: !tuesIsOpen })}}
+          />
+          <input
+            type='text'
+            placeholder='Tuesday Open'
+            name='tuesOpen'
+            value={tuesOpen}
+            onChange={ev => handleChange(ev)}
+            disabled={!tuesIsOpen}
+          />
+          <input
+            type='text'
+            placeholder='Tuesday Close'
+            name='tuesClose'
+            value={tuesClose}
+            onChange={ev => handleChange(ev)}
+            disabled={!tuesIsOpen}
+          />
         </div>
         <div>
-          <div>
-            <input
-              type='checkbox'
-              id='thursIsOpen'
-              name='thursIsOpen'
-              checked={thursCheckbox}
-              onChange={() => {handleThursChange()}}
-            />
-            <label htmlFor='thursIsOpen'>Open Thursday</label>
-          </div>
-          { thursCheckbox && (
-            <div>
-              <input
-                type='text'
-                placeholder='Thursday Open'
-                name='thursOpen'
-                value={thursOpen}
-                onChange={ev => handleChange(ev)}
-              />
-              <input
-                type='text'
-                placeholder='Thursday Close'
-                name='thursClose'
-                value={thursClose}
-                onChange={ev => handleChange(ev)}
-              />
-            </div>
-          ) }
+          <label>Open Wednesday</label>
+          <input
+            type='radio'
+            label='Yes'
+            checked={wedIsOpen}
+            onChange={() => {setFormData({ ...formData, wedIsOpen: !wedIsOpen })}}
+          />
+          <input
+            type='radio'
+            label='No'
+            checked={!wedIsOpen}
+            onChange={() => {setFormData({ ...formData, wedIsOpen: !wedIsOpen })}}
+          />
+          <input
+            type='text'
+            placeholder='Wednesday Open'
+            name='wedOpen'
+            value={wedOpen}
+            onChange={ev => handleChange(ev)}
+            disabled={!wedIsOpen}
+          />
+          <input
+            type='text'
+            placeholder='Wednesday Close'
+            name='wedClose'
+            value={wedClose}
+            onChange={ev => handleChange(ev)}
+            disabled={!wedIsOpen}
+          />
         </div>
         <div>
-          <div>
-            <input
-              type='checkbox'
-              id='friIsOpen'
-              name='friIsOpen'
-              checked={friCheckbox}
-              onChange={() => {handleFriChange()}}
-            />
-            <label htmlFor='friIsOpen'>Open Friday</label>
-          </div>
-          { friCheckbox && (
-            <div>
-              <input
-                type='text'
-                placeholder='Friday Open'
-                name='friOpen'
-                value={friOpen}
-                onChange={ev => handleChange(ev)}
-              />
-              <input
-                type='text'
-                placeholder='Friday Close'
-                name='friClose'
-                value={friClose}
-                onChange={ev => handleChange(ev)}
-              />
-            </div>
-          ) }
+          <label>Open Thursday</label>
+          <input
+            type='radio'
+            label='Yes'
+            checked={thursIsOpen}
+            onChange={() => {setFormData({ ...formData, thursIsOpen: !thursIsOpen })}}
+          />
+          <input
+            type='radio'
+            label='No'
+            checked={!thursIsOpen}
+            onChange={() => {setFormData({ ...formData, thursIsOpen: !thursIsOpen })}}
+          />
+          <input
+            type='text'
+            placeholder='Thursday Open'
+            name='thursOpen'
+            value={thursOpen}
+            onChange={ev => handleChange(ev)}
+            disabled={!thursIsOpen}
+          />
+          <input
+            type='text'
+            placeholder='Thursday Close'
+            name='thursClose'
+            value={thursClose}
+            onChange={ev => handleChange(ev)}
+            disabled={!thursIsOpen}
+          />
         </div>
         <div>
-          <div>
-            <input
-              type='checkbox'
-              id='satIsOpen'
-              name='satIsOpen'
-              checked={satCheckbox}
-              onChange={() => {handleSatChange()}}
-            />
-            <label htmlFor='satIsOpen'>Open Saturday</label>
-          </div>
-          { satCheckbox && (
-            <div>
-              <input
-                type='text'
-                placeholder='Saturday Open'
-                name='satOpen'
-                value={satOpen}
-                onChange={ev => handleChange(ev)}
-              />
-              <input
-                type='text'
-                placeholder='Saturday Close'
-                name='satClose'
-                value={satClose}
-                onChange={ev => handleChange(ev)}
-              />
-            </div>
-          ) }
+          <label>Open Friday</label>
+          <input
+            type='radio'
+            label='Yes'
+            checked={friIsOpen}
+            onChange={() => {setFormData({ ...formData, friIsOpen: !friIsOpen })}}
+          />
+          <input
+            type='radio'
+            label='No'
+            checked={!friIsOpen}
+            onChange={() => {setFormData({ ...formData, friIsOpen: !friIsOpen })}}
+          />
+          <input
+            type='text'
+            placeholder='Friday Open'
+            name='friOpen'
+            value={friOpen}
+            onChange={ev => handleChange(ev)}
+            disabled={!friIsOpen}
+          />
+          <input
+            type='text'
+            placeholder='Friday Close'
+            name='friClose'
+            value={friClose}
+            onChange={ev => handleChange(ev)}
+            disabled={!friIsOpen}
+          />
         </div>
         <div>
-          <div>
-            <input
-              type='checkbox'
-              id='sunIsOpen'
-              name='sunIsOpen'
-              checked={sunCheckbox}
-              onChange={() => {handleSunChange()}}
-            />
-            <label htmlFor='sunIsOpen'>Open Sunday</label>
-          </div>
-          { sunCheckbox && (
-            <div>
-              <input
-                type='text'
-                placeholder='Sunday Open'
-                name='sunOpen'
-                value={sunOpen}
-                onChange={ev => handleChange(ev)}
-              />
-              <input
-                type='text'
-                placeholder='Sunday Close'
-                name='sunClose'
-                value={sunClose}
-                onChange={ev => handleChange(ev)}
-              />
-            </div>
-          ) }
+          <label>Open Saturday</label>
+          <input
+            type='radio'
+            label='Yes'
+            checked={satIsOpen}
+            onChange={() => {setFormData({ ...formData, satIsOpen: !satIsOpen })}}
+          />
+          <input
+            type='radio'
+            label='No'
+            checked={!satIsOpen}
+            onChange={() => {setFormData({ ...formData, satIsOpen: !satIsOpen })}}
+          />
+          <input
+            type='text'
+            placeholder='Saturday Open'
+            name='satOpen'
+            value={satOpen}
+            onChange={ev => handleChange(ev)}
+            disabled={!satIsOpen}
+          />
+          <input
+            type='text'
+            placeholder='Saturday Close'
+            name='satClose'
+            value={satClose}
+            onChange={ev => handleChange(ev)}
+            disabled={!satIsOpen}
+          />
+        </div>
+        <div>
+          <label>Open Sunday</label>
+          <input
+            type='radio'
+            label='Yes'
+            checked={sunIsOpen}
+            onChange={() => {setFormData({ ...formData, sunIsOpen: !sunIsOpen })}}
+          />
+          <input
+            type='radio'
+            label='No'
+            checked={!sunIsOpen}
+            onChange={() => {setFormData({ ...formData, sunIsOpen: !sunIsOpen })}}
+          />
+          <input
+            type='text'
+            placeholder='Sunday Open'
+            name='sunOpen'
+            value={sunOpen}
+            onChange={ev => handleChange(ev)}
+            disabled={!sunIsOpen}
+          />
+          <input
+            type='text'
+            placeholder='Sunday Close'
+            name='sunClose'
+            value={sunClose}
+            onChange={ev => handleChange(ev)}
+            disabled={!sunIsOpen}
+          />
         </div>
         <input
-          type="submit"
-          value="Add Brewery"
+          type='submit'
+          value='Add Brewery'
         />
       </form>
     </div>
@@ -477,19 +451,3 @@ export default connect(
   mapStateToProps,
   { createBrewery, getBrewery }
 )(CreateBrewery);
-
-
-// monOpen: loading || brewery.mon === undefined ? '' : brewery.mon.monOpen,
-// monClose: loading || brewery.mon === undefined ? '' : brewery.mon.monClose,
-// tuesOpen: loading || brewery.tues === undefined ? '' : brewery.tues.tuesOpen,
-// tuesClose: loading || brewery.tues === undefined ? '' : brewery.tues.tuesClose,
-// wedOpen: loading || brewery.wed === undefined ? '' : brewery.wed.wedOpen,
-// wedClose: loading || brewery.wed === undefined ? '' : brewery.wed.wedClose,
-// thursOpen: loading || brewery.thurs === undefined ? '' : brewery.thurs.thursOpen,
-// thursClose: loading || brewery.thurs === undefined ? '' : brewery.thurs.thursClose,
-// friOpen: loading || brewery.fri === undefined ? '' : brewery.fri.friOpen,
-// friClose: loading || brewery.fri === undefined ? '' : brewery.fri.friClose,
-// satOpen: loading || brewery.sat === undefined ? '' : brewery.sat.satOpen,
-// satClose: loading || brewery.sat === undefined ? '' : brewery.sat.satClose,
-// sunOpen: loading || brewery.sun === undefined ? '' : brewery.sun.sunOpen,
-// sunClose: loading || brewery.sun === undefined ? '' : brewery.sun.sunClose
