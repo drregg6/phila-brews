@@ -1,33 +1,5 @@
 const DAYS = ['sun', 'mon', 'tues', 'wed', 'thurs', 'fri', 'sat'];
 
-/*
-
-hoursObj = {
-  monIsOpen: bool
-  monOpen: string
-  monClose: string
-  tuesIsOpen: bool
-  tuesOpen: string
-  tuesClose: string
-  wedIsOpen: bool
-  wedOpen: string
-  wedClose: string
-  thursIsOpen: bool
-  thursOpen: string
-  thursClose: string
-  friIsOpen: bool
-  friOpen: string
-  friClose: string
-  satIsOpen: bool
-  satOpen: string
-  satClose: string
-  sunIsOpen: bool
-  sunOpen: string
-  sunClose: string
-}
-
-*/
-
 const isCurrentlyOpen = (hours) => {
   const workingObj = {};
   // currentDate is the date when user renders Brewery Component
