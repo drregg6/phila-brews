@@ -56,7 +56,7 @@ export const login = (email, password) => async dispatch => {
     });
 
     dispatch(loadUser());
-    dispatch(setAlert('Admin login. Welcome!'))
+    dispatch(setAlert('Admin login. Welcome!', 'success'))
   } catch (err) {
     // Custom response generated from the server side
     // I created this :)

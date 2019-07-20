@@ -49,7 +49,7 @@ table {
 
 
 
-/* === Customs === */
+/* === Overrides === */
 *,
 *:before,
 *:after {
@@ -60,19 +60,81 @@ body {
 	height: 100%;
 	font-size: 16px;
 	text-align: center;
+	font-family: Verdana, Geneva, sans-serif;
 }
 h1 {
 	font-size: 5rem;
 }
+a {
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+
+
+/* === Customs === */
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+/* === Colors === */
+.success {
+	color: green;
+}
+
+.danger {
+	color: red;
+}
+
+.neutral {
+	color: #535353;
+}
+
+
 
 /* === Buttons === */
+button {
+	background: #fff;
+	color: #535353;
+	border: 1px solid;
+	border-radius: .15rem;
+	text-decoration: none;
+	font-size: 16px;
+}
 .btn {
 	color: #535353;
-	padding: 1rem;
+	border: 1px solid #535353;
+	border-radius: .15rem;
+	padding: .5rem;
+	text-decoration: none;
+}
+.btn:hover {
+	color: #fff;
+	background: #535353;
+	text-decoration: none;
 }
 
 .btn-primary {
 	color: green;
+	border-color: green;
+}
+.btn-primary:hover {
+	color: #fff;
+	background: green;
+}
+
+.btn-danger {
+	color: red;
+	border-color: red;
+}
+.btn-danger:hover {
+	color: #fff;
+	background: red;
 }
 
 
@@ -86,6 +148,28 @@ nav ul li {
 	margin-right: 1rem;
 }
 
+
+/* === Breweries === */
+.breweries-link {
+	margin-top: .5rem;
+	margin-bottom: .5rem;
+}
+/* .breweries-link:nth-child(1) {
+	margin-top: 0;
+}
+.breweries-link:last-child {
+	margin-bottom: 0;
+} */
+.breweries-btn {
+	padding: .25rem;
+	font-size: .5rem;
+	margin-left: .5rem;
+}
+
+/* === Footer === */
+.footer {
+	justify-content: space-around;
+}
 
 
 /* === BreweryMap === */

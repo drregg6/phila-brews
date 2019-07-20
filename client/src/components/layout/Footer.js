@@ -10,15 +10,15 @@ const Footer = ({ auth: { isAuthenticated }, logout }) => {
   const date = new Date();
   const year = date.getFullYear();
   return (
-    <footer style={{display: 'flex', justifyContent: 'space-around'}}>
+    <footer className='footer center'>
       <span>
         &copy;{year} <a rel='noopener noreferrer' href='https://www.github.com/drregg6' target='_blank'>Dave Regg</a>
       </span>
       { isAuthenticated ? (
-        <button onClick={logout}>Logout</button>
+        <button onClick={logout} className='btn'>Logout</button>
       ) : (
         <span>
-          <Link to='/login'>Login</Link>
+          <Link to='/login' className='btn'>Login</Link>
         </span>
       ) }
     </footer>

@@ -24,12 +24,15 @@ const Breweries = ({
       ) : (
         breweries.map(brewery => {
           return (
-            <div key={brewery._id}>
+            <div key={brewery._id} className='breweries-link center'>
               <Link to={`/breweries/${brewery._id}`}>
                 {brewery.name}
               </Link>
               { isAuthenticated && (
-                <button onClick={ev => deleteBrewery(brewery._id)}>
+                <button
+                  className='breweries-btn btn btn-danger'
+                  onClick={ev => deleteBrewery(brewery._id)}
+                >
                   X
                 </button>
               ) }

@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
-import { logout } from '../../actions/auth';
 
-const Navigation = ({ auth: { isAuthenticated }, logout }) => {
+const Navigation = ({ auth: {loading, isAuthenticated} }) => {
   return (
     <React.Fragment>
       <nav>
@@ -19,20 +18,13 @@ const Navigation = ({ auth: { isAuthenticated }, logout }) => {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
-          { isAuthenticated ? (
-            <React.Fragment>
+          {
+            !loading && isAuthenticated && (
               <li>
-                <Link to="/breweries/new">Add Brewery</Link>
+                <Link to='/breweries/new'>New Brewery</Link>
               </li>
-              <li>
-                <button onClick={logout}>Logout</button>
-              </li>
-            </React.Fragment>
-          ) : (
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-          ) }
+            )
+          }
         </ul>
       </nav>
     </React.Fragment>
@@ -40,8 +32,7 @@ const Navigation = ({ auth: { isAuthenticated }, logout }) => {
 }
 
 Navigation.propTypes = {
-  auth: PropTypes.object,
-  logout: PropTypes.func.isRequired
+  auth: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -50,5 +41,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { logout }
+  {}
 )(Navigation);
