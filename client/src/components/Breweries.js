@@ -18,7 +18,7 @@ const Breweries = ({
     getBreweries();
   }, [getBreweries])
   return (
-    <Fragment>
+    <div className='container'>
       { loading ? (
         <Spinner />
       ) : (
@@ -40,7 +40,7 @@ const Breweries = ({
           )
         })
       )}
-    </Fragment>
+    </div>
   )
 }
 

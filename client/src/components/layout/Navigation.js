@@ -6,28 +6,26 @@ import { connect } from 'react-redux';
 
 const Navigation = ({ auth: {loading, isAuthenticated} }) => {
   return (
-    <React.Fragment>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-          {
-            !loading && isAuthenticated && (
-              <li>
-                <Link to='/breweries/new'>New Brewery</Link>
-              </li>
-            )
-          }
-        </ul>
-      </nav>
-    </React.Fragment>
+    <nav className='my-2'>
+      <ul className='nav'>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
+        {
+          !loading && isAuthenticated && (
+            <li>
+              <Link to='/breweries/new'>New Brewery</Link>
+            </li>
+          )
+        }
+      </ul>
+    </nav>
   )
 }
 
