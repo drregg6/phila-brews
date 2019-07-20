@@ -47,6 +47,8 @@ table {
    License: none (public domain)
 */
 
+
+
 /* === Customs === */
 *,
 *:before,
@@ -63,6 +65,16 @@ h1 {
 	font-size: 5rem;
 }
 
+/* === Buttons === */
+.btn {
+	color: #535353;
+	padding: 1rem;
+}
+
+.btn-primary {
+	color: green;
+}
+
 
 /* === Navigation === */
 nav {
@@ -73,6 +85,16 @@ nav ul li {
 	display: inline-block;
 	margin-right: 1rem;
 }
+
+
+
+/* === BreweryMap === */
+.brewery-map {
+	height: 50vh;
+	width: 75%;
+	margin: 0 auto;
+}
+
 
 
 
@@ -154,11 +176,4 @@ nav ul li {
   50%  { transform: translate( -100%, -100% ); z-index: 10; }
   75%  { transform: translate( 0, -100% ); }
   100% { transform: translate( 0 ); }
-}
-
-/* === BreweryMap === */
-.brewery-map {
-	height: 50vh;
-	width: 75%;
-	margin: 0 auto;
 }
