@@ -34,47 +34,50 @@ const AddBeer = ({
     addBeer(formData, match.params.id, history);
   }
   return (
-    <form onSubmit={ev => {handleSubmit(ev)}}>
-      <input
-        type='text'
-        placeholder='name'
-        name='name'
-        value={name}
-        onChange={ev => {handleChange(ev)}}
-      />
-      <input
-        type='text'
-        placeholder='type'
-        name='type'
-        value={type}
-        onChange={ev => {handleChange(ev)}}
-      />
-      <input
-        type='text'
-        placeholder='abv'
-        name='abv'
-        value={abv}
-        onChange={ev => {handleChange(ev)}}
-      />
-      <input
-        type='text'
-        placeholder='description'
-        name='description'
-        value={description}
-        onChange={ev => {handleChange(ev)}}
-      />
-      <input
-        type='text'
-        placeholder='img'
-        name='img'
-        value={img}
-        onChange={ev => {handleChange(ev)}}
-      />
-      <input
-        type='submit'
-        value='Add beer!'
-      />
-    </form>
+    <div className='create-beer'>
+      <h1 className='large'>Add Beer</h1>
+      <form onSubmit={ev => {handleSubmit(ev)}} className='form'>
+        <input
+          type='text'
+          placeholder='name'
+          name='name'
+          value={name}
+          onChange={ev => {handleChange(ev)}}
+        />
+        <input
+          type='text'
+          placeholder='type'
+          name='type'
+          value={type}
+          onChange={ev => {handleChange(ev)}}
+        />
+        <input
+          type='text'
+          placeholder='abv'
+          name='abv'
+          value={abv}
+          onChange={ev => {handleChange(ev)}}
+        />
+        <input
+          type='text'
+          placeholder='description'
+          name='description'
+          value={description}
+          onChange={ev => {handleChange(ev)}}
+        />
+        <input
+          type='text'
+          placeholder='img'
+          name='img'
+          value={img}
+          onChange={ev => {handleChange(ev)}}
+        />
+        <input
+          type='submit'
+          value='Add beer!'
+        />
+      </form>
+    </div>
   )
 }
 

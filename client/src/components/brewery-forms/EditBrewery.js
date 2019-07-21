@@ -142,7 +142,8 @@ const CreateBrewery = ({
 
   return (
     <div className='edit-brewery'>
-      <form onSubmit={ev => handleSubmit(ev)}>
+      <h1 className='large'>Edit {name}</h1>
+      <form onSubmit={ev => handleSubmit(ev)} className='form'>
         <div className='form-group'>
           <input
             type='text'

@@ -82,8 +82,8 @@ a:hover {
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
-  margin-top: 6rem;
-  margin-bottom: 3rem;
+	margin-top: 1rem;
+	margin-bottom: 3rem;
 }
 
 .center {
@@ -245,6 +245,15 @@ button {
 	opacity: .9;
 	
 	background: yellow;
+}
+
+
+
+/* === Alerts === */
+.alert {
+	margin-top: 3rem;
+	display: block;
+	height: 25px;
 }
 
 

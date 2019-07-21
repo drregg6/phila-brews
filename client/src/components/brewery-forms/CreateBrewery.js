@@ -90,6 +90,7 @@ const CreateBrewery = ({ createBrewery, history }) => {
 
   return (
     <div className='create-brewery'>
+      <h1 className='large'>Add a Brewery</h1>
       <form onSubmit={ev => handleSubmit(ev)}>
         <div className='form-group'>
           <input

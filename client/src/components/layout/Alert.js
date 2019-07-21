@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 const Alert = ({ alerts }) => {
   return (
-    <div style={{marginTop: '3rem'}}>
+    <div className='alert center'>
       { alerts !== null &&
         alerts.length > 0 &&
         alerts.map(alert => {

@@ -24,6 +24,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
   return (
     <div className='container'>
+      <h1 className='large'>Admin Login</h1>
       <form onSubmit={ev => handleSubmit(ev)}>
         <input
           type='email'
