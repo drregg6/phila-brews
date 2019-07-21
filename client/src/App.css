@@ -373,7 +373,7 @@ button {
 
 @media (max-width: 700px) {
   .container {
-    margin-top: 8rem;
+    margin-top: 2rem;
   }
 
   .hide-sm {
@@ -394,12 +394,12 @@ button {
   }
 
   /* Navbar */
-  nav {
+  .navbar {
     display: block;
     text-align: center;
   }
 
-  .navbar {
+  .navbar ul {
     text-align: center;
     justify-content: center;
   }
@@ -410,5 +410,10 @@ button {
 
   .navbar .welcome {
     display: none;
-  }
+	}
+	
+	/* === Alert === */
+	.alert {
+		margin-top: 6rem;
+	}
 }
