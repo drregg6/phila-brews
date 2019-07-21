@@ -22,15 +22,15 @@ const Brewery = ({
   useEffect(() => {
     getBrewery(match.params.id);
   }, [getBrewery, match.params.id]);
-  const currentlyOpen = loading ? '' : isCurrentlyOpen(brewery.hours);
+  const currentlyOpen = loading || brewery === null ? '' : isCurrentlyOpen(brewery.hours);
 
   return (
-    <Fragment>
+    <div className='container'>
       { loading || brewery === null ? (
         <Spinner />
       ) : (
         <Fragment>
-          <h1>{brewery.name}</h1>
+          <h1 className='large'>{brewery.name}</h1>
           { currentlyOpen ? <h4>We are Open!</h4> : <h4>Sadly, we're closed...</h4> }
           <div>
             <BreweryInfo
@@ -83,7 +83,7 @@ const Brewery = ({
           ) }
         </Fragment>
       ) }
-  </Fragment>
+  </div>
   )
 }
 

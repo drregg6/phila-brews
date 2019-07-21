@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 const Navigation = ({ auth: {loading, isAuthenticated} }) => {
   return (
     <nav className='my-2'>
-      <ul className='nav'>
+      <ul className='navbar'>
         <li>
           <Link to="/">Home</Link>
         </li>

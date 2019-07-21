@@ -170,14 +170,17 @@ a:hover {
 
 
 /* === Colors === */
+.alert-success,
 .success {
 	color: green;
 }
 
+.alert-danger,
 .danger {
 	color: red;
 }
 
+.alert-neutral,
 .neutral {
 	color: #535353;
 }
@@ -240,6 +243,8 @@ button {
 	width: 100%;
 	top: 0;
 	opacity: .9;
+	
+	background: yellow;
 }
 
 
@@ -354,4 +359,47 @@ button {
   50%  { transform: translate( -100%, -100% ); z-index: 10; }
   75%  { transform: translate( 0, -100% ); }
   100% { transform: translate( 0 ); }
+}
+
+
+@media (max-width: 700px) {
+  .container {
+    margin-top: 8rem;
+  }
+
+  .hide-sm {
+    display: none;
+  }
+
+  /* Text Styles */
+  .x-large {
+    font-size: 3rem;
+  }
+
+  .large {
+    font-size: 2rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+
+  /* Navbar */
+  nav {
+    display: block;
+    text-align: center;
+  }
+
+  .navbar {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .navbar h1 {
+    margin-bottom: 1rem;
+  }
+
+  .navbar .welcome {
+    display: none;
+  }
 }

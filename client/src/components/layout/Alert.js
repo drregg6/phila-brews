@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 
 const Alert = ({ alerts }) => {
   return (
-    <div>
+    <div style={{marginTop: '3rem'}}>
       { alerts !== null &&
         alerts.length > 0 &&
         alerts.map(alert => {
           return (
-            <div key={alert.id}>
+            <div key={alert.id} className={`alert-${alert.alertType}`}>
               {alert.msg}
             </div>
           )

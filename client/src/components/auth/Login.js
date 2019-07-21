@@ -23,7 +23,7 @@ const Login = ({ login, isAuthenticated }) => {
     return <Redirect to='/' />
   }
   return (
-    <div>
+    <div className='container'>
       <form onSubmit={ev => handleSubmit(ev)}>
         <input
           type='email'
