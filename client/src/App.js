@@ -11,6 +11,7 @@ import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Components
+import PrivateRoute from './components/routing/PrivateRoute';
 import Navigation from './components/layout/Navigation';
 import Alert from './components/layout/Alert';
 import Footer from './components/layout/Footer';
@@ -42,10 +43,10 @@ function App() {
           <Switch>
             <Route exact path='/' component={Breweries} />
             <Route exact path='/login' component={Login} />
-            <Route exact path='/breweries/new' component={CreateBrewery} />
+            <PrivateRoute exact path='/breweries/new' component={CreateBrewery} />
             <Route exact path='/breweries/:id' component={Brewery} />
-            <Route exact path='/breweries/:id/edit' component={EditBrewery} />
-            <Route exact path='/breweries/:id/beers' component={AddBeer} />
+            <PrivateRoute exact path='/breweries/:id/edit' component={EditBrewery} />
+            <PrivateRoute exact path='/breweries/:id/beers' component={AddBeer} />
           </Switch>
         </section>
         <Footer />
