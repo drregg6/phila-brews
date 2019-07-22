@@ -6,8 +6,13 @@ import { connect } from 'react-redux';
 
 const Navigation = ({ auth: {loading, isAuthenticated} }) => {
   return (
-    <nav className='my-2'>
-      <ul className='navbar'>
+    <div className='navbar bg-dark'>
+      <h1 className='logo'>
+        <Link to='/'>
+          <i className='fas fa-beer'></i> Phila Brews
+        </Link>
+      </h1>
+      <ul>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -25,7 +30,7 @@ const Navigation = ({ auth: {loading, isAuthenticated} }) => {
           )
         }
       </ul>
-    </nav>
+    </div>
   )
 }
 

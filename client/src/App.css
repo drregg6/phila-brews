@@ -1,3 +1,7 @@
+:root {
+	--secondary-color: yellow;
+}
+
 /* === Reset === */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -72,7 +76,7 @@ a {
 	text-decoration: none;
 }
 a:hover {
-	text-decoration: underline;
+	color: blue;
 }
 
 
@@ -234,17 +238,39 @@ button {
 
 /* === Navigation === */
 .navbar {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	padding: .7rem 2rem;
-	position: fixed;
-	z-index: 1;
-	width: 100%;
-	top: 0;
-	opacity: .9;
-	
-	background: yellow;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 2rem;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+  border-bottom: solid 1px var(--secondary-color);
+  opacity: 0.9;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar a {
+  color: #fff;
+  padding: 0.45rem;
+  margin: 0 0.25rem;
+}
+
+.navbar a:hover {
+  color: var(--secondary-color);
+}
+
+.bg-dark {
+	background: #333;
+	color: #fff;
+}
+
+.logo {
+	font-size: 1.6rem;
 }
 
 
@@ -262,12 +288,7 @@ button {
 	margin-top: .5rem;
 	margin-bottom: .5rem;
 }
-/* .breweries-link:nth-child(1) {
-	margin-top: 0;
-}
-.breweries-link:last-child {
-	margin-bottom: 0;
-} */
+
 .breweries-btn {
 	padding: .25rem;
 	font-size: .5rem;
