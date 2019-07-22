@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/auth';
 
-const Footer = ({ auth: { isAuthenticated }, logout }) => {
+const Footer = ({ auth: { isAuthenticated }, logout, history }) => {
   const date = new Date();
   const year = date.getFullYear();
   return (
@@ -15,7 +15,7 @@ const Footer = ({ auth: { isAuthenticated }, logout }) => {
         &copy;{year} <a rel='noopener noreferrer' href='https://www.github.com/drregg6' target='_blank'>Dave Regg</a>
       </span>
       { isAuthenticated ? (
-        <button onClick={logout} className='btn'>Logout</button>
+        <button onClick={() => {logout(history)}} className='btn'>Logout</button>
       ) : (
         <span>
           <Link to='/login' className='btn'>Login</Link>

@@ -25,7 +25,7 @@ const Brewery = ({
   const currentlyOpen = loading || brewery === null ? '' : isCurrentlyOpen(brewery.hours);
 
   return (
-    <div className='container'>
+    <div>
       { loading || brewery === null ? (
         <Spinner />
       ) : (

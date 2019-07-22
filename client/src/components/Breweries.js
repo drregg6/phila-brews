@@ -18,7 +18,7 @@ const Breweries = ({
     getBreweries();
   }, [getBreweries])
   return (
-    <div className='container'>
+    <div>
       <h1 className='large'>Breweries</h1>
       { loading ? (
         <Spinner />

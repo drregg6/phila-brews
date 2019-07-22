@@ -70,7 +70,9 @@ export const login = (email, password) => async dispatch => {
   }
 }
 
-export const logout = () => dispatch => {
+export const logout = (history) => dispatch => {
   dispatch(setAlert('Successfully logged out, bye!', 'danger'))
   dispatch({ type: LOGOUT_USER });
+
+  history.push('/');
 }

@@ -23,7 +23,7 @@ const Login = ({ login, isAuthenticated }) => {
     return <Redirect to='/' />
   }
   return (
-    <div className='container'>
+    <div>
       <h1 className='large'>Admin Login</h1>
       <form onSubmit={ev => handleSubmit(ev)}>
         <input

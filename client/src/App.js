@@ -37,15 +37,17 @@ function App() {
     <Router>
       <div className="App">
         <Navigation />
-        <Alert />
-        <Switch>
-          <Route exact path='/' component={Breweries} />
-          <Route exact path='/login' component={Login} />
-          <Route exact path='/breweries/new' component={CreateBrewery} />
-          <Route exact path='/breweries/:id' component={Brewery} />
-          <Route exact path='/breweries/:id/edit' component={EditBrewery} />
-          <Route exact path='/breweries/:id/beers' component={AddBeer} />
-        </Switch>
+        <section className='container'>
+          <Alert />
+          <Switch>
+            <Route exact path='/' component={Breweries} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/breweries/new' component={CreateBrewery} />
+            <Route exact path='/breweries/:id' component={Brewery} />
+            <Route exact path='/breweries/:id/edit' component={EditBrewery} />
+            <Route exact path='/breweries/:id/beers' component={AddBeer} />
+          </Switch>
+        </section>
         <Footer />
       </div>
     </Router>
