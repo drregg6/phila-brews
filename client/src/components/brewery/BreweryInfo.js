@@ -9,7 +9,8 @@ const BreweryInfo = ({
 }) => {
   console.log(happyHour)
   return (
-    <Fragment>
+    <div>
+      <h2 className='head underline'>Information</h2>
       <ul className='brewery-info'>
         <li><span className='strong'>Phone Number: </span> {phone}</li>
         <li><span className='strong'>Go</span> to their <a href={website} target='_blank' rel="noopener noreferrer">website</a></li>
@@ -22,7 +23,7 @@ const BreweryInfo = ({
           </Fragment>
         )}
       </ul>
-    </Fragment>
+    </div>
   )
 }
 

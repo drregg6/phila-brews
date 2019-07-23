@@ -47,7 +47,6 @@ const Brewery = ({
             )}
           </div>
           <div className='container'>
-            <h2 className='head'>Information</h2>
             <div className='brewery-group'>
               <BreweryInfo
                 phone={brewery.phone}

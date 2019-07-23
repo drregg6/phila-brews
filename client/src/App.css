@@ -183,7 +183,7 @@ a:hover {
 }
 
 .head {
-	font-size: 1.7rem;
+	font-size: 1.3rem;
 	line-height: 1.2;
 	margin-bottom: 1rem;
 }
@@ -198,6 +198,10 @@ a:hover {
 
 .strong {
 	font-weight: bold;
+}
+
+.underline {
+	text-decoration: underline;
 }
 
 
@@ -415,8 +419,9 @@ button {
 
 
 
-/* === Brewery Info === */
-.brewery-info li {
+/* === Brewery Subs === */
+.brewery-info li,
+.brewery-addr p {
 	margin: .5rem 0;
 }
 

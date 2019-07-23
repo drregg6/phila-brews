@@ -9,10 +9,11 @@ const BreweryAddress = ({
   zip
 }) => {
   return (
-    <div>
-      {building} {street}<br />
-      {city}, {state}<br />
-      {zip}
+    <div className='brewery-addr'>
+      <h2 className='head underline'>Address</h2>
+      <p>{building} {street}</p>
+      <p>{city}, {state}</p>
+      <p>{zip}</p>
     </div>
   )
 }
