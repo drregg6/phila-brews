@@ -37,45 +37,58 @@ const AddBeer = ({
     <div className='create-beer'>
       <h1 className='large'>Add Beer</h1>
       <form onSubmit={ev => {handleSubmit(ev)}} className='form'>
-        <input
-          type='text'
-          placeholder='name'
-          name='name'
-          value={name}
-          onChange={ev => {handleChange(ev)}}
-        />
-        <input
-          type='text'
-          placeholder='type'
-          name='type'
-          value={type}
-          onChange={ev => {handleChange(ev)}}
-        />
-        <input
-          type='text'
-          placeholder='abv'
-          name='abv'
-          value={abv}
-          onChange={ev => {handleChange(ev)}}
-        />
-        <input
-          type='text'
-          placeholder='description'
-          name='description'
-          value={description}
-          onChange={ev => {handleChange(ev)}}
-        />
-        <input
-          type='text'
-          placeholder='img'
-          name='img'
-          value={img}
-          onChange={ev => {handleChange(ev)}}
-        />
-        <input
-          type='submit'
-          value='Add beer!'
-        />
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Name *'
+            name='name'
+            value={name}
+            onChange={ev => {handleChange(ev)}}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Type'
+            name='type'
+            value={type}
+            onChange={ev => {handleChange(ev)}}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Alcohol by Volume'
+            name='abv'
+            value={abv}
+            onChange={ev => {handleChange(ev)}}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Description'
+            name='description'
+            value={description}
+            onChange={ev => {handleChange(ev)}}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='text'
+            placeholder='Image'
+            name='img'
+            value={img}
+            onChange={ev => {handleChange(ev)}}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='submit'
+            value='Add beer!'
+            className='btn'
+          />
+        </div>
       </form>
     </div>
   )
