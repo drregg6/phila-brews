@@ -1,19 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const BreweryInfo = ({
   phone,
   website,
   mailingList,
-  happyHour: { available }
+  happyHour
 }) => {
+  console.log(happyHour)
   return (
     <div>
       <ul>
         <li>{phone}</li>
         <li>{website}</li>
         <li>{mailingList}</li>
-        <li>{available}</li>
+        <li>{ happyHour.available && 'True'}</li>
       </ul>
     </div>
   )

@@ -27,6 +27,7 @@ const CreateBrewery = ({
     phone: '',
     website: '',
     img: '',
+    mailingList: false,
     available: false,
     happyOpen: '',
     happyClose: '',
@@ -106,6 +107,7 @@ const CreateBrewery = ({
     phone,
     website,
     img,
+    mailingList,
     available,
     happyOpen,
     happyClose,
@@ -213,6 +215,23 @@ const CreateBrewery = ({
         </div>
         <div className='form-group'>
           <p className='form-text'>Information</p>
+          <div className='my'>
+            <label htmlFor='happyHour' className='form-text'>Mailing List</label>
+            <label htmlFor='yes' className='form-text'>Yes</label>
+            <input
+              type='radio'
+              name='yes'
+              checked={mailingList}
+              onChange={() => {setFormData({ ...formData, mailingList: !mailingList })}}
+            />
+            <label htmlFor='no' className='form-text'>No</label>
+            <input
+              type='radio'
+              name='no'
+              checked={!mailingList}
+              onChange={() => {setFormData({ ...formData, mailingList: !mailingList })}}
+            />
+          </div>
           <input
             type='text'
             placeholder='Telephone'
