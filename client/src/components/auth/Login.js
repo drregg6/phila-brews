@@ -32,7 +32,7 @@ const Login = ({ login, isAuthenticated }) => {
         <div className='form-group'>
           <input
             type='email'
-            placeholder='email'
+            placeholder='Email'
             name='email'
             value={email}
             onChange={ev => handleChange(ev)}
@@ -41,7 +41,7 @@ const Login = ({ login, isAuthenticated }) => {
         <div className='form-group'>
           <input
             type='password'
-            placeholder='password'
+            placeholder='Password'
             name='password'
             value={password}
             onChange={ev => handleChange(ev)}
