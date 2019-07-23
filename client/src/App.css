@@ -302,6 +302,7 @@ button {
 	padding: .25rem;
 	font-size: .5rem;
 
+	/* this is relative to the text, NOT the div */
 	position: relative;
 	top: -8.5rem;
 	left: -5rem;

@@ -1,3 +1,9 @@
+/*
+
+Play around with breweries div sizes in the grid
+
+*/
+
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -25,7 +31,7 @@ const Breweries = ({
       </div>
       <div className='container'>
         <Alert />
-        <div style={{display:'grid',gridTemplateColumns:'20rem 20rem 20rem',gridGap:'2rem'}}>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(250px, 1fr))',gridGap:'1rem'}}>
           { loading ? (
             <Spinner />
           ) : (
@@ -34,7 +40,7 @@ const Breweries = ({
                 <div
                   key={brewery._id}
                   className='breweries-link center'
-                  style={{backgroundImage: `url('${brewery.img}')`, backgroundSize: 'cover', backgroundRepeat: 'none', backgroundPosition: 'center', height: '20rem' }}
+                  style={{backgroundImage: `url('${brewery.img}')`, backgroundSize: 'cover', backgroundRepeat: 'none', backgroundPosition: 'center', height: '200px' }}
                 >
                   { isAuthenticated && (
                     <button
