@@ -426,22 +426,35 @@ button {
 	margin: .5rem 0;
 }
 
+.brewery-map {
+	height: 60vh;
+	width: 90%;
+	margin: 2rem auto;
+	z-index: 1;
+}
+
+.beers {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, 250px);
+	grid-auto-rows: minmax(400px, auto);
+	grid-gap: .5rem;
+}
+.beer-card {
+	background: green;
+	padding: 1rem;
+}
+.beer-card img {
+	width: 13rem;
+	height: 13rem;
+	border-radius: 50%;
+}
+
 
 
 /* === Footer === */
 .footer {
 	justify-content: space-around;
 }
-
-
-
-/* === BreweryMap === */
-.brewery-map {
-	height: 50vh;
-	width: 75%;
-	margin: 0 auto;
-}
-
 
 
 
@@ -597,5 +610,9 @@ button {
 	}
 	.brewery-splash h4 {
 		font-size: 1rem;
+	}
+	.brewery-map {
+		width: 100%;
+		height: 50vh;
 	}
 }

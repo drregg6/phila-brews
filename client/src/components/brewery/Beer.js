@@ -11,7 +11,7 @@ const Beer = ({
   beer: { _id, name, abv, description, type, img }
 }) => {
   return (
-    <div>
+    <div className='beer-card'>
       <img alt={name} src={img} /><br />
       {name} | {type} | {abv}
       { isAuthenticated && (

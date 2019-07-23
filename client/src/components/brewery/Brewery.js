@@ -69,31 +69,34 @@ const Brewery = ({
               lat={brewery.lat}
               lng={brewery.lng}
             />
-            { brewery.beers.length > 0 ? (
-              <Fragment>
-                {brewery.beers.map(beer => {
-                  return (
-                    <Beer
-                      key={beer._id}
-                      beer={beer}
-                      breweryId={match.params.id}
-                    />
-                  )
-                })}
-              </Fragment>
-            ) : (
-              <Fragment>
-                Nothing yet.
-              </Fragment>
-            ) }
+            <h2 className='head underline'>Beers</h2>
+            <div className='beers'>
+              { brewery.beers.length > 0 ? (
+                <Fragment>
+                  {brewery.beers.map(beer => {
+                    return (
+                      <Beer
+                        key={beer._id}
+                        beer={beer}
+                        breweryId={match.params.id}
+                      />
+                    )
+                  })}
+                </Fragment>
+              ) : (
+                <Fragment>
+                  Nothing yet.
+                </Fragment>
+              ) }
+            </div>
           </div>
           { isAuthenticated && (
             <Fragment>
               <div>
-                <Link to={`/breweries/${match.params.id}/beers`}>Add a beer</Link>
+                <Link to={`/breweries/${match.params.id}/beers`} className='btn'>Add a beer</Link>
               </div>
               <div>
-                <Link to={`/breweries/${match.params.id}/edit`}>Edit this brewery</Link>
+                <Link to={`/breweries/${match.params.id}/edit`} className='btn'>Edit this brewery</Link>
               </div>
             </Fragment>
           ) }

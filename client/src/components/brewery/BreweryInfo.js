@@ -12,8 +12,8 @@ const BreweryInfo = ({
     <div>
       <h2 className='head underline'>Information</h2>
       <ul className='brewery-info'>
-        <li><span className='strong'>Phone Number: </span> {phone}</li>
-        <li><span className='strong'>Go</span> to their <a href={website} target='_blank' rel="noopener noreferrer">website</a></li>
+        <li><span className='strong'>Phone Number:</span><br /> {phone}</li>
+        <li><span className='strong'>Checkout</span> their <a href={website} target='_blank' rel="noopener noreferrer">website</a></li>
         <li><span className='strong'>Mailing List: </span>{ mailingList ? 'Yep!' : 'Nope' }</li>
         <li><span className='strong'>Happy Hour: </span>{ happyHour.available ? 'Yep!' : 'Nope' }</li>
         { happyHour.available && (
