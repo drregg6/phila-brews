@@ -47,22 +47,25 @@ const Brewery = ({
             )}
           </div>
           <div className='container'>
-            <BreweryInfo
-              phone={brewery.phone}
-              website={brewery.website}
-              mailingList={brewery.mailingList}
-              happyHour={brewery.happyHour}
-            />
-            <BreweryAddress
-              building={brewery.building}
-              street={brewery.street}
-              city={brewery.city}
-              state={brewery.state}
-              zip={brewery.zip}
-            />
-            <BreweryHours
-              hours={brewery.hours}
-            />
+            <h2 className='head'>Information</h2>
+            <div className='brewery-group'>
+              <BreweryInfo
+                phone={brewery.phone}
+                website={brewery.website}
+                mailingList={brewery.mailingList}
+                happyHour={brewery.happyHour}
+              />
+              <BreweryAddress
+                building={brewery.building}
+                street={brewery.street}
+                city={brewery.city}
+                state={brewery.state}
+                zip={brewery.zip}
+              />
+              <BreweryHours
+                hours={brewery.hours}
+              />
+            </div>
             <BreweryMap
               lat={brewery.lat}
               lng={brewery.lng}

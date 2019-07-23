@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 const BreweryInfo = ({
@@ -9,14 +9,20 @@ const BreweryInfo = ({
 }) => {
   console.log(happyHour)
   return (
-    <div>
-      <ul>
-        <li>{phone}</li>
-        <li>{website}</li>
-        <li>{mailingList}</li>
-        <li>{ happyHour.available && 'True'}</li>
+    <Fragment>
+      <ul className='brewery-info'>
+        <li><span className='strong'>Phone Number: </span> {phone}</li>
+        <li><span className='strong'>Go</span> to their <a href={website} target='_blank' rel="noopener noreferrer">website</a></li>
+        <li><span className='strong'>Mailing List: </span>{ mailingList ? 'Yep!' : 'Nope' }</li>
+        <li><span className='strong'>Happy Hour: </span>{ happyHour.available ? 'Yep!' : 'Nope' }</li>
+        { happyHour.available && (
+          <Fragment>
+            <li><span className='strong'>Begins: </span> { happyHour.happyOpen }</li>
+            <li><span className='strong'>Ends: </span> { happyHour.happyClose }</li>
+          </Fragment>
+        )}
       </ul>
-    </div>
+    </Fragment>
   )
 }
 
