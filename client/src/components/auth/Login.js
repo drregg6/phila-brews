@@ -25,25 +25,35 @@ const Login = ({ login, isAuthenticated }) => {
   return (
     <div>
       <h1 className='large'>Admin Login</h1>
-      <form onSubmit={ev => handleSubmit(ev)}>
-        <input
-          type='email'
-          placeholder='email'
-          name='email'
-          value={email}
-          onChange={ev => handleChange(ev)}
-        />
-        <input
-          type='password'
-          placeholder='password'
-          name='password'
-          value={password}
-          onChange={ev => handleChange(ev)}
-        />
-        <input
-          type='submit'
-          value='Login'
-        />
+      <form
+        onSubmit={ev => handleSubmit(ev)}
+        className='form'
+      >
+        <div className='form-group'>
+          <input
+            type='email'
+            placeholder='email'
+            name='email'
+            value={email}
+            onChange={ev => handleChange(ev)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='password'
+            placeholder='password'
+            name='password'
+            value={password}
+            onChange={ev => handleChange(ev)}
+          />
+        </div>
+        <div className='form-group'>
+          <input
+            type='submit'
+            value='Login'
+            className='btn'
+          />
+        </div>
       </form>
     </div>
   )

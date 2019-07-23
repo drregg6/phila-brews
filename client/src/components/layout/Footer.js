@@ -13,7 +13,7 @@ const Footer = ({ auth: { isAuthenticated }, logout }) => {
   const year = date.getFullYear();
 
   return (
-    <footer className='footer center'>
+    <footer className='footer center py-2'>
       <span>
         &copy;{year} <a rel='noopener noreferrer' href='https://www.github.com/drregg6' target='_blank'>Dave Regg</a>
       </span>
