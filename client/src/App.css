@@ -286,6 +286,13 @@ button {
 
 
 /* === Breweries === */
+.hero {
+	background: var(--secondary-color);
+	margin-top: 3rem;
+	width: 100%;
+	height: 50vh;
+}
+
 .breweries-link {
 	margin-top: .5rem;
 	margin-bottom: .5rem;
@@ -294,7 +301,10 @@ button {
 .breweries-btn {
 	padding: .25rem;
 	font-size: .5rem;
-	margin-left: .5rem;
+
+	position: relative;
+	top: -8.5rem;
+	left: -5rem;
 }
 
 /* === Footer === */

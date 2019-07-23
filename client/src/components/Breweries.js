@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Spinner from './layout/Spinner';
+import Alert from './layout/Alert';
 
 import { connect } from 'react-redux';
 import { getBreweries } from '../actions/brewery';
@@ -18,30 +19,41 @@ const Breweries = ({
     getBreweries();
   }, [getBreweries])
   return (
-    <div>
-      <h1 className='large'>Breweries</h1>
-      { loading ? (
-        <Spinner />
-      ) : (
-        breweries.map(brewery => {
-          return (
-            <div key={brewery._id} className='breweries-link center'>
-              <Link to={`/breweries/${brewery._id}`}>
-                {brewery.name}
-              </Link>
-              { isAuthenticated && (
-                <button
-                  className='breweries-btn btn btn-danger'
-                  onClick={ev => deleteBrewery(brewery._id)}
+    <Fragment>
+      <div className='hero hide-sm center'>
+        <h1 className='large'>Breweries</h1>
+      </div>
+      <div className='container'>
+        <Alert />
+        <div style={{display:'flex',justifyContent:'space-around'}}>
+          { loading ? (
+            <Spinner />
+          ) : (
+            breweries.map(brewery => {
+              return (
+                <div
+                  key={brewery._id}
+                  className='breweries-link center'
+                  style={{backgroundImage: `url('${brewery.img}')`, backgroundSize: 'cover', backgroundRepeat: 'none', backgroundPosition: 'center', height: '20rem', width: '20rem'}}
                 >
-                  X
-                </button>
-              ) }
-            </div>
-          )
-        })
-      )}
-    </div>
+                  { isAuthenticated && (
+                    <button
+                      className='breweries-btn btn btn-danger'
+                      onClick={ev => deleteBrewery(brewery._id)}
+                    >
+                      X
+                    </button>
+                  ) }
+                  <Link to={`/breweries/${brewery._id}`}>
+                    {brewery.name}
+                  </Link>
+                </div>
+              )
+            })
+          )}
+        </div>
+      </div>
+    </Fragment>
   )
 }
 
