@@ -41,9 +41,9 @@ const Brewery = ({
               {brewery.name}
             </h1>
             { currentlyOpen ? (
-              <h4 className='success halo'>We are Open!</h4>
+              <h4 className='brewery-sign success halo'>Open!</h4>
             ) : (
-              <h4 className='danger halo'>Sadly, we're closed...</h4>
+              <h4 className='brewery-sign danger halo'>Closed...</h4>
             )}
           </div>
           <div className='container'>
