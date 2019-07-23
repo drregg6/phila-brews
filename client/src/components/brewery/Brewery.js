@@ -30,11 +30,23 @@ const Brewery = ({
         <Spinner />
       ) : (
         <Fragment>
-          <div className='brewery-splash'>
-            <h1 className='large'>{brewery.name}</h1>
-            { currentlyOpen ? <h4>We are Open!</h4> : <h4>Sadly, we're closed...</h4> }
+          <div
+            className='hero center brewery-splash'
+            style={{
+              backgroundImage: `url(${brewery.img})`,
+              backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 100%), url(${brewery.img})`
+            }}
+          >
+            <h1 className='halo'>
+              {brewery.name}
+            </h1>
+            { currentlyOpen ? (
+              <h4 className='success halo'>We are Open!</h4>
+            ) : (
+              <h4 className='danger halo'>Sadly, we're closed...</h4>
+            )}
           </div>
-          <div>
+          <div className='container'>
             <BreweryInfo
               phone={brewery.phone}
               website={brewery.website}

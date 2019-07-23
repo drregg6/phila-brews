@@ -14,6 +14,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navigation from './components/layout/Navigation';
 import Footer from './components/layout/Footer';
 import Breweries from './components/Breweries';
+import Brewery from './components/brewery/Brewery';
 import Routes from './components/routing/Routes';
 
 import store from './store';
@@ -34,6 +35,7 @@ function App() {
         <Navigation />
           <Switch>
             <Route exact path='/' component={Breweries} />
+            <Route exact path='/breweries/:id' component={Brewery} />
             <Route component={Routes} />
           </Switch>
         <Footer />
