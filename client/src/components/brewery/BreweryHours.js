@@ -6,39 +6,40 @@ const BreweryHours = ({
 }) => {
   return (
     <div>
-      <ul>
+      <h2 className='head underline'>Hours</h2>
+      <ul className='brewery-hours'>
         <li>
-          Monday: {hours.monIsOpen ? (
+          <span className='strong'>Monday:</span><br />{hours.monIsOpen ? (
             `${hours.monOpen} - ${hours.monClose}`
           ) : ('Closed')}
         </li>
         <li>
-          Tuesday: {hours.tuesIsOpen ? (
+        <span className='strong'>Tuesday:</span><br />{hours.tuesIsOpen ? (
             `${hours.tuesOpen} - ${hours.tuesClose}`
           ) : ('Closed')}
         </li>
         <li>
-          Wednesday: {hours.wedIsOpen ? (
+        <span className='strong'>Wednesday:</span><br />{hours.wedIsOpen ? (
             `${hours.wedOpen} - ${hours.wedClose}`
           ) : ('Closed')}
         </li>
         <li>
-          Thursday: {hours.thursIsOpen ? (
+        <span className='strong'>Thursday:</span><br />{hours.thursIsOpen ? (
             `${hours.thursOpen} - ${hours.thursClose}`
           ) : ('Closed')}
         </li>
         <li>
-          Friday: {hours.friIsOpen ? (
+        <span className='strong'>Friday:</span><br />{hours.friIsOpen ? (
             `${hours.friOpen} - ${hours.friClose}`
           ) : ('Closed')}
         </li>
         <li>
-          Saturday: {hours.satIsOpen ? (
+        <span className='strong'>Saturday:</span><br />{hours.satIsOpen ? (
             `${hours.satOpen} - ${hours.satClose}`
           ) : ('Closed')}
         </li>
         <li>
-          Sunday: {hours.sunIsOpen ? (
+        <span className='strong'>Sunday:</span><br />{hours.sunIsOpen ? (
             `${hours.sunOpen} - ${hours.sunClose}`
           ) : ('Closed')}
         </li>

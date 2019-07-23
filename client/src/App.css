@@ -421,7 +421,8 @@ button {
 
 /* === Brewery Subs === */
 .brewery-info li,
-.brewery-addr p {
+.brewery-addr p,
+.brewery-hours li {
 	margin: .5rem 0;
 }
 
