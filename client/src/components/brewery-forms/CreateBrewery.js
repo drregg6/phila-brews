@@ -91,17 +91,21 @@ const CreateBrewery = ({ createBrewery, history }) => {
   return (
     <div className='create-brewery'>
       <h1 className='large'>Add a Brewery</h1>
-      <form onSubmit={ev => handleSubmit(ev)}>
+      <form
+        onSubmit={ev => handleSubmit(ev)}
+        className='form'
+      >
         <div className='form-group'>
           <input
             type='text'
-            placeholder='name'
+            placeholder='name *'
             name='name'
             value={name}
             onChange={ev => handleChange(ev)}
-          />  *
+          />
         </div>
         <div className='form-group'>
+          <p className='form-text'>Address</p>
           <input
             type='text'
             placeholder='building number'
@@ -138,7 +142,8 @@ const CreateBrewery = ({ createBrewery, history }) => {
             onChange={ev => handleChange(ev)}
           />
         </div>
-        <div className='form-groupcoords'>
+        <div className='form-group'>
+          <p className='form-text'>Map Coordinates</p>
           <input
             type='text'
             placeholder='lat'
@@ -155,37 +160,7 @@ const CreateBrewery = ({ createBrewery, history }) => {
           />
         </div>
         <div className='form-group'>
-          <label htmlFor='happyHour'>Happy Hour Available?</label>
-          <input
-              type='radio'
-              label='Yes'
-              checked={available}
-              onChange={() => {setFormData({ ...formData, available: !available })}}
-            />
-            <input
-              type='radio'
-              label='No'
-              checked={!available}
-              onChange={() => {setFormData({ ...formData, available: !available })}}
-            />
-            <input
-              type='text'
-              placeholder='Happy Hour Open'
-              name='happyOpen'
-              value={happyOpen}
-              onChange={ev => handleChange(ev)}
-              disabled={!available}
-            />
-            <input
-              type='text'
-              placeholder='Happy Hour Close'
-              name='happyClose'
-              value={happyClose}
-              onChange={ev => handleChange(ev)}
-              disabled={!available}
-            />
-        </div>
-        <div className='form-group'>
+          <p className='form-text'>Information</p>
           <input
             type='text'
             placeholder='phone'
@@ -209,20 +184,55 @@ const CreateBrewery = ({ createBrewery, history }) => {
           />
         </div>
         <div className='form-group'>
-          <div>
-            <label>Open Monday</label>
+          <div className='my'>
+            <label htmlFor='happyHour' className='form-text'>Happy Hour Available?</label>
             <input
-              type='radio'
-              label='Yes'
-              checked={monIsOpen}
-              onChange={() => {setFormData({ ...formData, monIsOpen: !monIsOpen })}}
+                type='radio'
+                label='Yes'
+                checked={available}
+                onChange={() => {setFormData({ ...formData, available: !available })}}
+              />
+              <input
+                type='radio'
+                label='No'
+                checked={!available}
+                onChange={() => {setFormData({ ...formData, available: !available })}}
+              />
+            </div>
+            <input
+              type='text'
+              placeholder='Happy Hour Open'
+              name='happyOpen'
+              value={happyOpen}
+              onChange={ev => handleChange(ev)}
+              disabled={!available}
             />
             <input
-              type='radio'
-              label='No'
-              checked={!monIsOpen}
-              onChange={() => {setFormData({ ...formData, monIsOpen: !monIsOpen })}}
+              type='text'
+              placeholder='Happy Hour Close'
+              name='happyClose'
+              value={happyClose}
+              onChange={ev => handleChange(ev)}
+              disabled={!available}
             />
+        </div>
+        <div className='form-group'>
+          <div className='form-group'>
+            <div className='my'>
+              <label className='form-text'>Open Monday</label>
+              <input
+                type='radio'
+                label='Yes'
+                checked={monIsOpen}
+                onChange={() => {setFormData({ ...formData, monIsOpen: !monIsOpen })}}
+              />
+              <input
+                type='radio'
+                label='No'
+                checked={!monIsOpen}
+                onChange={() => {setFormData({ ...formData, monIsOpen: !monIsOpen })}}
+              />
+            </div>
             <input
               type='text'
               placeholder='Monday Open'
@@ -240,20 +250,23 @@ const CreateBrewery = ({ createBrewery, history }) => {
               disabled={!monIsOpen}
             />
           </div>
-          <div>
-            <label>Open Tuesday</label>
-            <input
-              type='radio'
-              label='Yes'
-              checked={tuesIsOpen}
-              onChange={() => {setFormData({ ...formData, tuesIsOpen: !tuesIsOpen })}}
-            />
-            <input
-              type='radio'
-              label='No'
-              checked={!tuesIsOpen}
-              onChange={() => {setFormData({ ...formData, tuesIsOpen: !tuesIsOpen })}}
-            />
+          <div className='form-group'>
+            <div className='my'>
+              <div className='my'></div>
+              <label className='form-text' className='form-text'>Open Tuesday</label>
+              <input
+                type='radio'
+                label='Yes'
+                checked={tuesIsOpen}
+                onChange={() => {setFormData({ ...formData, tuesIsOpen: !tuesIsOpen })}}
+              />
+              <input
+                type='radio'
+                label='No'
+                checked={!tuesIsOpen}
+                onChange={() => {setFormData({ ...formData, tuesIsOpen: !tuesIsOpen })}}
+              />
+            </div>
             <input
               type='text'
               placeholder='Tuesday Open'
@@ -271,20 +284,22 @@ const CreateBrewery = ({ createBrewery, history }) => {
               disabled={!tuesIsOpen}
             />
           </div>
-          <div>
-            <label>Open Wednesday</label>
-            <input
-              type='radio'
-              label='Yes'
-              checked={wedIsOpen}
-              onChange={() => {setFormData({ ...formData, wedIsOpen: !wedIsOpen })}}
-            />
-            <input
-              type='radio'
-              label='No'
-              checked={!wedIsOpen}
-              onChange={() => {setFormData({ ...formData, wedIsOpen: !wedIsOpen })}}
-            />
+          <div className='form-group'>
+            <div className='my'>
+              <label className='form-text'>Open Wednesday</label>
+              <input
+                type='radio'
+                label='Yes'
+                checked={wedIsOpen}
+                onChange={() => {setFormData({ ...formData, wedIsOpen: !wedIsOpen })}}
+              />
+              <input
+                type='radio'
+                label='No'
+                checked={!wedIsOpen}
+                onChange={() => {setFormData({ ...formData, wedIsOpen: !wedIsOpen })}}
+              />
+            </div>
             <input
               type='text'
               placeholder='Wednesday Open'
@@ -302,20 +317,22 @@ const CreateBrewery = ({ createBrewery, history }) => {
               disabled={!wedIsOpen}
             />
           </div>
-          <div>
-            <label>Open Thursday</label>
-            <input
-              type='radio'
-              label='Yes'
-              checked={thursIsOpen}
-              onChange={() => {setFormData({ ...formData, thursIsOpen: !thursIsOpen })}}
-            />
-            <input
-              type='radio'
-              label='No'
-              checked={!thursIsOpen}
-              onChange={() => {setFormData({ ...formData, thursIsOpen: !thursIsOpen })}}
-            />
+          <div className='form-group'>
+            <div className='my'>
+              <label className='form-text'>Open Thursday</label>
+              <input
+                type='radio'
+                label='Yes'
+                checked={thursIsOpen}
+                onChange={() => {setFormData({ ...formData, thursIsOpen: !thursIsOpen })}}
+              />
+              <input
+                type='radio'
+                label='No'
+                checked={!thursIsOpen}
+                onChange={() => {setFormData({ ...formData, thursIsOpen: !thursIsOpen })}}
+              />
+            </div>
             <input
               type='text'
               placeholder='Thursday Open'
@@ -333,20 +350,22 @@ const CreateBrewery = ({ createBrewery, history }) => {
               disabled={!thursIsOpen}
             />
           </div>
-          <div>
-            <label>Open Friday</label>
-            <input
-              type='radio'
-              label='Yes'
-              checked={friIsOpen}
-              onChange={() => {setFormData({ ...formData, friIsOpen: !friIsOpen })}}
-            />
-            <input
-              type='radio'
-              label='No'
-              checked={!friIsOpen}
-              onChange={() => {setFormData({ ...formData, friIsOpen: !friIsOpen })}}
-            />
+          <div className='form-group'>
+            <div className='my'>
+              <label className='form-text'>Open Friday</label>
+              <input
+                type='radio'
+                label='Yes'
+                checked={friIsOpen}
+                onChange={() => {setFormData({ ...formData, friIsOpen: !friIsOpen })}}
+              />
+              <input
+                type='radio'
+                label='No'
+                checked={!friIsOpen}
+                onChange={() => {setFormData({ ...formData, friIsOpen: !friIsOpen })}}
+              />
+            </div>
             <input
               type='text'
               placeholder='Friday Open'
@@ -364,20 +383,22 @@ const CreateBrewery = ({ createBrewery, history }) => {
               disabled={!friIsOpen}
             />
           </div>
-          <div>
-            <label>Open Saturday</label>
-            <input
-              type='radio'
-              label='Yes'
-              checked={satIsOpen}
-              onChange={() => {setFormData({ ...formData, satIsOpen: !satIsOpen })}}
-            />
-            <input
-              type='radio'
-              label='No'
-              checked={!satIsOpen}
-              onChange={() => {setFormData({ ...formData, satIsOpen: !satIsOpen })}}
-            />
+          <div className='form-group'>
+            <div className='my'>
+              <label className='form-text'>Open Saturday</label>
+              <input
+                type='radio'
+                label='Yes'
+                checked={satIsOpen}
+                onChange={() => {setFormData({ ...formData, satIsOpen: !satIsOpen })}}
+              />
+              <input
+                type='radio'
+                label='No'
+                checked={!satIsOpen}
+                onChange={() => {setFormData({ ...formData, satIsOpen: !satIsOpen })}}
+              />
+            </div>
             <input
               type='text'
               placeholder='Saturday Open'
@@ -395,20 +416,22 @@ const CreateBrewery = ({ createBrewery, history }) => {
               disabled={!satIsOpen}
             />
           </div>
-          <div>
-            <label>Open Sunday</label>
-            <input
-              type='radio'
-              label='Yes'
-              checked={sunIsOpen}
-              onChange={() => {setFormData({ ...formData, sunIsOpen: !sunIsOpen })}}
-            />
-            <input
-              type='radio'
-              label='No'
-              checked={!sunIsOpen}
-              onChange={() => {setFormData({ ...formData, sunIsOpen: !sunIsOpen })}}
-            />
+          <div className='form-group'>
+            <div className='my'>
+              <label className='form-text'>Open Sunday</label>
+              <input
+                type='radio'
+                label='Yes'
+                checked={sunIsOpen}
+                onChange={() => {setFormData({ ...formData, sunIsOpen: !sunIsOpen })}}
+              />
+              <input
+                type='radio'
+                label='No'
+                checked={!sunIsOpen}
+                onChange={() => {setFormData({ ...formData, sunIsOpen: !sunIsOpen })}}
+              />
+            </div>
             <input
               type='text'
               placeholder='Sunday Open'
@@ -430,6 +453,7 @@ const CreateBrewery = ({ createBrewery, history }) => {
         <input
           type='submit'
           value='Add Brewery'
+          className='btn'
         />
       </form>
     </div>
