@@ -98,7 +98,7 @@ const CreateBrewery = ({ createBrewery, history }) => {
         <div className='form-group'>
           <input
             type='text'
-            placeholder='name *'
+            placeholder='Name *'
             name='name'
             value={name}
             onChange={ev => handleChange(ev)}
@@ -108,35 +108,35 @@ const CreateBrewery = ({ createBrewery, history }) => {
           <p className='form-text'>Address</p>
           <input
             type='text'
-            placeholder='building number'
+            placeholder='Building Number'
             name='building'
             value={building}
             onChange={ev => handleChange(ev)}
           />
           <input
             type='text'
-            placeholder='street'
+            placeholder='Street'
             name='street'
             value={street}
             onChange={ev => handleChange(ev)}
           />
           <input
             type='text'
-            placeholder='city'
+            placeholder='City'
             name='city'
             value={city}
             onChange={ev => handleChange(ev)}
           />
           <input
             type='text'
-            placeholder='state'
+            placeholder='State'
             name='state'
             value={state}
             onChange={ev => handleChange(ev)}
           />
           <input
             type='text'
-            placeholder='zip'
+            placeholder='Zip'
             name='zip'
             value={zip}
             onChange={ev => handleChange(ev)}
@@ -146,14 +146,14 @@ const CreateBrewery = ({ createBrewery, history }) => {
           <p className='form-text'>Map Coordinates</p>
           <input
             type='text'
-            placeholder='lat'
+            placeholder='Latitude'
             name='lat'
             value={lat}
             onChange={ev => handleChange(ev)}
           />
           <input
             type='text'
-            placeholder='lng'
+            placeholder='Longitude'
             name='lng'
             value={lng}
             onChange={ev => handleChange(ev)}
@@ -163,21 +163,21 @@ const CreateBrewery = ({ createBrewery, history }) => {
           <p className='form-text'>Information</p>
           <input
             type='text'
-            placeholder='phone'
+            placeholder='Telephone'
             name='phone'
             value={phone}
             onChange={ev => handleChange(ev)}
           />
           <input
             type='text'
-            placeholder='website'
+            placeholder='Website'
             name='website'
             value={website}
             onChange={ev => handleChange(ev)}
           />
           <input
             type='text'
-            placeholder='image'
+            placeholder='Image'
             name='img'
             value={img}
             onChange={ev => handleChange(ev)}
@@ -450,11 +450,13 @@ const CreateBrewery = ({ createBrewery, history }) => {
             />
           </div>
         </div>
-        <input
-          type='submit'
-          value='Add Brewery'
-          className='btn'
-        />
+        <div className='form-group'>
+          <input
+            type='submit'
+            value='Add Brewery'
+            className='btn'
+          />
+        </div>
       </form>
     </div>
   )

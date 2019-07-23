@@ -259,6 +259,7 @@ button {
 .form input[type='email'],
 .form input[type='password'],
 .form input[type='date'] {
+	margin: 0.5rem 0;
 	padding: .4rem 1.3rem;
 	display: block;
 	width: 100%;
