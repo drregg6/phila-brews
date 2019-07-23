@@ -25,7 +25,7 @@ const Navigation = ({ auth: {loading, isAuthenticated} }) => {
         {
           !loading && isAuthenticated && (
             <li>
-              <Link to='/new-brewery'>New Brewery</Link>
+              <Link to='/new-brewery'>New Brew</Link>
             </li>
           )
         }

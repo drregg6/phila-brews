@@ -31,16 +31,16 @@ const Breweries = ({
       </div>
       <div className='container'>
         <Alert />
-        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill, minmax(250px, 1fr))',gridGap:'1rem'}}>
+        <div className='breweries-container'>
           { loading ? (
             <Spinner />
           ) : (
             breweries.map(brewery => {
-              return (
+            return (
                 <div
                   key={brewery._id}
                   className='breweries-link center'
-                  style={{backgroundImage: `url('${brewery.img}')`, backgroundSize: 'cover', backgroundRepeat: 'none', backgroundPosition: 'center', height: '200px' }}
+                  style={{ backgroundImage: `url('${brewery.img}')`, backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 100%), url(${brewery.img})` }}
                 >
                   { isAuthenticated && (
                     <button
