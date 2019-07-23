@@ -27,7 +27,9 @@ const Brewery = ({
   return (
     <div>
       { loading || brewery === null ? (
-        <Spinner />
+        <section className='container'>
+          <Spinner />
+        </section>
       ) : (
         <Fragment>
           <div
@@ -47,6 +49,9 @@ const Brewery = ({
             )}
           </div>
           <div className='container'>
+            {isAuthenticated && (
+              <Link to={`/breweries/${match.params.id}/edit`} className='btn btn-edit-brewery'>Edit this brewery</Link>
+            )}
             <div className='brewery-group'>
               <BreweryInfo
                 phone={brewery.phone}
@@ -66,6 +71,7 @@ const Brewery = ({
               />
             </div>
             <BreweryMap
+              name={brewery.name}
               lat={brewery.lat}
               lng={brewery.lng}
             />
@@ -85,19 +91,17 @@ const Brewery = ({
                 </Fragment>
               ) : (
                 <Fragment>
-                  Nothing yet.
+                  <div></div>
+                  <div>Nothing.</div>
+                  <div>Yet.</div>
+                  <div></div>
                 </Fragment>
               ) }
             </div>
           </div>
           { isAuthenticated && (
             <Fragment>
-              <div>
-                <Link to={`/breweries/${match.params.id}/beers`} className='btn'>Add a beer</Link>
-              </div>
-              <div>
-                <Link to={`/breweries/${match.params.id}/edit`} className='btn'>Edit this brewery</Link>
-              </div>
+              <Link to={`/breweries/${match.params.id}/beers`} className='btn'>Add a beer</Link>
             </Fragment>
           ) }
         </Fragment>

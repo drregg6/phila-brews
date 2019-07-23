@@ -27,7 +27,7 @@ const Breweries = ({
   return (
     <Fragment>
       <div className='hero hide-sm center'>
-        <h1 className='large'>Breweries</h1>
+        <h1 className='large'>Phila Brews</h1>
       </div>
       <div className='container'>
         <Alert />
