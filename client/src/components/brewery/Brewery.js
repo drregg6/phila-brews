@@ -30,8 +30,10 @@ const Brewery = ({
         <Spinner />
       ) : (
         <Fragment>
-          <h1 className='large'>{brewery.name}</h1>
-          { currentlyOpen ? <h4>We are Open!</h4> : <h4>Sadly, we're closed...</h4> }
+          <div className='brewery-splash'>
+            <h1 className='large'>{brewery.name}</h1>
+            { currentlyOpen ? <h4>We are Open!</h4> : <h4>Sadly, we're closed...</h4> }
+          </div>
           <div>
             <BreweryInfo
               phone={brewery.phone}
