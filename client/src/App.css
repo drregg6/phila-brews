@@ -188,6 +188,11 @@ a:hover {
 	margin-bottom: 1rem;
 }
 
+.beer-head {
+	font-size: 1.5rem;
+	margin-bottom: .4rem;
+}
+
 .lead {
 	display: block;
 }
@@ -380,7 +385,6 @@ button {
 	padding: .25rem;
 	font-size: .5rem;
 
-	/* this is relative to the text, NOT the div */
 	position: absolute;
 	top: 10px;
 	right: 10px;
@@ -440,8 +444,21 @@ button {
 	grid-gap: .5rem;
 }
 .beer-card {
-	background: green;
+	background: #eee;
 	padding: 1rem;
+
+	border: 2px solid #333;
+	border-radius: 1px;
+
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.btn-delete-beer {
+	position: absolute;
+	top: 10px;
+	right: 10px;
 }
 .beer-card img {
 	width: 13rem;
