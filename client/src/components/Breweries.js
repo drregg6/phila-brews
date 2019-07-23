@@ -25,7 +25,7 @@ const Breweries = ({
       </div>
       <div className='container'>
         <Alert />
-        <div style={{display:'flex',justifyContent:'space-around'}}>
+        <div style={{display:'grid',gridTemplateColumns:'20rem 20rem 20rem',gridGap:'2rem'}}>
           { loading ? (
             <Spinner />
           ) : (
@@ -34,7 +34,7 @@ const Breweries = ({
                 <div
                   key={brewery._id}
                   className='breweries-link center'
-                  style={{backgroundImage: `url('${brewery.img}')`, backgroundSize: 'cover', backgroundRepeat: 'none', backgroundPosition: 'center', height: '20rem', width: '20rem'}}
+                  style={{backgroundImage: `url('${brewery.img}')`, backgroundSize: 'cover', backgroundRepeat: 'none', backgroundPosition: 'center', height: '20rem' }}
                 >
                   { isAuthenticated && (
                     <button
