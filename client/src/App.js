@@ -12,10 +12,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // Components
 import Navigation from './components/layout/Navigation';
-import Footer from './components/layout/Footer';
 import Breweries from './components/Breweries';
+import Contact from './components/Contact';
+import About from './components/About';
 import Brewery from './components/brewery/Brewery';
 import Routes from './components/routing/Routes';
+import Footer from './components/layout/Footer';
 
 import store from './store';
 import { loadUser } from './actions/auth';
@@ -35,6 +37,8 @@ function App() {
         <Navigation />
           <Switch>
             <Route exact path='/' component={Breweries} />
+            <Route exact path='/about' component={About} />
+            <Route exact path='/contact' component={Contact} />
             <Route exact path='/breweries/:id' component={Brewery} />
             <Route component={Routes} />
           </Switch>

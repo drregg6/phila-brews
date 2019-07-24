@@ -105,6 +105,12 @@ a:hover {
 	height: 75vh;
 }
 
+.main-splash {
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
 .halo {
 	text-shadow: 2px 2px 2px rgba(245,245,245,0.15),
 	-2px -2px 2px rgba(245,245,245,0.15),
@@ -223,20 +229,10 @@ a:hover {
 	text-decoration: underline;
 }
 
-.primary {
-	color: var(--primary-color);
-}
-.primary-light {
-	color: var(--primary-light);
-}
-.secondary {
-	color: var(--secondary-color);
-}
-.secondary-light {
-	color: var(--secondary-light);
-}
-.highlight {
-	color: var(--highlight);
+.text-p {
+	margin-bottom: 2rem;
+	line-height: 1.5;
+	text-align: left;
 }
 
 
@@ -255,6 +251,22 @@ a:hover {
 .alert-neutral,
 .neutral {
 	color: #535353;
+}
+
+.primary {
+	color: var(--primary-color);
+}
+.primary-light {
+	color: var(--primary-light);
+}
+.secondary {
+	color: var(--secondary-color);
+}
+.secondary-light {
+	color: var(--secondary-light);
+}
+.highlight {
+	color: var(--highlight);
 }
 
 
@@ -327,7 +339,9 @@ input[type='submit'] {
 .form input[type='text'],
 .form input[type='email'],
 .form input[type='password'],
-.form input[type='date'] {
+.form input[type='date'],
+.form textarea {
+	font-family: Verdana, Geneva, sans-serif;
 	margin: 0.5rem 0;
 	padding: .4rem 1.3rem;
 	display: block;
@@ -395,13 +409,9 @@ input[type='submit'] {
 	grid-gap: 1rem;
 }
 
-.breweries-splash {
+.breweries-bg {
 	background-image: url('https://twt-thumbs.washtimes.com/media/image/2019/05/05/AP_19045476255014_c0-148-3006-1900_s1770x1032.jpg?3aaaef111a684fdfa0be7aaedb6dda27d0c7ff6b');
 	background-image: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 100%), url('https://twt-thumbs.washtimes.com/media/image/2019/05/05/AP_19045476255014_c0-148-3006-1900_s1770x1032.jpg?3aaaef111a684fdfa0be7aaedb6dda27d0c7ff6b');
-
-	background-position: top;
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 
 .breweries-link {
@@ -514,6 +524,24 @@ input[type='submit'] {
 .footer {
 	justify-content: space-around;
 }
+
+
+/* === About === */
+.about-container {
+	display: flex;
+}
+
+
+/* === Contact === */
+.contact {
+	margin: 2rem 0;
+}
+
+.contact-social {
+	display: inline-block;
+	margin: 1rem;
+}
+
 
 
 /* === NotFound === */

@@ -20,7 +20,7 @@ const Breweries = ({
   }, [getBreweries])
   return (
     <Fragment>
-      <div className='hero hide-sm center breweries-splash'>
+      <div className='hero hide-sm center main-splash breweries-bg'>
         <h1 className='x-large halo'>Phila Brews</h1>
       </div>
       <div className='container'>
