@@ -2,7 +2,11 @@
 
 TODO:
 = EditBeer
-= Styles -> MOBILE FIRST
+= alertType is not working
+= Images for About and Contact
+= Contact form
+= Set up for deployment
+= Populate database
 
 */
 

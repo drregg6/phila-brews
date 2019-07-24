@@ -1,3 +1,13 @@
+/*
+
+= Get images of Philly for About and Contact
+= Thank You section
+    = Font awesome
+    = Brad Traversy
+    = Images
+
+*/
+
 import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
