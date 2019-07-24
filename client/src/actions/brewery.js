@@ -66,7 +66,7 @@ export const createBrewery = (formData, history, isUpdating = false) => async di
       type: UPDATE_BREWERY,
       payload: res.data
     })
-    dispatch(setAlert(isUpdating ? 'Brewery Updated!' : 'Brewery Created!'));
+    dispatch(setAlert(isUpdating ? 'Brewery Updated!' : 'Brewery Created!'), 'success');
     
     history.push('/');
   } catch (err) {
@@ -74,7 +74,7 @@ export const createBrewery = (formData, history, isUpdating = false) => async di
     const errors = err.response.data.errors;
     if (errors) {
       // set status-type
-      errors.forEach(error => dispatch(setAlert(error.msg)));
+      errors.forEach(error => dispatch(setAlert(error.msg), 'danger'));
     }
     dispatch({
       type: BREWERY_ERROR,
@@ -92,7 +92,7 @@ export const deleteBrewery = (id) => async dispatch => {
         type: DELETE_BREWERY,
         payload: id
       });
-      dispatch(setAlert('Brewery Removed'));
+      dispatch(setAlert('Brewery Removed'), 'success');
     } catch (err) {
       dispatch({
         type: BREWERY_ERROR,
@@ -116,12 +116,12 @@ export const addBeer = (formData, id, history) => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('Beer added!'));
+    dispatch(setAlert('Beer added!'), 'success');
     history.push(`/breweries/${id}`);
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.message)))
+      errors.forEach(error => dispatch(setAlert(error.message), 'danger'))
     }
     dispatch({
       type: BREWERY_ERROR,
@@ -139,7 +139,7 @@ export const deleteBeer = (breweryId, beerId) => async dispatch => {
       payload: res.data
     });
 
-    dispatch(setAlert('Beer removed!'));
+    dispatch(setAlert('Beer removed!'), 'success');
   } catch (err) {
     dispatch({
       type: BREWERY_ERROR,

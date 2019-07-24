@@ -1,9 +1,3 @@
-/*
-
-Play around with breweries div sizes in the grid
-
-*/
-
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -26,8 +20,8 @@ const Breweries = ({
   }, [getBreweries])
   return (
     <Fragment>
-      <div className='hero hide-sm center'>
-        <h1 className='large'>Phila Brews</h1>
+      <div className='hero hide-sm center breweries-splash'>
+        <h1 className='x-large halo'>Phila Brews</h1>
       </div>
       <div className='container'>
         <Alert />
@@ -40,7 +34,7 @@ const Breweries = ({
                 <div
                   key={brewery._id}
                   className='breweries-link center'
-                  style={{ backgroundImage: `url('${brewery.img}')`, backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 100%), url(${brewery.img})` }}
+                  style={{ backgroundImage: `url('${brewery.img}')`, backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.35) 100%), url(${brewery.img})` }}
                 >
                   { isAuthenticated && (
                     <button
@@ -50,7 +44,7 @@ const Breweries = ({
                       X
                     </button>
                   ) }
-                  <Link to={`/breweries/${brewery._id}`}>
+                  <Link className='invert-halo' to={`/breweries/${brewery._id}`}>
                     {brewery.name}
                   </Link>
                 </div>

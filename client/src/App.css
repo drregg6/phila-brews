@@ -1,5 +1,11 @@
 :root {
-	--secondary-color: yellow;
+	--primary-color: #e37222;
+	--secondary-color: #07889b;
+	--primary-light: #eeaa7b;
+	--secondary-light: #66b9bf;
+	--highlight: #4717f6;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
 }
 
 /* === Reset === */
@@ -47,7 +53,7 @@ table {
 	border-spacing: 0;
 }
 a:visited {
-	color: #333;
+	color: var(--primary-color);
 }
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
@@ -73,10 +79,11 @@ h1 {
 	font-size: 5rem;
 }
 a {
+	color: var(--primary-color);
 	text-decoration: none;
 }
 a:hover {
-	color: blue;
+	color: var(--primary-light);
 }
 
 
@@ -103,6 +110,13 @@ a:hover {
 	-2px -2px 2px rgba(245,245,245,0.15),
 	-2px 2px 2px rgba(245,245,245,0.15),
 	2px -2px 2px rgba(245,245,245,0.15);
+}
+
+.invert-halo {
+	text-shadow: 2px 2px 2px rgba(75,75,75,0.65),
+	-2px -2px 2px rgba(75,75,75,0.65),
+	-2px 2px 2px rgba(75,75,75,0.65),
+	2px -2px 2px rgba(75,75,75,0.65);
 }
 
 .center {
@@ -174,27 +188,27 @@ a:hover {
 	font-size: 4rem;
 	line-height: 1.2;
 	margin-bottom: 1rem;
+	color: var(--primary-color);
 }
 
 .large {
 	font-size: 3rem;
 	line-height: 1.2;
 	margin-bottom: 1rem;
+	color: var(--primary-color);
 }
 
 .head {
 	font-size: 1.3rem;
 	line-height: 1.2;
 	margin-bottom: 1rem;
+	color: var(--primary-color);
 }
 
 .beer-head {
 	font-size: 1.5rem;
 	margin-bottom: .4rem;
-}
-
-.lead {
-	display: block;
+	color: var(--primary-color);
 }
 
 .text-center {
@@ -209,17 +223,33 @@ a:hover {
 	text-decoration: underline;
 }
 
+.primary {
+	color: var(--primary-color);
+}
+.primary-light {
+	color: var(--primary-light);
+}
+.secondary {
+	color: var(--secondary-color);
+}
+.secondary-light {
+	color: var(--secondary-light);
+}
+.highlight {
+	color: var(--highlight);
+}
+
 
 
 /* === Colors === */
 .alert-success,
 .success {
-	color: green;
+	color: var(--success-color);
 }
 
 .alert-danger,
 .danger {
-	color: red;
+	color: var(--danger-color);
 }
 
 .alert-neutral,
@@ -230,9 +260,10 @@ a:hover {
 
 
 /* === Buttons === */
-button {
+button,
+input[type='submit'] {
 	background: #fff;
-	color: #535353;
+	color: var(--primary-color);
 	border: 1px solid;
 	border-radius: .15rem;
 	text-decoration: none;
@@ -241,8 +272,8 @@ button {
 .btn {
 	display: inline-block;
 	font-size: 1rem;
-	color: #535353;
-	border: 1px solid #535353;
+	color: var(--primary-color);
+	border: 1px solid var(--primary-color);
 	border-radius: .15rem;
 	padding: .4rem 1.3rem;
 	text-decoration: none;
@@ -251,17 +282,17 @@ button {
 }
 .btn:hover {
 	color: #fff;
-	background: #535353;
+	background: var(--primary-color);
 	text-decoration: none;
 }
 
 .btn-primary {
-	color: green;
-	border-color: green;
+	color: var(--secondary-color);
+	border-color: var(secondary-color);
 }
 .btn-primary:hover {
 	color: #fff;
-	background: green;
+	background: var(secondary--color);
 }
 
 .btn-danger {
@@ -351,7 +382,7 @@ button {
 	padding: 1rem;
 	margin: 1rem 0;
 	opacity: .9;
-	background: #ccc;
+	background: var(--primary-light);
 	color: #333;
 }
 
@@ -362,6 +393,15 @@ button {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 	grid-gap: 1rem;
+}
+
+.breweries-splash {
+	background-image: url('https://twt-thumbs.washtimes.com/media/image/2019/05/05/AP_19045476255014_c0-148-3006-1900_s1770x1032.jpg?3aaaef111a684fdfa0be7aaedb6dda27d0c7ff6b');
+	background-image: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 100%), url('https://twt-thumbs.washtimes.com/media/image/2019/05/05/AP_19045476255014_c0-148-3006-1900_s1770x1032.jpg?3aaaef111a684fdfa0be7aaedb6dda27d0c7ff6b');
+
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .breweries-link {
@@ -375,10 +415,6 @@ button {
 
 .breweries-link a {
 	font-size: 1.3rem;
-	text-shadow: 2px 2px 2px rgba(245,245,245,0.15),
-	-2px -2px 2px rgba(245,245,245,0.15),
-	-2px 2px 2px rgba(245,245,245,0.15),
-	2px -2px 2px rgba(245,245,245,0.15);
 }
 
 .breweries-btn {

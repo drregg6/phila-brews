@@ -15,7 +15,7 @@ const Beer = ({
       { isAuthenticated && (
       <button
         onClick={() => {deleteBeer(breweryId, _id)}}
-        className='btn-delete-beer'
+        className='btn-delete-beer btn-danger'
       >
         X
       </button>
@@ -23,9 +23,9 @@ const Beer = ({
       <img alt={name} src={img} />
       <h2 className='beer-head'>{name}</h2>
       <div style={{display:'flex',justifyContent:'space-around'}}>
-        <span>{type}</span><span>{abv}</span>
+        <span className='secondary'>{type}</span><span className='secondary-light'>{abv}</span>
       </div>
-      <p>{description}</p>
+      <p className='primary'>{description}</p>
     </div>
   )
 }

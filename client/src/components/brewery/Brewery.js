@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Spinner from '../layout/Spinner';
+import Alert from '../layout/Alert';
 import BreweryAddress from './BreweryAddress';
 import BreweryHours from './BreweryHours';
 import BreweryInfo from './BreweryInfo';
@@ -39,7 +40,7 @@ const Brewery = ({
               backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 100%), url(${brewery.img})`
             }}
           >
-            <h1 className='halo'>
+            <h1 className='invert-halo secondary'>
               {brewery.name}
             </h1>
             { currentlyOpen ? (
@@ -49,6 +50,7 @@ const Brewery = ({
             )}
           </div>
           <div className='container'>
+            <Alert />
             {isAuthenticated && (
               <Link to={`/breweries/${match.params.id}/edit`} className='btn btn-edit-brewery'>Edit this brewery</Link>
             )}
