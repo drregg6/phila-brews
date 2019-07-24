@@ -8,6 +8,7 @@ import CreateBrewery from '../brewery-forms/CreateBrewery';
 import EditBrewery from '../brewery-forms/EditBrewery';
 import AddBeer from '../brewery-forms/AddBeer';
 import Login from '../auth/Login';
+import NotFound from '../layout/NotFound';
 
 const Routes = () => {
   return (
@@ -17,6 +18,7 @@ const Routes = () => {
       <PrivateRoute exact path='/new-brewery' component={CreateBrewery} />
       <PrivateRoute exact path='/breweries/:id/edit' component={EditBrewery} />
       <PrivateRoute exact path='/breweries/:id/beers' component={AddBeer} />
+      <Route component={NotFound} />
     </section>
   )
 }
