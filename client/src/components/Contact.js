@@ -5,10 +5,32 @@
 
 */
 
-import React, { Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 const Contact = () => {
+  const [ formData, setFormData ] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    msg: ''
+  });
+
+  const { name, email, subject, msg } = formData;
+  const handleChange = ev => {
+    setFormData({ ...formData, [ev.target.name]: ev.target.value });
+  };
+  const handleSubmit = ev => {
+    ev.preventDefault();
+    console.log(formData);
+    setFormData({
+      name: '',
+      email: '',
+      subject: '',
+      msg: ''
+    });
+  }
+
   return (
     <Fragment>
       <div className='hero center main-splash breweries-bg'>
@@ -23,21 +45,35 @@ const Contact = () => {
         </div>
         <div className='contact'>
           <h2 className='head secondary'>Email Me</h2>
-          <form className='form'>
+          <form className='form' onSubmit={ev => {handleSubmit(ev)}}>
             <div className='form-group'>
+            <input
+                type='text'
+                name='name'
+                onChange={ev => {handleChange(ev)}}
+                value={name}
+                placeholder='First name'
+              />
               <input
                 type='email'
                 name='email'
-                placeholder='Your email address'
+                onChange={ev => {handleChange(ev)}}
+                value={email}
+                placeholder='Email address'
               />
               <input
                 type='text'
                 name='subject'
+                onChange={ev => {handleChange(ev)}}
+                value={subject}
                 placeholder='Subject line'
               />
               <textarea
                 placeholder='Write your message'
                 rows='5'
+                name='msg'
+                onChange={ev => {handleChange(ev)}}
+                value={msg}
               ></textarea>
               <input
                 type='submit'
