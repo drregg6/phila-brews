@@ -1,27 +1,13 @@
-/*
-
-Might need a GET_BEER route
-Go through brewery.beers and extract the beer
-Then display the information
-
-Would need to add to ROUTES, ACTIONS, and REDUCER
-
-EditBeer should work similarly to AddBeer
-Uses the same route
-Will update by using exact NAME
-
-*/
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { addBeer, getBrewery, getBeer } from '../../actions/brewery';
+import { addBeer, getBeer } from '../../actions/brewery';
 
-const AddBeer = ({
+const EditBeer = ({
   history,
   match,
   addBeer,
-  getBrewery,
   getBeer,
   brewery: { beer, loading }
 }) => {
@@ -32,6 +18,19 @@ const AddBeer = ({
     description: '',
     img: ''
   });
+
+  useEffect(() => {
+    getBeer(match.params.id, match.params.beer_id);
+    
+    setFormData({
+      name: loading || !beer.name ? '' : beer.name,
+      type: loading || !beer.type ? '' : beer.type,
+      abv: loading || !beer.abv ? '' : beer.abv,
+      description: loading || !beer.description ? '' : beer.description,
+      img: loading || !beer.img ? '' : beer.img
+    });
+  }, [getBeer, match.params.id, match.params.beer_id, setFormData]);
+
   const {
     name,
     type,
@@ -39,16 +38,6 @@ const AddBeer = ({
     description,
     img
   } = formData;
-
-  useEffect(() => {
-    getBeer(match.params.id, match.params.beer_id);
-    // getBrewery(match.params.id);
-    // if (!loading &&
-    // beers !== null &&
-    // beers.length > 0) {
-    //   beers.map(beer => console.log(beer._id));
-    // }
-  }, [getBeer, match.params.id, match.params.beer_id]);
 
   const handleChange = ev => {
     setFormData({ ...formData, [ev.target.name]: ev.target.value });
@@ -117,7 +106,7 @@ const AddBeer = ({
   )
 }
 
-AddBeer.propTypes = {
+EditBeer.propTypes = {
   addBeer: PropTypes.func.isRequired,
   getBeer: PropTypes.func.isRequired,
   brewery: PropTypes.object
@@ -129,5 +118,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addBeer, getBrewery, getBeer }
-)(AddBeer);
+  { addBeer, getBeer }
+)(EditBeer);
