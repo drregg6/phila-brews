@@ -7,8 +7,13 @@
 
 import React, { useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const Contact = () => {
+import { connect } from 'react-redux';
+import { sendEmail } from '../actions/contact';
+
+
+const Contact = ({ sendEmail }) => {
   const [ formData, setFormData ] = useState({
     email: '',
     subject: '',
@@ -21,6 +26,7 @@ const Contact = () => {
   };
   const handleSubmit = ev => {
     ev.preventDefault();
+    console.log(formData);
     sendEmail(formData);
     setFormData({
       email: '',
@@ -96,4 +102,8 @@ const Contact = () => {
   )
 };
 
-export default Contact;
+Contact.propTypes = {
+  sendEmail: PropTypes.func.isRequired
+};
+
+export default connect( null, { sendEmail } )(Contact);
