@@ -10,13 +10,12 @@ import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const [ formData, setFormData ] = useState({
-    name: '',
     email: '',
     subject: '',
     msg: ''
   });
 
-  const { name, email, subject, msg } = formData;
+  const { email, subject, msg } = formData;
   const handleChange = ev => {
     setFormData({ ...formData, [ev.target.name]: ev.target.value });
   };
@@ -24,7 +23,6 @@ const Contact = () => {
     ev.preventDefault();
     console.log(formData);
     setFormData({
-      name: '',
       email: '',
       subject: '',
       msg: ''
@@ -47,13 +45,6 @@ const Contact = () => {
           <h2 className='head secondary'>Email Me</h2>
           <form className='form' onSubmit={ev => {handleSubmit(ev)}}>
             <div className='form-group'>
-            <input
-                type='text'
-                name='name'
-                onChange={ev => {handleChange(ev)}}
-                value={name}
-                placeholder='First name'
-              />
               <input
                 type='email'
                 name='email'
