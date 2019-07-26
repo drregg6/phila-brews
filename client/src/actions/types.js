@@ -19,7 +19,3 @@ export const BREWERY_ERROR = 'BREWERY_ERROR';
 // Beer
 export const ADD_BEER = 'ADD_BEER';
 export const DELETE_BEER = 'DELETE_BEER';
-
-// Contact
-export const SEND_EMAIL = 'SEND_EMAIL';
-export const EMAIL_ERROR = 'EMAIL_ERROR';
