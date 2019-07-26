@@ -21,7 +21,6 @@ const Contact = () => {
   };
   const handleSubmit = ev => {
     ev.preventDefault();
-    sendEmail(formData);
     setFormData({
       email: '',
       subject: '',
