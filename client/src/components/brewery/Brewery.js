@@ -79,7 +79,7 @@ const Brewery = ({
             />
             <h2 className='head underline'>Beers</h2>
             <div className='beers'>
-              { brewery.beers.length > 0 ? (
+              { loading || !brewery.beers ? ('') : brewery.beers.length > 0 ? (
                 <Fragment>
                   {brewery.beers.map(beer => {
                     return (
