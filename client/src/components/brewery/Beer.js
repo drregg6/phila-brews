@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { deleteBeer } from '../../actions/brewery';
@@ -26,6 +27,9 @@ const Beer = ({
         <span className='secondary'>{type}</span><span className='secondary-light'>{abv}</span>
       </div>
       <p className='primary'>{description}</p>
+      { isAuthenticated && (
+        <Link to={`/breweries/${breweryId}/beers/${_id}/edit`} className='btn'>Edit</Link>
+      ) }
     </div>
   )
 }

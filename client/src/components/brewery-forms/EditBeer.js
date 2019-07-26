@@ -46,7 +46,7 @@ const AddBeer = ({
     beers.length > 0) {
       beers.map(beer => console.log(beer._id));
     }
-  }, [getBrewery, match.params.id]);
+  }, [getBrewery, match.params.beer_id]);
 
   const handleChange = ev => {
     setFormData({ ...formData, [ev.target.name]: ev.target.value });
