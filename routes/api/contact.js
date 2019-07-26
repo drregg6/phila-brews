@@ -4,7 +4,7 @@ const { check, validationResult } = require('express-validator');
 const config = require('config');
 const nodemailer = require('nodemailer');
 
-const config = {
+const header = {
   clientId: config.get('gmailClient'),
   clientSecret: config.get('gmailSecret'),
   refreshToken: config.get('gmailRefreshToken'),
@@ -30,7 +30,7 @@ router.post('/', [
     service: 'Gmail',
     auth: {
       type: 'OAuth2',
-      ...config
+      ...header
     }
   });
   const { email, subject, msg } = req.body;
@@ -53,3 +53,5 @@ router.post('/', [
     }
   }
 });
+
+module.exports = router;
