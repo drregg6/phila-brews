@@ -181,6 +181,25 @@ router.delete('/:id', auth, async (req, res) => {
   }
 });
 
+// @route  /api/breweries/:id/beers/:beer_id
+// @desc   Get a Beer
+// @access PUBLIC
+router.get('/:id/beers/:beer_id', async (req, res) => {
+  const { id, beer_id } = req.params;
+
+  try {
+    let brewery = await Brewery.findOne({ _id: id });
+    if (!brewery) {
+      res.status(400).json({ msg: 'Brewery cannot be found' });
+    }
+    let beer = brewery.beers.filter(beer => beer._id.toString() === beer_id)[0];
+    res.json(beer);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
 // @route  /api/breweries/:id/beers
 // @desc   Update brewery with a new beer
 // @access PRIVATE

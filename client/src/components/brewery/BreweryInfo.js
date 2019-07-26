@@ -7,7 +7,6 @@ const BreweryInfo = ({
   mailingList,
   happyHour
 }) => {
-  console.log(happyHour)
   return (
     <div>
       <h2 className='head underline'>Information</h2>

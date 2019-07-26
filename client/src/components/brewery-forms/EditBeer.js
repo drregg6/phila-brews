@@ -15,14 +15,15 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { addBeer, getBrewery } from '../../actions/brewery';
+import { addBeer, getBrewery, getBeer } from '../../actions/brewery';
 
 const AddBeer = ({
   history,
   match,
   addBeer,
   getBrewery,
-  brewery: { beers, loading }
+  getBeer,
+  brewery: { beer, loading }
 }) => {
   const [ formData, setFormData ] = useState({
     name: '',
@@ -40,13 +41,14 @@ const AddBeer = ({
   } = formData;
 
   useEffect(() => {
-    getBrewery(match.params.id);
-    if (!loading &&
-    beers !== null &&
-    beers.length > 0) {
-      beers.map(beer => console.log(beer._id));
-    }
-  }, [getBrewery, match.params.beer_id]);
+    getBeer(match.params.id, match.params.beer_id);
+    // getBrewery(match.params.id);
+    // if (!loading &&
+    // beers !== null &&
+    // beers.length > 0) {
+    //   beers.map(beer => console.log(beer._id));
+    // }
+  }, [getBeer, match.params.id, match.params.beer_id]);
 
   const handleChange = ev => {
     setFormData({ ...formData, [ev.target.name]: ev.target.value });
@@ -117,6 +119,7 @@ const AddBeer = ({
 
 AddBeer.propTypes = {
   addBeer: PropTypes.func.isRequired,
+  getBeer: PropTypes.func.isRequired,
   brewery: PropTypes.object
 };
 
@@ -126,5 +129,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addBeer, getBrewery }
+  { addBeer, getBrewery, getBeer }
 )(AddBeer);

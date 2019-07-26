@@ -15,6 +15,7 @@ import {
   BREWERY_ERROR,
   UPDATE_BREWERY,
   DELETE_BREWERY,
+  GET_BEER,
   ADD_BEER,
   DELETE_BEER
 } from './types';
@@ -99,6 +100,22 @@ export const deleteBrewery = (id) => async dispatch => {
         payload: { msg: err.response.statusText, status: err.response.status }
       });
     }
+  }
+}
+
+// Get a beer
+export const getBeer = (brewery_id, beer_id) => async dispatch => {
+  try {
+    let res = await axios.get(`/api/breweries/${brewery_id}/beers/${beer_id}`);
+    dispatch({
+      type: GET_BEER,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: BREWERY_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
   }
 }
 
