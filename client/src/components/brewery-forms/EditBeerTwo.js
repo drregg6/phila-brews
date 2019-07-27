@@ -1,6 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { addBeer } from '../../actions/brewery';
 
-const EditBeerTwo = ({ beerName, beerAbv, beerType, beerDescription, beerImg }) => {
+const EditBeerTwo = ({
+  addBeer,
+  beerName,
+  beerAbv,
+  beerType,
+  beerDescription,
+  beerImg,
+  breweryId
+}) => {
   const [ formData, setFormData ] = useState({
     name: '',
     type: '',
@@ -33,12 +43,12 @@ const EditBeerTwo = ({ beerName, beerAbv, beerType, beerDescription, beerImg }) 
 
   const handleSubmit = ev => {
     ev.preventDefault();
-    console.log()
+    addBeer(formData, breweryId, 'none', true);
   }
 
   return (
-    <form onSubmit={ev => {handleSubmit(ev)}} className='form'>
-      <div className='form-group'>
+    <form onSubmit={ev => {handleSubmit(ev)}} className='inset-form'>
+      <div className='inset-form-group'>
         <input
           type='text'
           placeholder='Name *'
@@ -47,7 +57,7 @@ const EditBeerTwo = ({ beerName, beerAbv, beerType, beerDescription, beerImg }) 
           onChange={ev => {handleChange(ev)}}
         />
       </div>
-      <div className='form-group'>
+      <div className='inset-form-group'>
         <input
           type='text'
           placeholder='Type'
@@ -56,7 +66,7 @@ const EditBeerTwo = ({ beerName, beerAbv, beerType, beerDescription, beerImg }) 
           onChange={ev => {handleChange(ev)}}
         />
       </div>
-      <div className='form-group'>
+      <div className='inset-form-group'>
         <input
           type='text'
           placeholder='Alcohol by Volume'
@@ -65,16 +75,7 @@ const EditBeerTwo = ({ beerName, beerAbv, beerType, beerDescription, beerImg }) 
           onChange={ev => {handleChange(ev)}}
         />
       </div>
-      <div className='form-group'>
-        <input
-          type='text'
-          placeholder='Description'
-          name='description'
-          value={description}
-          onChange={ev => {handleChange(ev)}}
-        />
-      </div>
-      <div className='form-group'>
+      <div className='inset-form-group'>
         <input
           type='text'
           placeholder='Image'
@@ -83,7 +84,16 @@ const EditBeerTwo = ({ beerName, beerAbv, beerType, beerDescription, beerImg }) 
           onChange={ev => {handleChange(ev)}}
         />
       </div>
-      <div className='form-group'>
+      <div className='inset-form-group'>
+        <textarea
+          placeholder='Description'
+          name='description'
+          value={description}
+          onChange={ev => {handleChange(ev)}}
+          rows={5}
+        ></textarea>
+      </div>
+      <div className='inset-form-group'>
         <input
           type='submit'
           value='Add beer!'
@@ -92,6 +102,10 @@ const EditBeerTwo = ({ beerName, beerAbv, beerType, beerDescription, beerImg }) 
       </div>
     </form>
   )
+};
+
+EditBeerTwo.propTypes = {
+
 }
 
-export default EditBeerTwo
+export default connect(null, { addBeer })(EditBeerTwo);

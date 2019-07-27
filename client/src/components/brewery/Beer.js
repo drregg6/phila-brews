@@ -37,6 +37,7 @@ const Beer = ({
         displayEditBeer && (
         <div>
           <EditBeerTwo
+            breweryId={breweryId}
             beerName={name}
             beerAbv={abv}
             beerType={type}
@@ -54,7 +55,9 @@ Beer.propTypes = {
   beer: PropTypes.object.isRequired,
   deleteBeer: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
-  breweryId: PropTypes.string.isRequired
+  breweryId: PropTypes.string.isRequired,
+  history: PropTypes.object.isRequired,
+  match: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({

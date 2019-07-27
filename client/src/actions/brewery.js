@@ -1,11 +1,3 @@
-/*
-
-= GET_BEERS(?) --> want a separate page to display all beers(?)
-= GET_BEER(?) --> want a separate page for each beer(?)
-= UPDATE_BEER
-= DELETE BEER
-
-*/
 import axios from 'axios';
 import { setAlert } from '../actions/alert';
 
@@ -16,7 +8,6 @@ import {
   UPDATE_BREWERY,
   DELETE_BREWERY,
   CLEAR_BREWERY,
-  GET_BEER,
   ADD_BEER,
   DELETE_BEER
 } from './types';
@@ -91,6 +82,7 @@ export const deleteBrewery = (id) => async dispatch => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
     try {
       await axios.delete(`/api/breweries/${id}`);
+      dispatch({ type: CLEAR_BREWERY });
       dispatch({
         type: DELETE_BREWERY,
         payload: id
@@ -105,25 +97,8 @@ export const deleteBrewery = (id) => async dispatch => {
   }
 }
 
-// Get a beer
-export const getBeer = (id, beer_id) => async dispatch => {
-  try {
-    let res = await axios.get(`/api/breweries/${id}/beers/${beer_id}`);
-    console.log(`res is: ${JSON.stringify(res.data)}`);
-    dispatch({
-      type: GET_BEER,
-      payload: res.data
-    });
-  } catch (err) {
-    dispatch({
-      type: BREWERY_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
-  }
-}
-
 // Add a beer
-export const addBeer = (formData, id, history) => async dispatch => {
+export const addBeer = (formData, id, history, edit='false') => async dispatch => {
   try {
     const config = {
       headers: {
@@ -137,7 +112,7 @@ export const addBeer = (formData, id, history) => async dispatch => {
     });
 
     dispatch(setAlert('Beer added!'), 'success');
-    history.push(`/breweries/${id}`);
+    if (!edit) history.push(`/breweries/${id}`);
   } catch (err) {
     const errors = err.response.data.errors;
     if (errors) {
@@ -154,7 +129,6 @@ export const addBeer = (formData, id, history) => async dispatch => {
 export const deleteBeer = (breweryId, beerId) => async dispatch => {
   try {
     const res = await axios.delete(`/api/breweries/${breweryId}/beers/${beerId}`);
-    dispatch({ type: CLEAR_BREWERY });
     dispatch({
       type: DELETE_BEER,
       payload: res.data

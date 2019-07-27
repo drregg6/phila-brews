@@ -350,6 +350,23 @@ input[type='submit'] {
 	font-size: 1.2rem;
 }
 
+.inset-form {
+	margin: 1rem 0;
+}
+.inset-form input[type='text'],
+.inset-form input[type='email'],
+.inset-form input[type='password'],
+.inset-form input[type='date'],
+.inset-form textarea {
+	font-family: Verdana, Geneva, sans-serif;
+	margin: 0.25rem 0;
+	padding: 0.25rem .75rem;
+	display: block;
+	width: 100%;
+	border: 1px solid #ccc;
+	font-size: .8rem;
+}
+
 
 
 /* === Navigation === */
