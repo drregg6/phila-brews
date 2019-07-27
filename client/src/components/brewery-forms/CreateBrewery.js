@@ -272,7 +272,7 @@ const CreateBrewery = ({ createBrewery, history }) => {
           <div className='form-group'>
             <div className='my'>
               <div className='my'></div>
-              <label className='form-text' className='form-text'>Open Tuesday</label>
+              <label className='form-text'>Open Tuesday</label>
               <input
                 type='radio'
                 label='Yes'

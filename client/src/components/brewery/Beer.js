@@ -61,8 +61,8 @@ Beer.propTypes = {
   deleteBeer: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
   breweryId: PropTypes.string.isRequired,
-  history: PropTypes.object.isRequired,
-  match: PropTypes.object.isRequired
+  history: PropTypes.object,
+  match: PropTypes.object
 }
 
 const mapStateToProps = state => ({

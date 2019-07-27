@@ -30,7 +30,7 @@ const Contact = () => {
 
   return (
     <Fragment>
-      <div className='hero center main-splash breweries-bg'>
+      <div className='hero center main-splash contact-bg'>
         <h1 className='large halo'>Contact</h1>
       </div>
       <div className='container'>

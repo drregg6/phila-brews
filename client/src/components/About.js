@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 const About = () => {
   return (
     <Fragment>
-      <div className='hero center main-splash breweries-bg'>
+      <div className='hero center main-splash about-bg'>
         <h1 className='large halo'>About</h1>
       </div>
       <div className='container'>

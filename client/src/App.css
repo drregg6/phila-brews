@@ -548,10 +548,20 @@ input[type='submit'] {
 	display: flex;
 }
 
+.about-bg {
+	background-image: url('https://assets.visitphilly.com/wp-content/uploads/2018/02/Philly-Skyline-blue-sky-B-Krist-VP-2200x1237.jpg');
+	background-image: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 100%), url('https://assets.visitphilly.com/wp-content/uploads/2018/02/Philly-Skyline-blue-sky-B-Krist-VP-2200x1237.jpg');
+}
+
 
 /* === Contact === */
 .contact {
 	margin: 2rem 0;
+}
+
+.contact-bg {
+	background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/9b/View_of_Philadelphia_Skyline_from_University_of_Pennsylvania_Downtown_Campus_-_Philadelphia_-_Pennsylvania.jpg');
+	background-image: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 100%), url('https://upload.wikimedia.org/wikipedia/commons/9/9b/View_of_Philadelphia_Skyline_from_University_of_Pennsylvania_Downtown_Campus_-_Philadelphia_-_Pennsylvania.jpg');
 }
 
 .contact-social {

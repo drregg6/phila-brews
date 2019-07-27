@@ -1,9 +1,7 @@
 /*
 
 TODO:
-= EditBeer
 = alertType is not working
-= Images for About and Contact
 = Contact form
 = Set up for deployment
 = Populate database
