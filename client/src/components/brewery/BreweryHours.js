@@ -39,13 +39,13 @@ const BreweryHours = ({
           )}
         </li>
         <li>
-        <span className='strong'>Saturday:</span><br />{!hours || hours.satIsOpen ? 'Closed' :
+        <span className='strong'>Saturday:</span><br />{!hours || !hours.satIsOpen ? 'Closed' :
           (
             `${hours.satOpen} - ${hours.satClose}`
           )}
         </li>
         <li>
-        <span className='strong'>Sunday:</span><br />{!hours || hours.sunIsOpen ? 'Closed' :
+        <span className='strong'>Sunday:</span><br />{!hours || !hours.sunIsOpen ? 'Closed' :
           (
             `${hours.sunOpen} - ${hours.sunClose}`
           )}

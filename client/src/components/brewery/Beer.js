@@ -12,6 +12,10 @@ const Beer = ({
   beer: { _id, name, abv, description, type, img }
 }) => {
   const [ displayEditBeer, toggleEditBeer ] = useState(false);
+
+  const handleClick = () => {
+    toggleEditBeer(!displayEditBeer);
+  }
   return (
     <div className='beer-card'>
       { isAuthenticated && (
@@ -30,7 +34,7 @@ const Beer = ({
       <p className='primary'>{description}</p>
       { isAuthenticated && (
         // <Link to={`/breweries/${breweryId}/beers/${_id}/edit`} className='btn'>Edit</Link>
-        <button className='btn' onClick={() => {toggleEditBeer(!displayEditBeer)}}>Edit Beer</button>
+        <button className='btn' onClick={() => {handleClick()}}>Edit Beer</button>
       ) }
       {
         displayEditBeer && (
@@ -43,6 +47,7 @@ const Beer = ({
             beerType={type}
             beerDescription={description}
             beerImg={img}
+            handleClick={handleClick}
           />
         </div>
         )

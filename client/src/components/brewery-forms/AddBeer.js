@@ -30,8 +30,7 @@ const AddBeer = ({
 
   const handleSubmit = ev => {
     ev.preventDefault();
-    console.log(history)
-    addBeer(formData, match.params.id, history);
+    addBeer(formData, match.params.id, history, false);
   }
   return (
     <div className='create-beer'>

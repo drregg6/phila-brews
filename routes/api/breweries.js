@@ -38,6 +38,7 @@ router.post('/', [ auth, [
   }
 
   const {
+    id,
     name,
     building,
     street,
@@ -77,6 +78,7 @@ router.post('/', [ auth, [
   } = req.body;
 
   const breweryFields = {};
+  if (id) breweryFields.id = id;
   if (name) breweryFields.name = name;
   if (building) breweryFields.building = building;
   if (street) breweryFields.street = street;
@@ -120,12 +122,12 @@ router.post('/', [ auth, [
 
   try {
     // Try to find a brewery
-    let brewery = await Brewery.findOne({ name: breweryFields.name });
+    let brewery = await Brewery.findOne({ _id: breweryFields.id });
 
     // If it exists, update
     if (brewery) {
       brewery = await Brewery.findOneAndUpdate(
-        { name: breweryFields.name },
+        { _id: breweryFields.id },
         { $set: breweryFields },
         { new: true }
       );

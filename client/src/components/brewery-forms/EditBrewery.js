@@ -16,6 +16,7 @@ const CreateBrewery = ({
 }) => {
 
   const [ formData, setFormData ] = useState({
+    id: '',
     name: '',
     building: '',
     street: '',
@@ -57,6 +58,7 @@ const CreateBrewery = ({
     getBrewery(match.params.id);
 
     setFormData({
+      id: loading || !brewery._id ? '' : brewery._id,
       name: loading || !brewery.name ? '' : brewery.name,
       building: loading || !brewery.building ? '' : brewery.building,
       street: loading || !brewery.street ? '' : brewery.street,

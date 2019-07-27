@@ -10,7 +10,8 @@ const EditBeer = ({
   beerType,
   beerDescription,
   beerImg,
-  breweryId
+  breweryId,
+  handleClick
 }) => {
   const [ formData, setFormData ] = useState({
     id: '',
@@ -47,6 +48,7 @@ const EditBeer = ({
   const handleSubmit = ev => {
     ev.preventDefault();
     addBeer(formData, breweryId, 'none', true);
+    handleClick();
   }
 
   return (
