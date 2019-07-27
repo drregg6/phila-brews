@@ -66,20 +66,20 @@ const AddBeer = ({
         <div className='form-group'>
           <input
             type='text'
-            placeholder='Description'
-            name='description'
-            value={description}
-            onChange={ev => {handleChange(ev)}}
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            type='text'
             placeholder='Image'
             name='img'
             value={img}
             onChange={ev => {handleChange(ev)}}
           />
+        </div>
+        <div className='form-group'>
+          <textarea
+            placeholder='Description'
+            name='description'
+            value={description}
+            onChange={ev => {handleChange(ev)}}
+            rows={5}
+          ></textarea>
         </div>
         <div className='form-group'>
           <input
