@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { deleteBeer } from '../../actions/brewery';
-import EditBeerTwo from '../brewery-forms/EditBeerTwo';
+import EditBeer from '../brewery-forms/EditBeer';
 
 const Beer = ({
   deleteBeer,
@@ -36,8 +35,9 @@ const Beer = ({
       {
         displayEditBeer && (
         <div>
-          <EditBeerTwo
+          <EditBeer
             breweryId={breweryId}
+            beerId={_id}
             beerName={name}
             beerAbv={abv}
             beerType={type}

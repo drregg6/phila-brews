@@ -216,6 +216,7 @@ async (req, res) => {
   }
 
   const {
+    id,
     name,
     abv,
     description,
@@ -224,6 +225,7 @@ async (req, res) => {
   } = req.body;
 
   const beerFields = {};
+  if (id) beerFields.id = id;
   if (name) beerFields.name = name;
   if (abv) beerFields.abv = abv;
   if (description) beerFields.description = description;
@@ -238,17 +240,17 @@ async (req, res) => {
     }
 
     // See if the beer exists
-    let beer = brewery.beers.filter(beer => beer.name === beerFields.name)[0];
+    let beer = brewery.beers.find(beer => beer._id.toString() === beerFields.id);
     // Update beer
     if (beer) {
       console.log('Beer found, let\'s update!');
       brewery = await Brewery.findOneAndUpdate(
-        { _id: req.params.id, 'beers.name': beerFields.name},
+        { _id: req.params.id, 'beers._id': beerFields.id},
         { $set: { 'beers.$': beerFields } },
         { new: true }
       );
       
-      return res.json({ brewery });
+      return res.json(brewery);
     }
     
     // Push new beer into beers
