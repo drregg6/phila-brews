@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { deleteBeer } from '../../actions/brewery';
+import EditBeerTwo from '../brewery-forms/EditBeerTwo';
 
 const Beer = ({
   deleteBeer,
@@ -11,6 +12,7 @@ const Beer = ({
   breweryId,
   beer: { _id, name, abv, description, type, img }
 }) => {
+  const [ displayEditBeer, toggleEditBeer ] = useState(false);
   return (
     <div className='beer-card'>
       { isAuthenticated && (
@@ -28,8 +30,22 @@ const Beer = ({
       </div>
       <p className='primary'>{description}</p>
       { isAuthenticated && (
-        <Link to={`/breweries/${breweryId}/beers/${_id}/edit`} className='btn'>Edit</Link>
+        // <Link to={`/breweries/${breweryId}/beers/${_id}/edit`} className='btn'>Edit</Link>
+        <button className='btn' onClick={() => {toggleEditBeer(!displayEditBeer)}}>Edit Beer</button>
       ) }
+      {
+        displayEditBeer && (
+        <div>
+          <EditBeerTwo
+            beerName={name}
+            beerAbv={abv}
+            beerType={type}
+            beerDescription={description}
+            beerImg={img}
+          />
+        </div>
+        )
+      }
     </div>
   )
 }

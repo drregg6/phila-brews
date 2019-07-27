@@ -193,6 +193,7 @@ router.get('/:id/beers/:beer_id', async (req, res) => {
       res.status(400).json({ msg: 'Brewery cannot be found' });
     }
     let beer = brewery.beers.find(beer => beer.id === beer_id);
+    console.log(beer);
     res.json(beer);
   } catch (err) {
     console.error(err.message);

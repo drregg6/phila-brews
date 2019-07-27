@@ -109,6 +109,7 @@ export const deleteBrewery = (id) => async dispatch => {
 export const getBeer = (id, beer_id) => async dispatch => {
   try {
     let res = await axios.get(`/api/breweries/${id}/beers/${beer_id}`);
+    console.log(`res is: ${JSON.stringify(res.data)}`);
     dispatch({
       type: GET_BEER,
       payload: res.data
