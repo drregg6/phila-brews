@@ -68,6 +68,7 @@ const CreateBrewery = ({
       phone: loading || !brewery.phone ? '' : brewery.phone,
       website: loading || !brewery.website ? '' : brewery.website,
       img: loading || !brewery.img ? '' : brewery.img,
+      mailingList: loading || !brewery.mailingList ? false : brewery.mailingList,
       available: loading || !brewery.happyHour ? '' : brewery.happyHour.available,
       happyOpen: loading || !brewery.happyHour ? '' : brewery.happyHour.happyOpen,
       happyClose: loading || !brewery.happyHour ? '' : brewery.happyHour.happyClose,

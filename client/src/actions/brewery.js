@@ -106,9 +106,9 @@ export const deleteBrewery = (id) => async dispatch => {
 }
 
 // Get a beer
-export const getBeer = (brewery_id, beer_id) => async dispatch => {
+export const getBeer = (id, beer_id) => async dispatch => {
   try {
-    let res = await axios.get(`/api/breweries/${brewery_id}/beers/${beer_id}`);
+    let res = await axios.get(`/api/breweries/${id}/beers/${beer_id}`);
     dispatch({
       type: GET_BEER,
       payload: res.data

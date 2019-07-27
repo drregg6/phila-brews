@@ -44,7 +44,7 @@ export default function(state = initialState, action) {
     case GET_BEER:
       return {
         ...state,
-        beer: payload,
+        beer: {...payload},
         loading: false
       }
     case ADD_BEER:

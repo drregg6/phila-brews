@@ -9,7 +9,10 @@ const EditBeer = ({
   match,
   addBeer,
   getBeer,
-  brewery: { beer, loading }
+  brewery: {
+    beer,
+    loading
+  }
 }) => {
   const [ formData, setFormData ] = useState({
     name: '',
@@ -22,6 +25,8 @@ const EditBeer = ({
   useEffect(() => {
     getBeer(match.params.id, match.params.beer_id);
 
+    // will NOT pre-populate data, and does not recognize beer
+    // for whatever reason, will not recognize beer in the state
     setFormData({
       name: loading || !beer.name ? '' : beer.name,
       abv: loading || !beer.abv ? '' : beer.abv,
