@@ -192,7 +192,7 @@ router.get('/:id/beers/:beer_id', async (req, res) => {
     if (!brewery) {
       res.status(400).json({ msg: 'Brewery cannot be found' });
     }
-    let beer = brewery.beers.filter(beer => beer._id.toString() === beer_id)[0];
+    let beer = brewery.beers.find(beer => beer.id === beer_id);
     res.json(beer);
   } catch (err) {
     console.error(err.message);

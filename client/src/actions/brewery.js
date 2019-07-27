@@ -15,6 +15,7 @@ import {
   BREWERY_ERROR,
   UPDATE_BREWERY,
   DELETE_BREWERY,
+  CLEAR_BREWERY,
   GET_BEER,
   ADD_BEER,
   DELETE_BEER
@@ -22,6 +23,7 @@ import {
 
 // Get all breweries
 export const getBreweries = () => async dispatch => {
+  dispatch({ type: CLEAR_BREWERY })
   try {
     let res = await axios.get('/api/breweries');
     dispatch({
@@ -151,6 +153,7 @@ export const addBeer = (formData, id, history) => async dispatch => {
 export const deleteBeer = (breweryId, beerId) => async dispatch => {
   try {
     const res = await axios.delete(`/api/breweries/${breweryId}/beers/${beerId}`);
+    dispatch({ type: CLEAR_BREWERY });
     dispatch({
       type: DELETE_BEER,
       payload: res.data

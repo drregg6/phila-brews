@@ -21,15 +21,15 @@ const EditBeer = ({
 
   useEffect(() => {
     getBeer(match.params.id, match.params.beer_id);
-    
+
     setFormData({
       name: loading || !beer.name ? '' : beer.name,
-      type: loading || !beer.type ? '' : beer.type,
       abv: loading || !beer.abv ? '' : beer.abv,
+      type: loading || !beer.type ? '' : beer.type,
       description: loading || !beer.description ? '' : beer.description,
       img: loading || !beer.img ? '' : beer.img
     });
-  }, [getBeer, match.params.id, match.params.beer_id, setFormData]);
+  }, [getBeer, match.params.id, match.params.beer_id]);
 
   const {
     name,

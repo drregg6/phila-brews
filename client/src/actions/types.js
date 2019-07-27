@@ -15,6 +15,7 @@ export const GET_BREWERY = 'GET_BREWERY';
 export const UPDATE_BREWERY = 'UPDATE_BREWERY';
 export const DELETE_BREWERY = 'DELETE_BREWERY';
 export const BREWERY_ERROR = 'BREWERY_ERROR';
+export const CLEAR_BREWERY = 'CLEAR_BREWERY';
 
 // Beer
 export const GET_BEER = 'GET_BEER';

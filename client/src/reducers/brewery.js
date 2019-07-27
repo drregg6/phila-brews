@@ -5,6 +5,7 @@ import {
   UPDATE_BREWERY,
   BREWERY_ERROR,
   DELETE_BREWERY,
+  CLEAR_BREWERY,
   GET_BEER,
   ADD_BEER,
   DELETE_BEER
@@ -62,6 +63,13 @@ export default function(state = initialState, action) {
       return {
         ...state,
         errors: payload
+      }
+    case CLEAR_BREWERY:
+      return {
+        ...state,
+        brewery: null,
+        beer: {},
+        loading: false
       }
     case DELETE_BREWERY:
       return {
