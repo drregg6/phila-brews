@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SEND_EMAIL } from './types';
+import { setAlert } from './alert';
 
 export const sendEmail = formData => async dispatch => {
   const config = {
@@ -10,8 +10,12 @@ export const sendEmail = formData => async dispatch => {
 
   try {
     const res = await axios.post('/api/contact', formData, config);
-    console.log(res.data);
+    console.log(res);
+    dispatch(setAlert('Email sent!', 'success'));
   } catch (err) {
-    console.error(`Error from axios: ${err.message}`)
+    const errors = err.response.data.errors;
+    if (errors) {
+      errors.forEach(error => dispatch(setAlert(error.msg), 'danger'));
+    }
   }
 }

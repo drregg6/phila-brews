@@ -1,13 +1,7 @@
-/*
-
-= Implement the form with state
-= emailto:philabreweryapp@gmail.com
-
-*/
-
 import React, { useState, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import Alert from './layout/Alert';
 
 import { connect } from 'react-redux';
 import { sendEmail } from '../actions/contact';
@@ -41,6 +35,7 @@ const Contact = ({ sendEmail }) => {
         <h1 className='large halo'>Contact</h1>
       </div>
       <div className='container'>
+        <Alert />
         <div className='contact'>
           <h2 className='head secondary'>Please Contact Me!</h2>
           <p className='text-p'>
@@ -54,6 +49,7 @@ const Contact = ({ sendEmail }) => {
               <input
                 type='email'
                 name='email'
+                id='email'
                 onChange={ev => {handleChange(ev)}}
                 value={email}
                 placeholder='Email address'
@@ -61,6 +57,7 @@ const Contact = ({ sendEmail }) => {
               <input
                 type='text'
                 name='subject'
+                id='subject'
                 onChange={ev => {handleChange(ev)}}
                 value={subject}
                 placeholder='Subject line'
@@ -68,6 +65,7 @@ const Contact = ({ sendEmail }) => {
               <textarea
                 placeholder='Write your message'
                 rows='5'
+                id='msg'
                 name='msg'
                 onChange={ev => {handleChange(ev)}}
                 value={msg}
@@ -84,16 +82,16 @@ const Contact = ({ sendEmail }) => {
           <h2 className='head secondary'>Social Media</h2>
           <div>
             <div className='contact-social'>
-              <a href='https://www.twitter.com/daveregg' target='_blank' rel='noopener noreferrer'><i className='fab fa-twitter fa-2x'></i></a>
+              <a href='https://www.twitter.com/daveregg' target='_blank' rel='noopener noreferrer'><i className='fab fa-twitter fa-3x'></i></a>
             </div>
             <div className='contact-social'>
-              <a href='https://www.github.com/drregg6' target='_blank' rel='noopener noreferrer'><i className='fas fa-globe fa-2x'></i></a>
+              <a href='https://www.github.com/drregg6' target='_blank' rel='noopener noreferrer'><i className='fas fa-globe fa-3x'></i></a>
             </div>
             <div className='contact-social'>
-              <a href='https://www.instagram.com/dave.regg' target='_blank' rel='noopener noreferrer'><i className='fab fa-instagram fa-2x'></i></a>
+              <a href='https://www.instagram.com/dave.regg' target='_blank' rel='noopener noreferrer'><i className='fab fa-instagram fa-3x'></i></a>
             </div>
             <div className='contact-social'>
-              <a href='https://www.linkedin.com/daveregg' target='_blank' rel='noopener noreferrer'><i className='fab fa-linkedin fa-2x'></i></a>
+              <a href='https://www.linkedin.com/daveregg' target='_blank' rel='noopener noreferrer'><i className='fab fa-linkedin fa-3x'></i></a>
             </div>
           </div>
         </div>
