@@ -9,13 +9,9 @@ router.post('/', async (req, res) => {
   console.log(`FormData from server: ${email} - ${subject} - ${msg}`);
 
   const transporter = nodemailer.createTransport({
-    service: 'Gmail',
-    host: 'smtpout.secureserver.net',
+    host: 'smtp.gmail.com',
     port: 587,
-    proxy: 'http://localhost:3000',
-    secureConnection: false,
-    requiresAuth: true,
-    domains: ['gmail.com', 'googlemail.com'],
+    secure: false,
     auth: {
       user: config.get('user'),
       pass: config.get('pass')
@@ -26,7 +22,7 @@ router.post('/', async (req, res) => {
     to: 'philabreweryapp@gmail.com',
     from: email,
     subject: subject,
-    body: msg
+    text: `From: <${email}>\nMessage: ${msg}`
   };
 
   try {
