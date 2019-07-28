@@ -2,7 +2,6 @@
 
 TODO:
 = alertType is not working
-= Contact form
 = Set up for deployment
 = Populate database
 

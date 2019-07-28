@@ -43,7 +43,7 @@ router.post('/', [
   };
 
   try {
-    const info = await transporter.sendMail(mailBody);
+    await transporter.sendMail(mailBody);
     res.json({ msg: 'Email sent!' });
   } catch (err) {
     console.log(`Error from transporter: ${err.message}`);
