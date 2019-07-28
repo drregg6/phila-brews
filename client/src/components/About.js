@@ -15,7 +15,7 @@ const About = () => {
   return (
     <Fragment>
       <div className='hero center main-splash about-bg'>
-        <h1 className='large halo'>About</h1>
+        <h1 className='large halo secondary'>About</h1>
       </div>
       <div className='container'>
         <div>
