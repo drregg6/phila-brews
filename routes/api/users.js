@@ -18,7 +18,7 @@ const auth = require('../../middleware/auth');
 // @route  /api/users
 // @desc   Register
 // @access PRIVATE
-router.post('/', [ auth, [
+router.post('/', [auth, [
   check('email', 'Please enter a valid email')
   .isEmail(),
   check('password', 'Please enter a password of at least 6 characters')
