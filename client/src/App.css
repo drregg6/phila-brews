@@ -8,6 +8,13 @@
   --success-color: #28a745;
 }
 
+/*
+
+Former Images
+Breweries Splash: https://twt-thumbs.washtimes.com/media/image/2019/05/05/AP_19045476255014_c0-148-3006-1900_s1770x1032.jpg?3aaaef111a684fdfa0be7aaedb6dda27d0c7ff6b
+
+*/
+
 /* === Reset === */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -427,8 +434,8 @@ input[type='submit'] {
 }
 
 .breweries-bg {
-	background-image: url('https://twt-thumbs.washtimes.com/media/image/2019/05/05/AP_19045476255014_c0-148-3006-1900_s1770x1032.jpg?3aaaef111a684fdfa0be7aaedb6dda27d0c7ff6b');
-	background-image: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 100%), url('https://twt-thumbs.washtimes.com/media/image/2019/05/05/AP_19045476255014_c0-148-3006-1900_s1770x1032.jpg?3aaaef111a684fdfa0be7aaedb6dda27d0c7ff6b');
+	background-image: url('https://media.phillyvoice.com/media/images/ComcastCenter.2e16d0ba.fill-735x490.jpg');
+	background-image: linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.2) 100%), url('https://media.phillyvoice.com/media/images/ComcastCenter.2e16d0ba.fill-735x490.jpg');
 }
 
 .breweries-link {
