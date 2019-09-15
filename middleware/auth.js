@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
-const config = require('config');
+// const config = require('config');
+require('dotenv').config();
+const JWT_SECRET = process.env.JWT_SECRET;
 
 module.exports = (req, res, next) => {
   // Get token from header
@@ -12,7 +14,7 @@ module.exports = (req, res, next) => {
 
   // Verify token
   try {
-    const decoded = jwt.verify(token, config.get('jwtSecret'));
+    const decoded = jwt.verify(token, JWT_SECRET);
 
     // The payload sent in /api/users and /api/auth
     // payload = { user: { id: user.id } }

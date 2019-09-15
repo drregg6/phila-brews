@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-const config = require('config');
+// const config = require('config');
 const { check, validationResult } = require('express-validator');
+require('dotenv').config();
+const USER = process.env.USER;
+const PASS = process.env.PASS;
 
 router.post('/', [
   check('email', 'Email is required')
@@ -30,8 +33,8 @@ router.post('/', [
     port: 587,
     secure: false,
     auth: {
-      user: config.get('user'),
-      pass: config.get('pass')
+      user: USER,
+      pass: PASS
     }
   });
 

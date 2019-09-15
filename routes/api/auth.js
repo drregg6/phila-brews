@@ -8,9 +8,10 @@ Authenticate and get token
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const config = require('config');
 const bcrypt = require('bcryptjs');
 const { check, validationResult } = require('express-validator');
+require('dotenv').config();
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const User = require('../../models/User');
 const auth = require('../../middleware/auth');
@@ -67,7 +68,7 @@ async (req, res) => {
 
     jwt.sign(
       payload,
-      config.get('jwtSecret'),
+      JWT_SECRET,
       { expiresIn: 36000 },
       (err, token) => {
         if (err) throw error;
