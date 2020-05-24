@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
-// const config = require('config');
 const { check, validationResult } = require('express-validator');
 require('dotenv').config();
 const USER = process.env.USER;
