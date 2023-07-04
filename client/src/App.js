@@ -1,9 +1,8 @@
 /*
 
 TODO:
-= alertType is not working
-= Set up for deployment
-= Populate database
+= modernization of react and redux
+= use new hooks
 
 */
 
