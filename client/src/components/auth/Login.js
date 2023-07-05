@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { login } from '../../actions/auth';
@@ -20,7 +20,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   if (isAuthenticated) {
-    return <Redirect to='/' />
+    return <Navigate to='/' />
   }
   return (
     <div>

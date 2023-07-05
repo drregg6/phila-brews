@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Navigate } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
@@ -8,7 +8,7 @@ const PrivateRoute = ({ component: Component, auth: { isAuthenticated, loading }
   <Route
     { ...rest }
     render={props => !isAuthenticated && !loading ? (
-      <Redirect to="/" />
+      <Navigate to="/" />
     ) : (
       <Component {...props} />
     )}

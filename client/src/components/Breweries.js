@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import Spinner from './layout/Spinner';
-import Alert from './layout/Alert';
 
 import { connect } from 'react-redux';
 import { getBreweries } from '../actions/brewery';
@@ -24,7 +23,7 @@ const Breweries = ({
         <h1 className='x-large halo'>Phila Brews</h1>
       </div>
       <div className='container'>
-        <Alert />
+        {/* <Alert /> */}
         <div className='breweries-container'>
           { loading ? (
             <Spinner />
@@ -34,7 +33,7 @@ const Breweries = ({
                 <div
                   key={brewery._id}
                   className='breweries-link center'
-                  style={{ backgroundImage: `url('${brewery.img}')`, backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.35) 100%), url(${brewery.img})` }}
+                  style={{ backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.35) 100%), url(${brewery.img})` }}
                 >
                   { isAuthenticated && (
                     <button
