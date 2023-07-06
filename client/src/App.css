@@ -513,6 +513,11 @@ input[type='submit'] {
 	z-index: 1;
 }
 
+.leaflet-container {
+  width: 100%;
+  height: 50vh;
+}
+
 .beers {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, 250px);
