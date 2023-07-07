@@ -15,13 +15,11 @@
 
 import { configureStore } from '@reduxjs/toolkit';
 import breweryReducer from './features/brewery/brewerySlice';
-import alertReducer from './features/alert/alertSlice';
 import authReducer from './features/auth/authSlice';
 
 export default configureStore({
   reducer: {
     brewery: breweryReducer,
-    alert: alertReducer,
     auth: authReducer
   }
 });
