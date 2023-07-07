@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import { connect } from 'react-redux';
-import { deleteBeer } from '../../actions/brewery';
+import { deleteBeer } from '../../features/brewery/brewerySlice';
 import EditBeer from '../brewery-forms/EditBeer';
 
-const Beer = ({
-  deleteBeer,
-  isAuthenticated,
-  breweryId,
-  beer: { _id, name, abv, description, type, img }
-}) => {
+function Beer ({
+  beer: { _id, name, abv, description, type, img },
+  breweryId
+}) {
   const [ displayEditBeer, toggleEditBeer ] = useState(false);
+
+  const { user } = useSelector((state) => state.auth);
 
   const handleClick = () => {
     toggleEditBeer(!displayEditBeer);
   }
   return (
     <div className='beer-card'>
-      { isAuthenticated && (
+      { !user && (
       <button
         onClick={() => {deleteBeer(breweryId, _id)}}
         className='btn-delete-beer btn-danger'
@@ -32,9 +31,10 @@ const Beer = ({
         <span className='secondary'>{type}</span><span className='secondary-light'>{abv}</span>
       </div>
       <p className='primary'>{description}</p>
-      { isAuthenticated && (
-        // <Link to={`/breweries/${breweryId}/beers/${_id}/edit`} className='btn'>Edit</Link>
-        <button className='btn' onClick={() => {handleClick()}}>Edit Beer</button>
+      { !user && (
+        <>
+          <button className='btn' onClick={() => {handleClick()}}>Edit Beer</button>
+        </>
       ) }
       {
         displayEditBeer && (
@@ -56,20 +56,4 @@ const Beer = ({
   )
 }
 
-Beer.propTypes = {
-  beer: PropTypes.object.isRequired,
-  deleteBeer: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
-  breweryId: PropTypes.string.isRequired,
-  history: PropTypes.object,
-  match: PropTypes.object
-}
-
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
-})
-
-export default connect(
-  mapStateToProps,
-  { deleteBeer }
-)(Beer);
+export default Beer;

@@ -16,14 +16,14 @@ const getBrewery = async (id) => {
 }
 
 // Create brewery
-const createBrewery = async (newBrewery) => {
+const createBrewery = async (brewery) => {
   const config = {
     headers: {
       'Content-type': 'application/json'
     }
   }
 
-  const res = await axios.post(API_URL, newBrewery, config);
+  const res = await axios.post(API_URL, brewery, config);
   if (res.data) {
     return res.data;
   }
@@ -44,9 +44,9 @@ const addBeer = async (data) => {
     }
   }
 
-  const { newBeer, breweryId } = data;
+  const { beer, id } = data;
 
-  const res = await axios.put(`${API_URL}${breweryId}/beers`, newBeer, config);
+  const res = await axios.put(`${API_URL}${id}/beers`, beer, config);
   if (res.data) {
     return res.data;
   }

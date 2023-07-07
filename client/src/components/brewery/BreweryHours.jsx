@@ -1,9 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
-const BreweryHours = ({
+function BreweryHours ({
   hours
-}) => {
+}) {
   return (
     <div>
       <h2 className='head underline'>Hours</h2>
@@ -53,10 +50,6 @@ const BreweryHours = ({
       </ul>
     </div>
   )
-}
-
-BreweryHours.propTypes = {
-  hours: PropTypes.object.isRequired
 }
 
 export default BreweryHours;

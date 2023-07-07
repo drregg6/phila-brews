@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { connect } from 'react-redux';
-import { getBrewery, createBrewery } from '../actions/brewery';
+import { getBrewery, createBrewery } from '../features/brewery/brewerySlice';
+import { reset } from '../features/auth/authSlice';
 
-const CreateBrewery = ({
-  createBrewery,
-  getBrewery,
-  match,
-  history,
-  brewery: {
-    brewery,
-    loading
-  }
-}) => {
+function CreateBrewery() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const params = useParams();
+  const id = params.id;
+  
+  const { brewery, loading } = useSelector((state) => state.brewery);
+  const { user } = useSelector((state) => state.auth);
 
   const [ formData, setFormData ] = useState({
     id: '',
@@ -56,7 +54,12 @@ const CreateBrewery = ({
     sunClose: ''
   });
   useEffect(() => {
-    getBrewery(match.params.id);
+    if (!user) {
+      navigate('/login');
+    }
+
+    dispatch(reset());
+    dispatch(getBrewery(id));
 
     setFormData({
       id: loading || !brewery._id ? '' : brewery._id,
@@ -97,7 +100,11 @@ const CreateBrewery = ({
       satIsOpen: loading || !brewery.hours ? '' : brewery.hours.satIsOpen,
       sunIsOpen: loading || !brewery.hours ? '' : brewery.hours.sunIsOpen
     });
-  }, [setFormData, getBrewery, match.params.id]);
+  }, [setFormData, id, dispatch,
+    loading, brewery._id, brewery.name, brewery.building, brewery.street, brewery.city,
+    brewery.state, brewery.zip, brewery.lat, brewery.lng, brewery.phone, brewery.website,
+    brewery.img, brewery.mailingList, brewery.happyHour, brewery.hours,
+    navigate, user]);
 
   const {
     name,
@@ -143,7 +150,9 @@ const CreateBrewery = ({
   }
   const handleSubmit = ev => {
     ev.preventDefault();
-    createBrewery(formData, history, true);
+
+    dispatch(createBrewery(formData));
+    navigate('/');
   }
 
   return (
@@ -536,17 +545,4 @@ const CreateBrewery = ({
   )
 }
 
-CreateBrewery.propTypes = {
-  createBrewery: PropTypes.func.isRequired,
-  getBrewery: PropTypes.func.isRequired,
-  brewery: PropTypes.object
-}
-
-const mapStateToProps = state => ({
-  brewery: state.brewery
-})
-
-export default connect(
-  mapStateToProps,
-  { createBrewery, getBrewery }
-)(CreateBrewery);
+export default CreateBrewery;

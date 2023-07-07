@@ -1,7 +1,6 @@
-import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
-const BreweryMap = ({ lat, lng, name }) => {
+function BreweryMap({ lat, lng, name }) {
   lat = parseFloat(lat);
   lng = parseFloat(lng);
 

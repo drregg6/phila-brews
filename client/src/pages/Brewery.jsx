@@ -9,7 +9,7 @@ import BreweryInfo from '../components/brewery/BreweryInfo';
 import BreweryMap from '../components/brewery/BreweryMap';
 import Beer from '../components/brewery/Beer';
 
-import { getBrewery, reset } from '../features/brewery/brewerySlice';
+import { getBrewery } from '../features/brewery/brewerySlice';
 
 import isCurrentlyOpen from '../utils/isCurrentlyOpen';
 
@@ -23,11 +23,11 @@ function Brewery() {
     loading
   } = useSelector((state) => state.brewery);
 
+  const { user } = useSelector((state) => state.auth);
+
   useEffect(() => {
     dispatch(getBrewery(id));
-    return () => {
-      dispatch(reset());
-    }
+    
   }, [dispatch, id]);
 
   const currentlyOpen = loading || brewery === null ? '' : isCurrentlyOpen(brewery.hours);
@@ -58,9 +58,9 @@ function Brewery() {
         )}
       </div>
       <div className='container'>
-        {/* {isAuthenticated && (
+        {!user && (
           <Link to={`/breweries/${id}/edit`} className='btn btn-edit-brewery'>Edit this brewery</Link>
-        )} */}
+        )}
         <div className='brewery-group'>
           <BreweryInfo
             phone={brewery.phone}
@@ -108,11 +108,11 @@ function Brewery() {
           ) }
         </div>
       </div>
-      {/* { isAuthenticated && (
+      { !user && (
         <>
           <Link to={`/breweries/${id}/beers`} className='btn'>Add a beer</Link>
         </>
-      ) } */}
+      ) }
   </div>
   )
 }

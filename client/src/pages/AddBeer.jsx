@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 
-import { connect } from 'react-redux';
-import { addBeer } from '../actions/brewery';
+import { reset } from '../features/auth/authSlice';
+import { addBeer } from '../features/brewery/brewerySlice';
 
-const AddBeer = ({
-  history,
-  match,
-  addBeer
-}) => {
+function AddBeer() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const params = useParams();
+  const id = params.id;
+  
+  const { user } = useSelector((state) => state.auth);
+
   const [ formData, setFormData ] = useState({
     name: '',
     type: '',
@@ -30,8 +34,22 @@ const AddBeer = ({
 
   const handleSubmit = ev => {
     ev.preventDefault();
-    addBeer(formData, match.params.id, history, false);
+    const data = {
+      beer: formData,
+      id
+    }
+
+    dispatch(addBeer(data));
+    navigate('/');
   }
+
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+
+    dispatch(reset());
+  }, [user, navigate, dispatch])
   return (
     <div className='create-beer'>
       <h1 className='large'>Add Beer</h1>
@@ -93,11 +111,4 @@ const AddBeer = ({
   )
 }
 
-AddBeer.propTypes = {
-  addBeer: PropTypes.func.isRequired
-}
-
-export default connect(
-  null,
-  { addBeer }
-)(AddBeer);
+export default AddBeer;

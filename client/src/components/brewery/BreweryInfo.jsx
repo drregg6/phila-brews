@@ -1,12 +1,9 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-
-const BreweryInfo = ({
+function BreweryInfo ({
   phone,
   website,
   mailingList,
   happyHour
-}) => {
+}) {
   return (
     <div>
       <h2 className='head underline'>Information</h2>
@@ -16,21 +13,14 @@ const BreweryInfo = ({
         <li><span className='strong'>Mailing List: </span>{ mailingList ? 'Yep!' : 'Nope' }</li>
         <li><span className='strong'>Happy Hour: </span>{ !happyHour || happyHour.available ? 'Yep!' : 'Nope' }</li>
         { (!happyHour || happyHour.available) && (
-          <Fragment>
+          <>
             <li><span className='strong'>Begins: </span> { !happyHour || happyHour.happyOpen }</li>
             <li><span className='strong'>Ends: </span> { !happyHour || happyHour.happyClose }</li>
-          </Fragment>
+          </>
         )}
       </ul>
     </div>
   )
-}
-
-BreweryInfo.propTypes = {
-  phone: PropTypes.string.isRequired,
-  website: PropTypes.string.isRequired,
-  mailingList: PropTypes.bool.isRequired,
-  happyHour: PropTypes.object.isRequired
 }
 
 export default BreweryInfo;

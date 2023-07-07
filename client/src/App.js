@@ -2,9 +2,6 @@
 
 TODO:
 = modernization of redux
-= dispatch is null error
-= Provider error
-= invalid hook call error
 
 */
 
@@ -25,19 +22,9 @@ import AddBeer from './pages/AddBeer';
 import NotFound from './pages/NotFound';
 import Footer from './components/layout/Footer';
 
-// import store from './store';
-// import { loadUser } from './actions/auth';
-// import setAuthToken from './utils/setAuthToken';
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
-  // useEffect(() => {
-  //   if (localStorage.token) {
-  //     setAuthToken(localStorage.token);
-  //   }
-  //   store.dispatch(loadUser());
-  // }, []);
   
   return (
     <Router>

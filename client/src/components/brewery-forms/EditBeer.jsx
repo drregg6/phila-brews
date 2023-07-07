@@ -1,117 +1,119 @@
-// import React, { useState, useEffect } from 'react';
-// import { addBeer } from '../../features/brewery/brewerySlice';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
-// function EditBeer ({
-//   addBeer,
-//   beerId,
-//   beerName,
-//   beerAbv,
-//   beerType,
-//   beerDescription,
-//   beerImg,
-//   breweryId,
-//   handleClick
-// }) {
-//   const [ formData, setFormData ] = useState({
-//     id: '',
-//     name: '',
-//     type: '',
-//     abv: '',
-//     description: '',
-//     img: ''
-//   });
+import { addBeer } from '../../features/brewery/brewerySlice';
 
-//   useEffect(() => {
-//     setFormData({
-//       id: beerId,
-//       name: beerName,
-//       type: beerType,
-//       description: beerDescription,
-//       abv: beerAbv,
-//       img: beerImg
-//     })
-//   }, []);
+function EditBeer ({
+  beerId,
+  beerName,
+  beerAbv,
+  beerType,
+  beerDescription,
+  beerImg,
+  breweryId,
+  handleClick
+}) {
+  const dispatch = useDispatch();
 
-//   const {
-//     name,
-//     type,
-//     abv,
-//     description,
-//     img
-//   } = formData;
+  const [ formData, setFormData ] = useState({
+    id: '',
+    name: '',
+    type: '',
+    abv: '',
+    description: '',
+    img: ''
+  });
 
-//   const handleChange = ev => {
-//     setFormData({ ...formData, [ev.target.name]: ev.target.value });
-//   }
+  useEffect(() => {
+    setFormData({
+      id: beerId,
+      name: beerName,
+      type: beerType,
+      description: beerDescription,
+      abv: beerAbv,
+      img: beerImg
+    })
+  }, [beerAbv, beerDescription, beerId, beerImg, beerName, beerType]);
 
-//   const handleSubmit = ev => {
-//     ev.preventDefault();
-//     const data = {
-//       newBeer: formData,
-//       breweryId,
-//       edit: 'true'
-//     }
+  const {
+    name,
+    type,
+    abv,
+    description,
+    img
+  } = formData;
 
-//     addBeer(data);
-//     handleClick();
-//   }
+  const handleChange = ev => {
+    setFormData({ ...formData, [ev.target.name]: ev.target.value });
+  }
 
-//   return (
-//     <form onSubmit={ev => {handleSubmit(ev)}} className='inset-form'>
-//       <div className='inset-form-group'>
-//         <input
-//           type='text'
-//           placeholder='Name *'
-//           name='name'
-//           value={name}
-//           onChange={ev => {handleChange(ev)}}
-//         />
-//       </div>
-//       <div className='inset-form-group'>
-//         <input
-//           type='text'
-//           placeholder='Type'
-//           name='type'
-//           value={type}
-//           onChange={ev => {handleChange(ev)}}
-//         />
-//       </div>
-//       <div className='inset-form-group'>
-//         <input
-//           type='text'
-//           placeholder='Alcohol by Volume'
-//           name='abv'
-//           value={abv}
-//           onChange={ev => {handleChange(ev)}}
-//         />
-//       </div>
-//       <div className='inset-form-group'>
-//         <input
-//           type='text'
-//           placeholder='Image'
-//           name='img'
-//           value={img}
-//           onChange={ev => {handleChange(ev)}}
-//         />
-//       </div>
-//       <div className='inset-form-group'>
-//         <textarea
-//           placeholder='Description'
-//           name='description'
-//           value={description}
-//           onChange={ev => {handleChange(ev)}}
-//           rows={5}
-//         ></textarea>
-//       </div>
-//       <div className='inset-form-group'>
-//         <input
-//           type='submit'
-//           value='Edit'
-//           className='btn'
-//         />
-//       </div>
-//     </form>
-//   )
-// }
+  const handleSubmit = ev => {
+    ev.preventDefault();
+    const data = {
+      beer: formData,
+      id: breweryId
+    }
 
-// export default EditBeer;
+    dispatch(addBeer(data));
+    handleClick();
+  }
+
+  return (
+    <form onSubmit={ev => {handleSubmit(ev)}} className='inset-form'>
+      <div className='inset-form-group'>
+        <input
+          type='text'
+          placeholder='Name *'
+          name='name'
+          value={name}
+          onChange={ev => {handleChange(ev)}}
+        />
+      </div>
+      <div className='inset-form-group'>
+        <input
+          type='text'
+          placeholder='Type'
+          name='type'
+          value={type}
+          onChange={ev => {handleChange(ev)}}
+        />
+      </div>
+      <div className='inset-form-group'>
+        <input
+          type='text'
+          placeholder='Alcohol by Volume'
+          name='abv'
+          value={abv}
+          onChange={ev => {handleChange(ev)}}
+        />
+      </div>
+      <div className='inset-form-group'>
+        <input
+          type='text'
+          placeholder='Image'
+          name='img'
+          value={img}
+          onChange={ev => {handleChange(ev)}}
+        />
+      </div>
+      <div className='inset-form-group'>
+        <textarea
+          placeholder='Description'
+          name='description'
+          value={description}
+          onChange={ev => {handleChange(ev)}}
+          rows={5}
+        ></textarea>
+      </div>
+      <div className='inset-form-group'>
+        <input
+          type='submit'
+          value='Edit'
+          className='btn'
+        />
+      </div>
+    </form>
+  )
+}
+
+export default EditBeer;

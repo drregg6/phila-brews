@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { connect } from 'react-redux';
-import { createBrewery } from '../actions/brewery';
+import { createBrewery } from '../features/brewery/brewerySlice';
+import { reset } from '../features/auth/authSlice';
 
-const CreateBrewery = ({ createBrewery, history }) => {
+function CreateBrewery () {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.auth);
 
   const [ formData, setFormData ] = useState({
     name: '',
@@ -85,11 +90,21 @@ const CreateBrewery = ({ createBrewery, history }) => {
   const handleChange = ev => {
     setFormData({ ...formData, [ev.target.name]: ev.target.value });
   }
+
   const handleSubmit = ev => {
     ev.preventDefault();
-    createBrewery(formData, history);
+    dispatch(createBrewery(formData));
+
+    navigate('/');
   }
 
+  useEffect(() => {
+    if (!user) {
+      navigate('/login');
+    }
+
+    dispatch(reset());
+  }, [user, navigate, dispatch])
   return (
     <div className='create-brewery'>
       <h1 className='large'>Add a Brewery</h1>
@@ -481,11 +496,4 @@ const CreateBrewery = ({ createBrewery, history }) => {
   )
 }
 
-CreateBrewery.propTypes = {
-  createBrewery: PropTypes.func.isRequired
-}
-
-export default connect(
-  null,
-  { createBrewery }
-)(CreateBrewery);
+export default CreateBrewery;

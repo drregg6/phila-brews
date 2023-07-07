@@ -6,7 +6,8 @@ import Spinner from '../components/layout/Spinner';
 
 import {
   reset,
-  getBreweries
+  getBreweries,
+  deleteBrewery
 } from '../features/brewery/brewerySlice';
 
 
@@ -17,6 +18,7 @@ function Breweries() {
     breweries,
     loading
   } = useSelector((state) => state.brewery);
+  const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(getBreweries());
@@ -47,14 +49,14 @@ function Breweries() {
                   className='breweries-link center'
                   style={{ backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.35) 100%), url(${brewery.img})` }}
                 >
-                  {/* { isAuthenticated && (
+                  { user && (
                     <button
                       className='breweries-btn btn btn-danger'
-                      onClick={ev => deleteBrewery(brewery._id)}
+                      onClick={ev => dispatch(deleteBrewery(brewery._id))}
                     >
                       X
                     </button>
-                  ) } */}
+                  ) }
                   <Link className='invert-halo' to={`/breweries/${brewery._id}`}>
                     {brewery.name}
                   </Link>
