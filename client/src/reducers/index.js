@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
 // Import separate reducers
-import auth from './auth';
-import brewery from './brewery';
-import alert from './alert';
+import authReducer from './auth';
+import breweryReducer from './brewery';
+import alertReducer from './alert';
 
 export default combineReducers({
-  auth,
-  alert,
-  brewery
+  authReducer,
+  alertReducer,
+  breweryReducer
 });
